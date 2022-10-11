@@ -23,11 +23,20 @@ namespace PR2
         public MainWindow()
         {
             InitializeComponent();
+            BaseClass.tBE = new Entities();
+            Framec.MainFrame = fMain;
+            Framec.MainFrame.Navigate(new PageMain());
         }
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
+            Framec.MainFrame.Navigate(new Registration());
 
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new Authorizat());
         }
     }
 }

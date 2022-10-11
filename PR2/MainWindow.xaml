@@ -14,11 +14,12 @@
             </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Image Height="70" Width="70"></Image>
-            <TextBlock>Приложение для салона красоты</TextBlock>
+            <Image Source="Resourse/pngwing.com.png" Height="80" Width="200"></Image>
+            <TextBlock >Приложение для салона красоты</TextBlock>
             <Button Name="btnReg" FontSize="15" Width="100" Content="Регистрация" Click="btnReg_Click"></Button>
+            <Button Name="btnAuth" FontSize="15" Width="100" Content="Авторизация" Click="btnAuth_Click"></Button>
         </StackPanel>
-        <Frame Name="fMain" Grid.Row="0">
+        <Frame Name="fMain" Grid.Row="1" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

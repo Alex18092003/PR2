@@ -16,26 +16,18 @@ using System.Windows.Shapes;
 namespace PR2
 {
     /// <summary>
-    /// Логика взаимодействия для Registration.xaml
+    /// Логика взаимодействия для Authorizat.xaml
     /// </summary>
-    public partial class Registration : Page
+    public partial class Authorizat : Page
     {
-        List<Dolgnosti> DL = BaseClass.tBE.Dolgnosti.ToList();
-        public Registration()
+        public Authorizat()
         {
             InitializeComponent();
-            cbDolgn.Text = DL[0].ToString();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new PageMain());
-        }
-
-        private void btnZareg_Click(object sender, RoutedEventArgs e)
-        {
-            int pass = tbPassword.Password.GetHashCode();
-
         }
     }
 }
