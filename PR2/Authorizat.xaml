@@ -5,13 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+
+      d:DesignHeight="375" d:DesignWidth="800"
       Title="Авторизация">
 
-    <Grid Background="White">
+    <Grid  Background="#3FBF0F74">
         <StackPanel>
-        <TextBlock FontSize="15" Background="White">Авторизация</TextBlock>
-            <Button Name="btnBack" Click="btnBack_Click">Главная</Button>
+            <TextBlock  Style="{StaticResource tblock}">Авторизация</TextBlock>
+            <GroupBox  Style="{StaticResource gropdox}" Header="Введите логин">
+                    <TextBox  x:Name="tbLogin"></TextBox>
+                </GroupBox>
+            <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
+                    <PasswordBox x:Name="tbPassword"></PasswordBox>
+                </GroupBox>
+            <Button  Style="{StaticResource btn}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
+            </Button>
+            <Button Template ="{StaticResource btnb}" Name="btnBack" Click="btnBack_Click">Главная</Button>
+           
         </StackPanel>
     </Grid>
 </Page>

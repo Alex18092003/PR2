@@ -187,6 +187,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\home_heart_building_icon_207747.png" />
     <Resource Include="Resourse\fdsfs.png" />
     <Resource Include="Resourse\pngwing.com.png" />
     <Resource Include="Resourse\draw_svg20210507-22909-5iinzg.svg.png" />

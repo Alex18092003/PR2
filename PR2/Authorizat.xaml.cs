@@ -29,5 +29,19 @@ namespace PR2
         {
             Framec.MainFrame.Navigate(new PageMain());
         }
+
+        private void btnAvtoriz_Click(object sender, RoutedEventArgs e)
+        {
+            int p = tbPassword.Password.GetHashCode();
+            Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x=> x.Login == tbLogin.Text && x.Password == p);
+            if (specialists != null)
+            {
+                MessageBox.Show("Есть пользователь");
+            }
+            else
+            {
+                MessageBox.Show("Нет пользователя");
+            }
+        }
     }
 }

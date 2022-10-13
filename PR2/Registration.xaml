@@ -8,7 +8,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Регистрация" FontSize="10">
 
-    <Grid Background="White">
+    <Grid Background="#3FBF0F74">
+        
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>
@@ -16,46 +17,48 @@
             </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-        <TextBlock FontSize="15" >Регистрация</TextBlock>
-        <Button Name="btnBack" Click="btnBack_Click">Главная</Button>
+            <TextBlock  Style="{StaticResource tblock}" >Регистрация</TextBlock>
+            <Button Name="btnBack" Style="{StaticResource btn}" Click="btnBack_Click">Главная</Button>
         </StackPanel>
-        <ScrollViewer>
-        <StackPanel Grid.Row="1">
-            <GroupBox Width ="400"  Header="Введите своё имя">
-                <TextBox Name="tbName">
-                    Имя
-                </TextBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Введите свою фамилия">
-                <TextBox Name="tbFamil">Фамилия</TextBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Введите своё отчество">
-                <TextBox Name="tbPatr">Отчество</TextBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Выберите свой пол">
-                <StackPanel>
-                <RadioButton Name="rbGen" Content ="Женский"></RadioButton>
-                    <RadioButton Name="rbMyg" Content ="Мужской"></RadioButton>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Выберите свою должность">
-                <ComboBox Name="cbDolgn"></ComboBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Введите своё Имя">
-                <TextBox Name="tbPhoto">Фото</TextBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Введите свою дату рождения">
-                <DatePicker Name="dpBirthday"></DatePicker>
-  
-            </GroupBox>
-            <GroupBox Width ="400" Header="Придумайте логин">
-                <TextBox Name="tbLogin">Логин</TextBox>
-            </GroupBox>
-            <GroupBox Width ="400" Header="Придумайте пароль">
-                <PasswordBox Name="tbPassword"></PasswordBox>
-            </GroupBox>
-            <Button Name="btnZareg" Click="btnZareg_Click" >Зарегистрироваться</Button>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <GroupBox Style="{StaticResource gropdox}"  Header="Введите своё имя">
+                    <TextBox Name="tbName">
+                      
+                    </TextBox>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Введите свою фамилия">
+                    <TextBox Name="tbFamil"></TextBox>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Введите своё отчество">
+                    <TextBox Name="tbPatr"></TextBox>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Выберите свой пол">
+                    <StackPanel>
+                        <RadioButton Name="rbGen" Content ="Женский"></RadioButton>
+                        <RadioButton Name="rbMyg" Content ="Мужской"></RadioButton>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Выберите свою должность">
+                    <ComboBox  Name="cbDolgn"></ComboBox>
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource gropdox}" Header="Введите свою дату рождения">
+                    <DatePicker Name="dpBirthday"></DatePicker>
+
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Придумайте логин">
+                    <TextBox Name="tbLogin"></TextBox>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropdox}" Header="Придумайте пароль">
+                    <PasswordBox Name="tbPassword"></PasswordBox>
+                </GroupBox>
+                <Button Style="{StaticResource btn}" Name="btnZareg" Click="btnZareg_Click" >Зарегистрироваться</Button>
+                
+           
         </StackPanel>
         </ScrollViewer>
+
     </Grid>
 </Page>

@@ -24,18 +24,75 @@ namespace PR2
         public Registration()
         {
             InitializeComponent();
-            cbDolgn.Text = DL[0].ToString();
+            dolgnosti();
+           
+        }
+
+        public void dolgnosti()
+        {
+            string dol;
+            for (int i = 1; i < DL.Count; i++)
+            {
+                dol = DL[i].Dolgnost;
+                
+                cbDolgn.Items.Add(dol);
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new PageMain());
         }
-
+        //админ = логин - admin, пароль - admin
         private void btnZareg_Click(object sender, RoutedEventArgs e)
         {
-            int pass = tbPassword.Password.GetHashCode();
+            
+            try {
+                if (tbName.Text == "" || tbFamil.Text == "" || tbPatr.Text == "" || (rbGen.IsChecked == false && rbMyg.IsChecked == false) || tbLogin.Text == "" || cbDolgn.Items == null || tbPassword.Password == "" || dpBirthday.SelectedDate == null)
+                { 
+                    int g=0;
+            if (rbGen.IsChecked == true)
+                g = 1;
+            if (rbMyg.IsChecked == true)
+                g = 2;
+            
+   
+            Specialists specialists = new Specialists()
+            {
+                Name = tbName.Text,
+                Surname = tbFamil.Text,
+                Patronymic = tbPatr.Text,
+                Kod_pola = g,
+                Kod_dolgnosti = cbDolgn.SelectedIndex+1,
+                Login = tbLogin.Text,
+                Password = tbPassword.Password.GetHashCode(),
+                Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
+            };
+            BaseClass.tBE.Specialists.Add(specialists);
+            BaseClass.tBE.SaveChanges();
 
+            
+                MessageBox.Show("Пользователь добавлен успешно");
+                tbName.Text = "";
+                tbFamil.Text = "";
+                tbPatr.Text = "";
+                rbGen.IsChecked = false;
+                rbMyg.IsChecked = false;
+                tbLogin.Text = "";
+                cbDolgn.Items.Clear();
+                dolgnosti();
+                tbPassword.Password = "";
+                dpBirthday.SelectedDate = null;
+            }
+                else
+                {
+                    MessageBox.Show($"Заполните все поля");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Введены некорректные данные");
+            }
         }
     }
 }
