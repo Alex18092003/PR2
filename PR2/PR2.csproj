@@ -84,13 +84,16 @@
     <Compile Include="Genders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Menu_admin.xaml.cs">
+      <DependentUpon>Menu_admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_polzovatel.xaml.cs">
+      <DependentUpon>Menu_polzovatel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PageMain.xaml.cs">
-      <DependentUpon>PageMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
@@ -123,7 +126,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PageMain.xaml">
+    <Page Include="Menu_admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu_polzovatel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

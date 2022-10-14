@@ -41,15 +41,13 @@ namespace PR2
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Framec.MainFrame.Navigate(new PageMain());
+            Framec.MainFrame.Navigate(new Authorizat());
         }
         //админ = логин - admin, пароль - admin
         private void btnZareg_Click(object sender, RoutedEventArgs e)
         {
             
-            try {
-                if (tbName.Text == "" || tbFamil.Text == "" || tbPatr.Text == "" || (rbGen.IsChecked == false && rbMyg.IsChecked == false) || tbLogin.Text == "" || cbDolgn.Items == null || tbPassword.Password == "" || dpBirthday.SelectedDate == null)
-                { 
+            try { 
                     int g=0;
             if (rbGen.IsChecked == true)
                 g = 1;
@@ -71,7 +69,7 @@ namespace PR2
             BaseClass.tBE.Specialists.Add(specialists);
             BaseClass.tBE.SaveChanges();
 
-            
+         
                 MessageBox.Show("Пользователь добавлен успешно");
                 tbName.Text = "";
                 tbFamil.Text = "";
@@ -83,11 +81,6 @@ namespace PR2
                 dolgnosti();
                 tbPassword.Password = "";
                 dpBirthday.SelectedDate = null;
-            }
-                else
-                {
-                    MessageBox.Show($"Заполните все поля");
-                }
             }
             catch (Exception ex)
             {

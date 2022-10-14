@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="375" d:DesignWidth="800"
       Title="Регистрация" FontSize="10">
 
     <Grid Background="#3FBF0F74">
@@ -17,8 +17,18 @@
             </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Name="btnBack" Template="{StaticResource btnb}" Click="btnBack_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                       Выход в главное меню
+                    </ToolTip>
+                </Button.ToolTip>
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Resourse/home_heart_building_icon_207747.png"/>
+                </Button.OpacityMask>
+            </Button>
+            
             <TextBlock  Style="{StaticResource tblock}" >Регистрация</TextBlock>
-            <Button Name="btnBack" Style="{StaticResource btn}" Click="btnBack_Click">Главная</Button>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1">
@@ -54,7 +64,14 @@
                 <GroupBox Style="{StaticResource gropdox}" Header="Придумайте пароль">
                     <PasswordBox Name="tbPassword"></PasswordBox>
                 </GroupBox>
-                <Button Style="{StaticResource btn}" Name="btnZareg" Click="btnZareg_Click" >Зарегистрироваться</Button>
+                <Button Style="{StaticResource btn}" Name="btnZareg" Click="btnZareg_Click" >
+                    Регистрация
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для регистрации
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
                 
            
         </StackPanel>

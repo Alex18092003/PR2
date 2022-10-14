@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace PR2
 {
     /// <summary>
-    /// Логика взаимодействия для PageMain.xaml
+    /// Логика взаимодействия для Menu_admin.xaml
     /// </summary>
-    public partial class PageMain : Page
+    public partial class Menu_admin : Page
     {
-        public PageMain()
+        public Menu_admin()
         {
             InitializeComponent();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new Authorizat());
         }
     }
 }

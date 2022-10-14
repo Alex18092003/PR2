@@ -21,10 +21,10 @@
 
         <Style x:Key="btn" TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="150,10,150,0"/>
+            <Setter Property="Margin" Value="150,0,10,0"/>
             <Setter Property="Background" Value="#FFBF0F74"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="300"/>
+            <Setter Property="Width" Value="160"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
         </Style>
@@ -46,30 +46,28 @@
         </Style>
 
 
-        <ControlTemplate TargetType="Button" x:Key="btnb">
-            <Border Width="40" Height="40" 
-                    Background="#FFBF0F74" 
-                    
+        <ControlTemplate TargetType="Button" x:Key="btnb"> 
+            <Border Width="60" Height="100" 
+                    Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"
-                    Margin="20,20,20,20"
+                    Margin="20,0,0,0"
                     >
                 <ContentControl 
-                    Content="-" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
                     FontSize="18"
                     FontFamily="Lucida Sans Unicode"
                    Foreground="White"
                     />
-
             </Border>
+            
         </ControlTemplate>
         
         
         
         <ControlTemplate TargetType="Button" x:Key="btnbutton">
-            <Border Width="300" Height="40" 
+            <Border Width="150" Height="40" 
                     Background="{StaticResource Gradient}" 
                     BorderBrush="#a778f7"
                     BorderThickness="1"

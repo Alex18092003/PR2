@@ -25,23 +25,38 @@ namespace PR2
             InitializeComponent();
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            Framec.MainFrame.Navigate(new PageMain());
-        }
-
+        
+        //админ = логин - admin, пароль - admin
         private void btnAvtoriz_Click(object sender, RoutedEventArgs e)
         {
             int p = tbPassword.Password.GetHashCode();
             Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x=> x.Login == tbLogin.Text && x.Password == p);
+            Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == "admin");
+            
             if (specialists != null)
             {
-                MessageBox.Show("Есть пользователь");
+
+                if(adm == null)
+                {
+                    Framec.MainFrame.Navigate(new Menu_polzovatel());
+                }
+                else
+                {
+                    Framec.MainFrame.Navigate(new Menu_admin());
+                }
             }
             else
             {
-                MessageBox.Show("Нет пользователя");
+                
+                MessageBox.Show("Данный пользователь не зарегистрирован\nВведите верный логин и пароль");
+                tbLogin.Text = "";
+                tbPassword.Password = "";
             }
+        }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new Registration());
         }
     }
 }

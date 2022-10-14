@@ -16,25 +16,16 @@ using System.Windows.Shapes;
 namespace PR2
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Menu_polzovatel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Menu_polzovatel : Page
     {
-        public MainWindow()
+        public Menu_polzovatel()
         {
             InitializeComponent();
-            BaseClass.tBE = new Entities();
-            Framec.MainFrame = fMain;
-            Framec.MainFrame.Navigate(new Authorizat());
         }
 
-        private void btnReg_Click(object sender, RoutedEventArgs e)
-        {
-            Framec.MainFrame.Navigate(new Registration());
-
-        }
-
-        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Authorizat());
         }

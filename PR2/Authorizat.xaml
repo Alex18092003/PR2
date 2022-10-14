@@ -10,18 +10,41 @@
       Title="Авторизация">
 
     <Grid  Background="#3FBF0F74">
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition>
+            </RowDefinition>
+            <RowDefinition Height="5*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock  Style="{StaticResource tblock}">Авторизация</TextBlock>
-            <GroupBox  Style="{StaticResource gropdox}" Header="Введите логин">
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+                <GroupBox  Style="{StaticResource gropdox}" Header="Введите логин">
                     <TextBox  x:Name="tbLogin"></TextBox>
                 </GroupBox>
             <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
                     <PasswordBox x:Name="tbPassword"></PasswordBox>
                 </GroupBox>
-            <Button  Style="{StaticResource btn}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
-            </Button>
-            <Button Template ="{StaticResource btnb}" Name="btnBack" Click="btnBack_Click">Главная</Button>
-           
+            <StackPanel Orientation="Horizontal">
+                <Button  Style="{StaticResource btn}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для авторизации
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button  Style="{StaticResource btn}"  x:Name="btnReg" Click="btnReg_Click">Регистрация
+                <Button.ToolTip>
+                    <ToolTip>
+                        Нажмите для регистрации
+                    </ToolTip>
+                </Button.ToolTip>
+                </Button>
+
+            </StackPanel>
         </StackPanel>
+
     </Grid>
 </Page>
