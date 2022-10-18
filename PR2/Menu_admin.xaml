@@ -8,7 +8,7 @@
       d:DesignHeight="375" d:DesignWidth="800"
       Title="Menu_admin">
 
-    <Grid Background="#3FBF0F74">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>
@@ -30,8 +30,30 @@
             <TextBlock  Style="{StaticResource tblock}">Меню администратора</TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
 
-        </StackPanel>
+        <ListView   Grid.Row="1" Name="lvEntry">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="#445c93">
+                        <Grid Width="800">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Clients.Surname, StringFormat=Фамилия - {0}}">
+                                </TextBlock>
+                                <TextBlock Text="{Binding Clients.Name, StringFormat=Имя - admin}">
+                                </TextBlock>
+                                <TextBlock Text="{Binding Clients.Patronymic, StringFormat=Отчество - {0}}">
+                                </TextBlock>
+                                <TextBlock Text="{Binding Clients.Telephone, StringFormat=Телефон - {0}}">
+                                </TextBlock>
+                                <TextBlock Text="{Binding Sum, StringFormat=Стоимость - {0}}">
+                                </TextBlock>
+                               
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+  
     </Grid>
 </Page>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Kod_client" />
@@ -78,16 +78,6 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="int" Nullable="false" />
           <Property Name="Date_of_birth" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Connect_Entry">
           <End Role="Entry" Type="Self.Entry" Multiplicity="1" />
@@ -182,7 +172,6 @@
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services_dolgnosti" EntityType="Self.Services_dolgnosti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specialists" EntityType="Self.Specialists" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Connect_Entry" Association="Self.FK_Connect_Entry">
             <End Role="Entry" EntitySet="Entry" />
             <End Role="Connect" EntitySet="Connect" />
@@ -212,21 +201,58 @@
             <End Role="Specialists" EntitySet="Specialists" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Model.Clients" />
+          <EntitySet Name="Connect" EntityType="Model.Connect" />
+          <EntitySet Name="Dolgnosti" EntityType="Model.Dolgnosti" />
+          <EntitySet Name="Entry" EntityType="Model.Entry" />
+          <EntitySet Name="Genders" EntityType="Model.Genders" />
+          <EntitySet Name="Services" EntityType="Model.Services" />
+          <EntitySet Name="Services_dolgnosti" EntityType="Model.Services_dolgnosti" />
+          <EntitySet Name="Specialists" EntityType="Model.Specialists" />
+          <AssociationSet Name="FK_Entry_Clients" Association="Model.FK_Entry_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Entry" EntitySet="Entry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Connect_Entry" Association="Model.FK_Connect_Entry">
+            <End Role="Entry" EntitySet="Entry" />
+            <End Role="Connect" EntitySet="Connect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Connect_Services" Association="Model.FK_Connect_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Connect" EntitySet="Connect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dolgnosti_Services_dolgnosti" Association="Model.FK_Dolgnosti_Services_dolgnosti">
+            <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
+            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialists_Dolgnosti" Association="Model.FK_Specialists_Dolgnosti">
+            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
+            <End Role="Specialists" EntitySet="Specialists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialists_Genders" Association="Model.FK_Specialists_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Specialists" EntitySet="Specialists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_Services_dolgnosti" Association="Model.FK_Services_Services_dolgnosti">
+            <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Kod_client" />
           </Key>
           <Property Name="Kod_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Entry" Relationship="Self.FK_Entry_Clients" FromRole="Clients" ToRole="Entry" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Entry" Relationship="Model.FK_Entry_Clients" FromRole="Clients" ToRole="Entry" />
         </EntityType>
         <EntityType Name="Connect">
           <Key>
@@ -235,18 +261,18 @@
           <Property Name="Kod_connectoin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Kod_entry" Type="Int32" Nullable="false" />
           <Property Name="Kod_services" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Entry" Relationship="Self.FK_Connect_Entry" FromRole="Connect" ToRole="Entry" />
-          <NavigationProperty Name="Services" Relationship="Self.FK_Connect_Services" FromRole="Connect" ToRole="Services" />
+          <NavigationProperty Name="Entry" Relationship="Model.FK_Connect_Entry" FromRole="Connect" ToRole="Entry" />
+          <NavigationProperty Name="Services" Relationship="Model.FK_Connect_Services" FromRole="Connect" ToRole="Services" />
         </EntityType>
         <EntityType Name="Dolgnosti">
           <Key>
             <PropertyRef Name="Kod_dolgnosti" />
           </Key>
           <Property Name="Kod_dolgnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Dolgnost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dolgnost" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Kod_gr_serv" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Services_dolgnosti" Relationship="Self.FK_Dolgnosti_Services_dolgnosti" FromRole="Dolgnosti" ToRole="Services_dolgnosti" />
-          <NavigationProperty Name="Specialists" Relationship="Self.FK_Specialists_Dolgnosti" FromRole="Dolgnosti" ToRole="Specialists" />
+          <NavigationProperty Name="Services_dolgnosti" Relationship="Model.FK_Dolgnosti_Services_dolgnosti" FromRole="Dolgnosti" ToRole="Services_dolgnosti" />
+          <NavigationProperty Name="Specialists" Relationship="Model.FK_Specialists_Dolgnosti" FromRole="Dolgnosti" ToRole="Specialists" />
         </EntityType>
         <EntityType Name="Entry">
           <Key>
@@ -257,67 +283,57 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Sum" Type="Int32" Nullable="false" />
           <Property Name="Kod_services" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_Entry_Clients" FromRole="Entry" ToRole="Clients" />
-          <NavigationProperty Name="Connect" Relationship="Self.FK_Connect_Entry" FromRole="Entry" ToRole="Connect" />
+          <NavigationProperty Name="Clients" Relationship="Model.FK_Entry_Clients" FromRole="Entry" ToRole="Clients" />
+          <NavigationProperty Name="Connect" Relationship="Model.FK_Connect_Entry" FromRole="Entry" ToRole="Connect" />
         </EntityType>
         <EntityType Name="Genders">
           <Key>
             <PropertyRef Name="Kod_gendera" />
           </Key>
           <Property Name="Kod_gendera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Specialists" Relationship="Self.FK_Specialists_Genders" FromRole="Genders" ToRole="Specialists" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Specialists" Relationship="Model.FK_Specialists_Genders" FromRole="Genders" ToRole="Specialists" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="Kod_service" />
           </Key>
           <Property Name="Kod_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Kod_gr_serv" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Connect" Relationship="Self.FK_Connect_Services" FromRole="Services" ToRole="Connect" />
-          <NavigationProperty Name="Services_dolgnosti" Relationship="Self.FK_Services_Services_dolgnosti" FromRole="Services" ToRole="Services_dolgnosti" />
+          <NavigationProperty Name="Connect" Relationship="Model.FK_Connect_Services" FromRole="Services" ToRole="Connect" />
+          <NavigationProperty Name="Services_dolgnosti" Relationship="Model.FK_Services_Services_dolgnosti" FromRole="Services" ToRole="Services_dolgnosti" />
         </EntityType>
         <EntityType Name="Services_dolgnosti">
           <Key>
             <PropertyRef Name="Kod_ds" />
           </Key>
           <Property Name="Kod_ds" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Dolgnosti" Relationship="Self.FK_Dolgnosti_Services_dolgnosti" FromRole="Services_dolgnosti" ToRole="Dolgnosti" />
-          <NavigationProperty Name="Services" Relationship="Self.FK_Services_Services_dolgnosti" FromRole="Services_dolgnosti" ToRole="Services" />
+          <Property Name="Nazvanie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dolgnosti" Relationship="Model.FK_Dolgnosti_Services_dolgnosti" FromRole="Services_dolgnosti" ToRole="Dolgnosti" />
+          <NavigationProperty Name="Services" Relationship="Model.FK_Services_Services_dolgnosti" FromRole="Services_dolgnosti" ToRole="Services" />
         </EntityType>
         <EntityType Name="Specialists">
           <Key>
             <PropertyRef Name="Kod_specialist" />
           </Key>
           <Property Name="Kod_specialist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Kod_pola" Type="Int32" Nullable="false" />
           <Property Name="Kod_dolgnosti" Type="Int32" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="Int32" Nullable="false" />
           <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Dolgnosti" Relationship="Self.FK_Specialists_Dolgnosti" FromRole="Specialists" ToRole="Dolgnosti" />
-          <NavigationProperty Name="Genders" Relationship="Self.FK_Specialists_Genders" FromRole="Specialists" ToRole="Genders" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Dolgnosti" Relationship="Model.FK_Specialists_Dolgnosti" FromRole="Specialists" ToRole="Dolgnosti" />
+          <NavigationProperty Name="Genders" Relationship="Model.FK_Specialists_Genders" FromRole="Specialists" ToRole="Genders" />
         </EntityType>
         <Association Name="FK_Entry_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+          <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="Model.Entry" Role="Entry" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
               <PropertyRef Name="Kod_client" />
@@ -328,8 +344,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Connect_Entry">
-          <End Role="Entry" Type="Self.Entry" Multiplicity="1" />
-          <End Role="Connect" Type="Self.Connect" Multiplicity="*" />
+          <End Type="Model.Entry" Role="Entry" Multiplicity="1" />
+          <End Type="Model.Connect" Role="Connect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Entry">
               <PropertyRef Name="Kod_entry" />
@@ -340,8 +356,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Connect_Services">
-          <End Role="Services" Type="Self.Services" Multiplicity="1" />
-          <End Role="Connect" Type="Self.Connect" Multiplicity="*" />
+          <End Type="Model.Services" Role="Services" Multiplicity="1" />
+          <End Type="Model.Connect" Role="Connect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Services">
               <PropertyRef Name="Kod_service" />
@@ -352,8 +368,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Dolgnosti_Services_dolgnosti">
-          <End Role="Services_dolgnosti" Type="Self.Services_dolgnosti" Multiplicity="1" />
-          <End Role="Dolgnosti" Type="Self.Dolgnosti" Multiplicity="*" />
+          <End Type="Model.Services_dolgnosti" Role="Services_dolgnosti" Multiplicity="1" />
+          <End Type="Model.Dolgnosti" Role="Dolgnosti" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Services_dolgnosti">
               <PropertyRef Name="Kod_ds" />
@@ -364,8 +380,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Specialists_Dolgnosti">
-          <End Role="Dolgnosti" Type="Self.Dolgnosti" Multiplicity="1" />
-          <End Role="Specialists" Type="Self.Specialists" Multiplicity="*" />
+          <End Type="Model.Dolgnosti" Role="Dolgnosti" Multiplicity="1" />
+          <End Type="Model.Specialists" Role="Specialists" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dolgnosti">
               <PropertyRef Name="Kod_dolgnosti" />
@@ -376,8 +392,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Specialists_Genders">
-          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
-          <End Role="Specialists" Type="Self.Specialists" Multiplicity="*" />
+          <End Type="Model.Genders" Role="Genders" Multiplicity="1" />
+          <End Type="Model.Specialists" Role="Specialists" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genders">
               <PropertyRef Name="Kod_gendera" />
@@ -388,8 +404,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Services_Services_dolgnosti">
-          <End Role="Services_dolgnosti" Type="Self.Services_dolgnosti" Multiplicity="1" />
-          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <End Type="Model.Services_dolgnosti" Role="Services_dolgnosti" Multiplicity="1" />
+          <End Type="Model.Services" Role="Services" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Services_dolgnosti">
               <PropertyRef Name="Kod_ds" />
@@ -399,45 +415,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clients" EntityType="Self.Clients" />
-          <EntitySet Name="Connect" EntityType="Self.Connect" />
-          <EntitySet Name="Dolgnosti" EntityType="Self.Dolgnosti" />
-          <EntitySet Name="Entry" EntityType="Self.Entry" />
-          <EntitySet Name="Genders" EntityType="Self.Genders" />
-          <EntitySet Name="Services" EntityType="Self.Services" />
-          <EntitySet Name="Services_dolgnosti" EntityType="Self.Services_dolgnosti" />
-          <EntitySet Name="Specialists" EntityType="Self.Specialists" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Entry_Clients" Association="Self.FK_Entry_Clients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Entry" EntitySet="Entry" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Connect_Entry" Association="Self.FK_Connect_Entry">
-            <End Role="Entry" EntitySet="Entry" />
-            <End Role="Connect" EntitySet="Connect" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Connect_Services" Association="Self.FK_Connect_Services">
-            <End Role="Services" EntitySet="Services" />
-            <End Role="Connect" EntitySet="Connect" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Dolgnosti_Services_dolgnosti" Association="Self.FK_Dolgnosti_Services_dolgnosti">
-            <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
-            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Specialists_Dolgnosti" Association="Self.FK_Specialists_Dolgnosti">
-            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
-            <End Role="Specialists" EntitySet="Specialists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Specialists_Genders" Association="Self.FK_Specialists_Genders">
-            <End Role="Genders" EntitySet="Genders" />
-            <End Role="Specialists" EntitySet="Specialists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Services_Services_dolgnosti" Association="Self.FK_Services_Services_dolgnosti">
-            <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
-            <End Role="Services" EntitySet="Services" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -447,93 +424,82 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="Model.Clients">
               <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="Kod_client" ColumnName="Kod_client" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kod_client" ColumnName="Kod_client" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Connect">
             <EntityTypeMapping TypeName="Model.Connect">
               <MappingFragment StoreEntitySet="Connect">
-                <ScalarProperty Name="Kod_connectoin" ColumnName="Kod_connectoin" />
-                <ScalarProperty Name="Kod_entry" ColumnName="Kod_entry" />
                 <ScalarProperty Name="Kod_services" ColumnName="Kod_services" />
+                <ScalarProperty Name="Kod_entry" ColumnName="Kod_entry" />
+                <ScalarProperty Name="Kod_connectoin" ColumnName="Kod_connectoin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dolgnosti">
             <EntityTypeMapping TypeName="Model.Dolgnosti">
               <MappingFragment StoreEntitySet="Dolgnosti">
-                <ScalarProperty Name="Kod_dolgnosti" ColumnName="Kod_dolgnosti" />
-                <ScalarProperty Name="Dolgnost" ColumnName="Dolgnost" />
                 <ScalarProperty Name="Kod_gr_serv" ColumnName="Kod_gr_serv" />
+                <ScalarProperty Name="Dolgnost" ColumnName="Dolgnost" />
+                <ScalarProperty Name="Kod_dolgnosti" ColumnName="Kod_dolgnosti" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Entry">
             <EntityTypeMapping TypeName="Model.Entry">
               <MappingFragment StoreEntitySet="Entry">
-                <ScalarProperty Name="Kod_entry" ColumnName="Kod_entry" />
-                <ScalarProperty Name="Kod_client" ColumnName="Kod_client" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Sum" ColumnName="Sum" />
                 <ScalarProperty Name="Kod_services" ColumnName="Kod_services" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Kod_client" ColumnName="Kod_client" />
+                <ScalarProperty Name="Kod_entry" ColumnName="Kod_entry" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Genders">
             <EntityTypeMapping TypeName="Model.Genders">
               <MappingFragment StoreEntitySet="Genders">
-                <ScalarProperty Name="Kod_gendera" ColumnName="Kod_gendera" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Kod_gendera" ColumnName="Kod_gendera" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="Model.Services">
               <MappingFragment StoreEntitySet="Services">
-                <ScalarProperty Name="Kod_service" ColumnName="Kod_service" />
-                <ScalarProperty Name="Service" ColumnName="Service" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Kod_gr_serv" ColumnName="Kod_gr_serv" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Kod_service" ColumnName="Kod_service" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Services_dolgnosti">
             <EntityTypeMapping TypeName="Model.Services_dolgnosti">
               <MappingFragment StoreEntitySet="Services_dolgnosti">
-                <ScalarProperty Name="Kod_ds" ColumnName="Kod_ds" />
                 <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Kod_ds" ColumnName="Kod_ds" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specialists">
             <EntityTypeMapping TypeName="Model.Specialists">
               <MappingFragment StoreEntitySet="Specialists">
-                <ScalarProperty Name="Kod_specialist" ColumnName="Kod_specialist" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Kod_pola" ColumnName="Kod_pola" />
-                <ScalarProperty Name="Kod_dolgnosti" ColumnName="Kod_dolgnosti" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Kod_dolgnosti" ColumnName="Kod_dolgnosti" />
+                <ScalarProperty Name="Kod_pola" ColumnName="Kod_pola" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kod_specialist" ColumnName="Kod_specialist" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

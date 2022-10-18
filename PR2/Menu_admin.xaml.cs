@@ -23,6 +23,7 @@ namespace PR2
         public Menu_admin()
         {
             InitializeComponent();
+            lvEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
