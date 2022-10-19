@@ -6,28 +6,22 @@
     <Application.Resources>
         <Style x:Key="tblock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="40,20,30,0"/>
+            <Setter Property="Margin" Value="40,0,30,0"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
         </Style>
 
         <Style x:Key="gropdox" TargetType="GroupBox">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="150,5,150,20"/>
+            <Setter Property="Margin" Value="0,5,0,20"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
         </Style>
 
-        <Style x:Key="btn" TargetType="Button">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="150,0,10,0"/>
-            <Setter Property="Background" Value="#FFBF0F74"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="160"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
-        </Style>
+       
 
         <LinearGradientBrush x:Key="Gradient" >
             <GradientStop Color="#d9c4fd" Offset="0" />
@@ -45,15 +39,43 @@
             </Style.Resources>
         </Style>
 
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="150,0,10,0"/>
+            <Setter Property="Background" Value="#FFBF0F74"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border                  
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    >
+                        <ContentControl 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+            </Setter>
+        </Style>
 
-        <ControlTemplate TargetType="Button" x:Key="btnb"> 
-            <Border Width="60" Height="100" 
+
+       
+        <ControlTemplate TargetType="Button" x:Key="btnb">
+            <Border Width="160" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"
-                    Margin="20,0,0,0"
+                    Margin="150,0,10,0"
+                   
                     >
                 <ContentControl 
+                     Content="{TemplateBinding Content}" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
                     FontSize="18"
@@ -63,9 +85,9 @@
             </Border>
             
         </ControlTemplate>
-        
-        
-        
+   
+
+
         <ControlTemplate TargetType="Button" x:Key="btnbutton">
             <Border Width="150" Height="40" 
                     Background="{StaticResource Gradient}" 

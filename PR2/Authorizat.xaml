@@ -1,5 +1,6 @@
 ﻿<Page x:Class="PR2.Authorizat"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -18,24 +19,34 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock  Style="{StaticResource tblock}">Авторизация</TextBlock>
+            
+           <TextBlock  Style="{StaticResource tblock}">Авторизация</TextBlock>
+        
         </StackPanel>
         <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Resourse/free-icon-font-user-3917688.png" Width="20" Margin="240,0,10,0"/>
                 <GroupBox  Style="{StaticResource gropdox}" Header="Введите логин">
                     <TextBox  x:Name="tbLogin"></TextBox>
                 </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
-                    <PasswordBox x:Name="tbPassword"></PasswordBox>
-                </GroupBox>
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal">
-                <Button  Style="{StaticResource btn}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
+                <Image Source="Resourse/free-icon-font-lock-3917591.png" Width="20" Margin="240,0,10,0"/>
+                <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
+                <PasswordBox x:Name="tbPassword"></PasswordBox>
+            </GroupBox>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button  Template="{StaticResource btnb}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
                     <Button.ToolTip>
                         <ToolTip>
                             Нажмите для авторизации
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
-                <Button  Style="{StaticResource btn}"  x:Name="btnReg" Click="btnReg_Click">Регистрация
+                <Button  Template="{StaticResource btnb}"  x:Name="btnReg" Click="btnReg_Click">Регистрация
                 <Button.ToolTip>
                     <ToolTip>
                         Нажмите для регистрации
