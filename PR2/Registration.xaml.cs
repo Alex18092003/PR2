@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace PR2
 {
@@ -28,7 +29,7 @@ namespace PR2
            
         }
 
-        public void dolgnosti()
+        private void dolgnosti()
         {
             string dol;
             for (int i = 1; i < DL.Count; i++)
@@ -47,54 +48,97 @@ namespace PR2
         //админ = логин - admin, пароль - admin
         private void btnZareg_Click(object sender, RoutedEventArgs e)
         {
+            Regex r1 = new Regex("(?=.*[A-Z])");
+            Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
+            Regex r3 = new Regex("\\d.*\\d");
+            Regex r4 = new Regex("[!@#$%^&*()_+=]");
+
             if (tbName.Text != "" && cbDolgn.SelectedItem != null && tbFamil.Text != "" && tbPatr.Text != "" && (rbGen.IsChecked != false || rbMyg.IsChecked != false) && tbLogin.Text != "" && tbPassword.Password != "" && dpBirthday.SelectedDate != null)
             {
-                try
+                Specialists specialists1 = BaseClass.tBE.Specialists.FirstOrDefault(x=> x.Login == tbLogin.Text);
+                if (specialists1 == null)
                 {
-               
-                    int g = 0;
-                    if (rbGen.IsChecked == true)
-                        g = 1;
-                    if (rbMyg.IsChecked == true)
-                        g = 2;
-
-
-                    Specialists specialists = new Specialists()
+                    if (r1.IsMatch(tbPassword.Password) == true)
                     {
-                        Name = tbName.Text,
-                        Surname = tbFamil.Text,
-                        Patronymic = tbPatr.Text,
-                        Kod_pola = g,
-                        Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
-                        Login = tbLogin.Text,
-                        Password = tbPassword.Password.GetHashCode(),
-                        Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
-                    };
-                    BaseClass.tBE.Specialists.Add(specialists);
-                    BaseClass.tBE.SaveChanges();
+                        if (r2.IsMatch(tbPassword.Password) == true)
+                        {
+                            if (r3.IsMatch(tbPassword.Password) == true)
+                            {
+                                if (r4.IsMatch(tbPassword.Password) == true)
+                                {
+                                    try
+                                    {
+
+                                        int g = 0;
+                                        if (rbGen.IsChecked == true)
+                                            g = 1;
+                                        if (rbMyg.IsChecked == true)
+                                            g = 2;
 
 
-                    MessageBox.Show("Пользователь добавлен успешно");
-                    tbName.Text = "";
-                    tbFamil.Text = "";
-                    tbPatr.Text = "";
-                    rbGen.IsChecked = false;
-                    rbMyg.IsChecked = false;
-                    tbLogin.Text = "";
-                    cbDolgn.Items.Clear();
-                    dolgnosti();
-                    tbPassword.Password = "";
-                    dpBirthday.SelectedDate = null;
+                                        Specialists specialists = new Specialists()
+                                        {
+                                            Name = tbName.Text,
+                                            Surname = tbFamil.Text,
+                                            Patronymic = tbPatr.Text,
+                                            Kod_pola = g,
+                                            Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
+                                            Login = tbLogin.Text,
+                                            Password = tbPassword.Password.GetHashCode(),
+                                            Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
+                                        };
+                                        BaseClass.tBE.Specialists.Add(specialists);
+                                        BaseClass.tBE.SaveChanges();
+
+
+                                        MessageBox.Show("Пользователь добавлен успешно");
+                                        tbName.Text = "";
+                                        tbFamil.Text = "";
+                                        tbPatr.Text = "";
+                                        rbGen.IsChecked = false;
+                                        rbMyg.IsChecked = false;
+                                        tbLogin.Text = "";
+                                        cbDolgn.Items.Clear();
+                                        dolgnosti();
+                                        tbPassword.Password = "";
+                                        dpBirthday.SelectedDate = null;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show($"Введены некорректные данные");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Пароль должен содержать не менее 1 специального символа");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Пароль должен содержать не менее 2 цифры");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Пароль должен содержать не менее 3 строчных латинских символов");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Пароль должен содержать не менее 1 заглавного латинского символа");
+                    }
                 }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Введены некорректные данные");
+                else
+                {
+                    MessageBox.Show($"Данный логин уже занят");
+                }
             }
-        }
         else 
         {
                 MessageBox.Show($"Не все данные заполнены");
         }
         }
+     
+        
     }
 }
