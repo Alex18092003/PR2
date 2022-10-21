@@ -27,7 +27,7 @@ namespace PR2
             Framec.MainFrame = fMain;
             Framec.MainFrame.Navigate(new Authorizat());
         }
-
+        //админ = логин - admin, пароль - admin
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Registration());

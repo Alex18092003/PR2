@@ -29,28 +29,35 @@ namespace PR2
         //админ = логин - admin, пароль - admin
         private void btnAvtoriz_Click(object sender, RoutedEventArgs e)
         {
-            int p = tbPassword.Password.GetHashCode();
-            Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x=> x.Login == tbLogin.Text && x.Password == p);
-            Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == "admin");
-            
-            if (specialists != null)
+            if (tbLogin.Text != "" && tbPassword.Password != "")
             {
+                int p = tbPassword.Password.GetHashCode();
+                Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == tbLogin.Text && x.Password == p);
+                Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == "admin");
 
-                if(adm == null)
+                if (specialists != null)
                 {
-                    Framec.MainFrame.Navigate(new Menu_polzovatel());
+
+                    if (adm == null)
+                    {
+                        Framec.MainFrame.Navigate(new Menu_polzovatel());
+                    }
+                    else
+                    {
+                        Framec.MainFrame.Navigate(new Menu_admin());
+                    }
                 }
                 else
                 {
-                    Framec.MainFrame.Navigate(new Menu_admin());
+
+                    MessageBox.Show("Данный пользователь не зарегистрирован\nВведите верный логин и пароль");
+                    tbLogin.Text = "";
+                    tbPassword.Password = "";
                 }
             }
             else
             {
-                
-                MessageBox.Show("Данный пользователь не зарегистрирован\nВведите верный логин и пароль");
-                tbLogin.Text = "";
-                tbPassword.Password = "";
+                MessageBox.Show($"Не все поля заполнены");
             }
         }
 

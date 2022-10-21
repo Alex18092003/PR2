@@ -64,7 +64,8 @@
                 <GroupBox Style="{StaticResource gropdox}" Header="Придумайте пароль">
                     <PasswordBox Name="tbPassword"></PasswordBox>
                 </GroupBox>
-                <Button Style="{StaticResource btn}" Name="btnZareg" Click="btnZareg_Click" >
+
+                <Button Template ="{StaticResource btnb}" Margin="0,0,0,50" Name="btnZareg" Click="btnZareg_Click" >
                     Регистрация
                     <Button.ToolTip>
                         <ToolTip>

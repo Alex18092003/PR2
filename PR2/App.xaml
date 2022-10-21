@@ -72,7 +72,6 @@
                     BorderThickness="1"
                     CornerRadius="20"
                     Margin="150,0,10,0"
-                   
                     >
                 <ContentControl 
                      Content="{TemplateBinding Content}" 
@@ -83,7 +82,6 @@
                    Foreground="White"
                     />
             </Border>
-            
         </ControlTemplate>
    
 

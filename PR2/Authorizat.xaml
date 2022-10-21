@@ -11,6 +11,7 @@
       Title="Авторизация">
 
     <Grid  Background="#3FBF0F74">
+        
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>

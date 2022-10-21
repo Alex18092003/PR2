@@ -43,49 +43,58 @@ namespace PR2
         {
             Framec.MainFrame.Navigate(new Authorizat());
         }
+
         //админ = логин - admin, пароль - admin
         private void btnZareg_Click(object sender, RoutedEventArgs e)
         {
-            
-            try { 
-                    int g=0;
-            if (rbGen.IsChecked == true)
-                g = 1;
-            if (rbMyg.IsChecked == true)
-                g = 2;
-            
-   
-            Specialists specialists = new Specialists()
+            if (tbName.Text != "" && cbDolgn.SelectedItem != null && tbFamil.Text != "" && tbPatr.Text != "" && (rbGen.IsChecked != false || rbMyg.IsChecked != false) && tbLogin.Text != "" && tbPassword.Password != "" && dpBirthday.SelectedDate != null)
             {
-                Name = tbName.Text,
-                Surname = tbFamil.Text,
-                Patronymic = tbPatr.Text,
-                Kod_pola = g,
-                Kod_dolgnosti = cbDolgn.SelectedIndex+1,
-                Login = tbLogin.Text,
-                Password = tbPassword.Password.GetHashCode(),
-                Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
-            };
-            BaseClass.tBE.Specialists.Add(specialists);
-            BaseClass.tBE.SaveChanges();
+                try
+                {
+               
+                    int g = 0;
+                    if (rbGen.IsChecked == true)
+                        g = 1;
+                    if (rbMyg.IsChecked == true)
+                        g = 2;
 
-         
-                MessageBox.Show("Пользователь добавлен успешно");
-                tbName.Text = "";
-                tbFamil.Text = "";
-                tbPatr.Text = "";
-                rbGen.IsChecked = false;
-                rbMyg.IsChecked = false;
-                tbLogin.Text = "";
-                cbDolgn.Items.Clear();
-                dolgnosti();
-                tbPassword.Password = "";
-                dpBirthday.SelectedDate = null;
-            }
+
+                    Specialists specialists = new Specialists()
+                    {
+                        Name = tbName.Text,
+                        Surname = tbFamil.Text,
+                        Patronymic = tbPatr.Text,
+                        Kod_pola = g,
+                        Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
+                        Login = tbLogin.Text,
+                        Password = tbPassword.Password.GetHashCode(),
+                        Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
+                    };
+                    BaseClass.tBE.Specialists.Add(specialists);
+                    BaseClass.tBE.SaveChanges();
+
+
+                    MessageBox.Show("Пользователь добавлен успешно");
+                    tbName.Text = "";
+                    tbFamil.Text = "";
+                    tbPatr.Text = "";
+                    rbGen.IsChecked = false;
+                    rbMyg.IsChecked = false;
+                    tbLogin.Text = "";
+                    cbDolgn.Items.Clear();
+                    dolgnosti();
+                    tbPassword.Password = "";
+                    dpBirthday.SelectedDate = null;
+                }
             catch (Exception ex)
             {
                 MessageBox.Show($"Введены некорректные данные");
             }
+        }
+        else 
+        {
+                MessageBox.Show($"Не все данные заполнены");
+        }
         }
     }
 }
