@@ -48,6 +48,12 @@ namespace PR2
         //админ = логин - admin, пароль - admin
         private void btnZareg_Click(object sender, RoutedEventArgs e)
         {
+            int g = 0;
+            if (rbGen.IsChecked == true)
+                g = 1;
+            if (rbMyg.IsChecked == true)
+                g = 2;
+
             Regex r1 = new Regex("(?=.*[A-Z])");
             Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
             Regex r3 = new Regex("\\d.*\\d");
@@ -66,46 +72,47 @@ namespace PR2
                             {
                                 if (r4.IsMatch(tbPassword.Password) == true)
                                 {
-                                    try
+                                    if (tbPassword.Password.Length >= 8)
                                     {
-
-                                        int g = 0;
-                                        if (rbGen.IsChecked == true)
-                                            g = 1;
-                                        if (rbMyg.IsChecked == true)
-                                            g = 2;
-
-
-                                        Specialists specialists = new Specialists()
+                                        try
                                         {
-                                            Name = tbName.Text,
-                                            Surname = tbFamil.Text,
-                                            Patronymic = tbPatr.Text,
-                                            Kod_pola = g,
-                                            Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
-                                            Login = tbLogin.Text,
-                                            Password = tbPassword.Password.GetHashCode(),
-                                            Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
-                                        };
-                                        BaseClass.tBE.Specialists.Add(specialists);
-                                        BaseClass.tBE.SaveChanges();
+
+                                            Specialists specialists = new Specialists()
+                                            {
+                                                Name = tbName.Text,
+                                                Surname = tbFamil.Text,
+                                                Patronymic = tbPatr.Text,
+                                                Kod_pola = g,
+                                                Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
+                                                Login = tbLogin.Text,
+                                                Password = tbPassword.Password.GetHashCode(),
+                                                Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
+                                            };
+                                            BaseClass.tBE.Specialists.Add(specialists);
+                                            BaseClass.tBE.SaveChanges();
 
 
-                                        MessageBox.Show("Пользователь добавлен успешно");
-                                        tbName.Text = "";
-                                        tbFamil.Text = "";
-                                        tbPatr.Text = "";
-                                        rbGen.IsChecked = false;
-                                        rbMyg.IsChecked = false;
-                                        tbLogin.Text = "";
-                                        cbDolgn.Items.Clear();
-                                        dolgnosti();
-                                        tbPassword.Password = "";
-                                        dpBirthday.SelectedDate = null;
+                                            MessageBox.Show("Успешная регистрация");
+                                            tbName.Text = "";
+                                            tbFamil.Text = "";
+                                            tbPatr.Text = "";
+                                            rbGen.IsChecked = false;
+                                            rbMyg.IsChecked = false;
+                                            tbLogin.Text = "";
+                                            cbDolgn.Items.Clear();
+                                            dolgnosti();
+                                            tbPassword.Password = "";
+                                            dpBirthday.SelectedDate = null;
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show($"Введены некорректные данные");
+                                        }
                                     }
-                                    catch (Exception ex)
+
+                                    else
                                     {
-                                        MessageBox.Show($"Введены некорректные данные");
+                                        MessageBox.Show($"Пароль должен быть не менее 8 символов");
                                     }
                                 }
                                 else

@@ -4,9 +4,27 @@
              xmlns:local="clr-namespace:PR2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
+        <Style x:Key="block" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="100,20,0,0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+        </Style>
+
+        <Style x:Key="tblockMain" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+        </Style>
+
+
         <Style x:Key="tblock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="40,0,30,0"/>
+            <Setter Property="Margin" Value="0,20,0,20"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
@@ -66,7 +84,7 @@
 
 
        
-        <ControlTemplate TargetType="Button" x:Key="btnb">
+        <ControlTemplate TargetType="Button" x:Key="btnPink">
             <Border Width="160" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
@@ -83,27 +101,42 @@
                     />
             </Border>
         </ControlTemplate>
-   
 
-
-        <ControlTemplate TargetType="Button" x:Key="btnbutton">
-            <Border Width="150" Height="40" 
-                    Background="{StaticResource Gradient}" 
-                    BorderBrush="#a778f7"
+        <ControlTemplate TargetType="Button" x:Key="btnRegistr">
+            <Border Width="160" Height="40" 
+                    Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"
-                    Margin="20,20,20,20"
+                    Margin="0,0,10,0"
                     >
                 <ContentControl 
-                    Content="Получить результат" 
+                     Content="{TemplateBinding Content}" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
-                    FontSize="14"
-                    FontFamily="Comic Sans MS"
-                   Foreground="#0c0467"
+                    FontSize="18"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
                     />
-
             </Border>
         </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="btnResourse">
+            <Border Width="60" Height="50" 
+                    Background="#FFBF0F74"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="150,0,10,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>

@@ -17,7 +17,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0">
             <Image Source="Resourse/—Pngtree—beauty logo_683.png" Width="85" Margin="0,0,0,0"/>
-            <TextBlock Style="{StaticResource tblock}">Салон  красоты</TextBlock>
+            <TextBlock Style="{StaticResource tblockMain}">Салон  красоты</TextBlock>
         </StackPanel>
 
         <Frame Name="fMain" Grid.Row="1" NavigationUIVisibility="Hidden">

@@ -17,7 +17,7 @@
             </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Name="btnBack" Template="{StaticResource btnb}" Click="btnBack_Click">
+            <Button Name="btnBack" Template="{StaticResource btnResourse}" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>
                        Выход в главное меню
@@ -28,44 +28,89 @@
                 </Button.OpacityMask>
             </Button>
             
-            <TextBlock  Style="{StaticResource tblock}" >Регистрация</TextBlock>
+            <TextBlock  Style="{StaticResource block}">Регистрация</TextBlock>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1">
             <StackPanel Grid.Row="1">
                 <GroupBox Style="{StaticResource gropdox}"  Header="Введите своё имя">
                     <TextBox Name="tbName">
-                      
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                               Введите свое имя
+                            </ToolTip>
+                        </TextBox.ToolTip>
                     </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите свою фамилия">
-                    <TextBox Name="tbFamil"></TextBox>
+                    <TextBox Name="tbFamil">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Введите свою фамилию
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите своё отчество">
-                    <TextBox Name="tbPatr"></TextBox>
+                    <TextBox Name="tbPatr">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Введите свою фамилию
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Выберите свой пол">
+                    <GroupBox.ToolTip>
+                        <ToolTip>
+                            Выберите свой пол
+                        </ToolTip>
+                    </GroupBox.ToolTip>
                     <StackPanel>
                         <RadioButton Name="rbGen" Content ="Женский"></RadioButton>
                         <RadioButton Name="rbMyg" Content ="Мужской"></RadioButton>
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Выберите свою должность">
-                    <ComboBox  Name="cbDolgn"></ComboBox>
+                    <ComboBox  Name="cbDolgn">
+                        <ComboBox.ToolTip>
+                            <ToolTip>
+                                Выберите свою специализацию
+                            </ToolTip>
+                        </ComboBox.ToolTip>
+                    </ComboBox>
                 </GroupBox>
 
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите свою дату рождения">
-                    <DatePicker Name="dpBirthday"></DatePicker>
+                    <DatePicker Name="dpBirthday">
+                        <DatePicker.ToolTip>
+                            <ToolTip>
+                                Выберите дату своего рождения
+                            </ToolTip>
+                        </DatePicker.ToolTip>
+                    </DatePicker>
 
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Придумайте логин">
-                    <TextBox Name="tbLogin"></TextBox>
+                    <TextBox Name="tbLogin">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Придумайте логин
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Придумайте пароль">
-                    <PasswordBox Name="tbPassword"></PasswordBox>
+                    <PasswordBox Name="tbPassword">
+                        <PasswordBox.ToolTip>
+                            <ToolTip>
+                                Придумайте пароль
+                            </ToolTip>
+                        </PasswordBox.ToolTip>
+                    </PasswordBox>
                 </GroupBox>
 
-                <Button Template ="{StaticResource btnb}" Margin="0,0,0,50" Name="btnZareg" Click="btnZareg_Click" >
+                <Button Template ="{StaticResource btnRegistr}" Margin="0,0,0,50" Name="btnZareg" Click="btnZareg_Click" >
                     Регистрация
                     <Button.ToolTip>
                         <ToolTip>
