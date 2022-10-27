@@ -33,7 +33,7 @@ namespace PR2
 
         private void btnSpecialists_Click(object sender, RoutedEventArgs e)
         {
-            Framec.MainFrame.Navigate(new Specialists());
+            Framec.MainFrame.Navigate(new SpecialistsPage());
         }
     }
 }
