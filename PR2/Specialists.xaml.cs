@@ -16,24 +16,19 @@ using System.Windows.Shapes;
 namespace PR2
 {
     /// <summary>
-    /// Логика взаимодействия для Menu_admin.xaml
+    /// Логика взаимодействия для Specialists.xaml
     /// </summary>
-    public partial class Menu_admin : Page
+    public partial class Specialists : Page
     {
-        public Menu_admin()
+        public Specialists()
         {
             InitializeComponent();
-            //lvEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
+            GridSpecialists.ItemsSource = BaseClass.tBE.Specialists.ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Authorizat());
-        }
-
-        private void btnSpecialists_Click(object sender, RoutedEventArgs e)
-        {
-            Framec.MainFrame.Navigate(new Specialists());
         }
     }
 }

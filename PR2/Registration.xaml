@@ -20,7 +20,7 @@
             <Button Name="btnBack" Template="{StaticResource btnResourse}" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>
-                       Выход в главное меню
+                        Выход в меню авторизации
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.OpacityMask>
