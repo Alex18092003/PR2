@@ -31,7 +31,7 @@
             </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Template ="{StaticResource btnRegistr}"  Margin="320,0,0,0" Name="btnSpecialists" Click="btnSpecialists_Click" >
+            <Button Template ="{StaticResource btnPink}"  Margin="320,0,0,0" Name="btnSpecialists" Click="btnSpecialists_Click" >
                 Пользователи
                 <Button.ToolTip>
                     <ToolTip>

@@ -17,17 +17,17 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Template ="{StaticResource btnb}" Name="btnBack" Click="btnBack_Click">
+            <Button Template ="{StaticResource btnResourse}" Name="btnBack" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>
-                        Выход в главное меню
+                        Выход в меню авторизации
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Resourse/home_heart_building_icon_207747.png"/>
                 </Button.OpacityMask>
             </Button>
-            <TextBlock  Style="{StaticResource tblock}">Меню пользователя</TextBlock>
+            <TextBlock  Style="{StaticResource block}">Меню пользователя</TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Orientation="Vertical">

@@ -12,29 +12,100 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
+            <RowDefinition Height="1*">
+            </RowDefinition>
             
-            <RowDefinition Height="5*">
+            <RowDefinition Height="4*">
             </RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Name="btnBack" Template="{StaticResource btnResourse}" Click="btnBack_Click">
+            <Button Name="btnBack" Template="{StaticResource btnResourseBack}" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>
-                        Выход в меню авторизации
+                        Выход в меню
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Resourse/home_heart_building_icon_207747.png"/>
+                    <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
                 </Button.OpacityMask>
             </Button>
             <TextBlock  Style="{StaticResource block}">Зарегистрированные пользователи</TextBlock>
         </StackPanel>
 
-        
-
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <DataGrid Name="GridSpecialists" FontSize="18" AutoGenerateColumns="False">
+            <TextBlock  FontSize="12" Margin="5,22,0,0">Сортировка по фамилии</TextBlock>
+            <StackPanel>
+                <Button Name="btnYbv" Click="btnYbv_Click" Template ="{StaticResource btnSort}">А-Я
+                <Button.ToolTip>
+                    <ToolTip>
+                        Нажмите для сортировки по алфавиту (А-Я)
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+                <Button Name="btnVozr" Click="btnVozr_Click" Template ="{StaticResource btnSort}">Я-А
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для сортировки по алфавиту (Я-А)
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+            <TextBlock  FontSize="12" Margin="0,22,0,0">Фильтрация по полу</TextBlock>
+            <StackPanel>
+                <Button Name="btnM" Click="btnM_Click" Template ="{StaticResource btnSort}">мужчины
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для фильтрации по мужскому полу
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Name="btnW" Click="btnW_Click" Template ="{StaticResource btnSort}">женщины
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для фильтрации по женскому полу
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Margin="5,0,0,0" FontSize="12" >Выберите критерии поиска</TextBlock>
+                <RadioButton Margin="5,0,0,0" Name="Surname" Content="По фамилии"  Click="Surname_Click"/>
+                <RadioButton Margin="5,0,0,0"  Name="Name" Content="По имени" Click="Name_Click"/>
+                <RadioButton Margin="5,0,0,0"  Name="No" Content="Ничего"  Click="No_Click" IsChecked="True"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Name="spSurnname" Visibility="Collapsed">
+                    <TextBlock Margin="10,0,0,5" FontSize="12">Фамилия</TextBlock>
+                    <TextBox Name="tbSurnname" Margin="10,0,0,0" Width="130"></TextBox>
+                </StackPanel>
+                <StackPanel Name="spName" Visibility="Collapsed">
+                    <TextBlock Margin="10,0,0,5" FontSize="12">Имя</TextBlock>
+                    <TextBox Name="tbName" Margin="10,0,0,0" Width="130"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Button Click="btnSearch_Click" Name="btnSearch" Visibility="Collapsed" Template ="{StaticResource btnSort}">Поиск
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для поиска
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Template ="{StaticResource btnSort}" Name="btnКуыуе" Click="btnКуыуе_Click">Сброс
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для сброса всего
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+            
+        </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <DataGrid Margin="0,10,0,0" Name="GridSpecialists" FontSize="18" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>

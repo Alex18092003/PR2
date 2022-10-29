@@ -50,14 +50,14 @@
             
             <StackPanel Orientation="Horizontal">
 
-                <Button  Template="{StaticResource btnPink}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
+                <Button  Template="{StaticResource btnAutorizat}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
                     <Button.ToolTip>
                         <ToolTip>
                             Нажмите для авторизации
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
-                <Button  Template="{StaticResource btnPink}"  x:Name="btnReg" Click="btnReg_Click">Регистрация
+                <Button  Template="{StaticResource btnAutorizat}"  x:Name="btnReg" Click="btnReg_Click">Регистрация
                 <Button.ToolTip>
                     <ToolTip>
                         Нажмите для регистрации

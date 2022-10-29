@@ -17,14 +17,14 @@
             </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Name="btnBack" Template="{StaticResource btnResourse}" Click="btnBack_Click">
+            <Button Name="btnBack" Template="{StaticResource btnResourseBack}" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         Выход в меню авторизации
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Resourse/home_heart_building_icon_207747.png"/>
+                    <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
                 </Button.OpacityMask>
             </Button>
             
@@ -34,7 +34,7 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel Grid.Row="1">
                 <GroupBox Style="{StaticResource gropdox}"  Header="Введите своё имя">
-                    <TextBox Name="tbName">
+                    <TextBox TextChanged="tbName_TextChanged" Name="tbName" PreviewTextInput="tbName_PreviewTextInput">
                         <TextBox.ToolTip>
                             <ToolTip>
                                Введите свое имя
@@ -43,7 +43,7 @@
                     </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите свою фамилия">
-                    <TextBox Name="tbFamil">
+                    <TextBox TextChanged="tbFamil_TextChanged" Name="tbFamil" PreviewTextInput="tbFamil_PreviewTextInput">
                         <TextBox.ToolTip>
                             <ToolTip>
                                 Введите свою фамилию
@@ -52,7 +52,7 @@
                     </TextBox>
                 </GroupBox>
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите своё отчество">
-                    <TextBox Name="tbPatr">
+                    <TextBox TextChanged="tbPatr_TextChanged" Name="tbPatr" PreviewTextInput="tbPatr_PreviewTextInput">
                         <TextBox.ToolTip>
                             <ToolTip>
                                 Введите свою фамилию
@@ -110,7 +110,7 @@
                     </PasswordBox>
                 </GroupBox>
 
-                <Button Template ="{StaticResource btnRegistr}" Margin="0,0,0,50" Name="btnZareg" Click="btnZareg_Click" >
+                <Button Template ="{StaticResource btnPink}" Margin="0,0,0,50" Name="btnZareg" Click="btnZareg_Click" >
                     Регистрация
                     <Button.ToolTip>
                         <ToolTip>

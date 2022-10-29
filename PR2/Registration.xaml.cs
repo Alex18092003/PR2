@@ -35,7 +35,6 @@ namespace PR2
             for (int i = 1; i < DL.Count; i++)
             {
                 dol = DL[i].Dolgnost;
-                
                 cbDolgn.Items.Add(dol);
             }
         }
@@ -83,7 +82,7 @@ namespace PR2
                                                 Surname = tbFamil.Text,
                                                 Patronymic = tbPatr.Text,
                                                 Kod_pola = g,
-                                                Kod_dolgnosti = cbDolgn.SelectedIndex + 1,
+                                                Kod_dolgnosti = cbDolgn.SelectedIndex + 2,
                                                 Login = tbLogin.Text,
                                                 Password = tbPassword.Password.GetHashCode(),
                                                 Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate)
@@ -145,7 +144,53 @@ namespace PR2
                 MessageBox.Show($"Не все данные заполнены");
         }
         }
-     
-        
+
+        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbFamil_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbPatr_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbName.Text.Length == 1)
+            {
+                tbName.Text = tbName.Text.ToUpper();
+                tbName.Select(tbName.Text.Length, 0);
+            
+            }
+        }
+
+        private void tbFamil_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbFamil.Text.Length == 1)
+            {
+                tbFamil.Text = tbFamil.Text.ToUpper();
+                tbFamil.Select(tbFamil.Text.Length, 0);
+
+            }
+        }
+
+        private void tbPatr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbPatr.Text.Length == 1)
+            {
+                tbPatr.Text = tbPatr.Text.ToUpper();
+                tbPatr.Select(tbPatr.Text.Length, 0);
+
+            }
+        }
     }
 }

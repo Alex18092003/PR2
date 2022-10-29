@@ -15,20 +15,12 @@
 
         <Style x:Key="tblockMain" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-       
+            <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
         </Style>
 
-
-        <Style x:Key="tblock" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="0,20,0,20"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
-        </Style>
 
         <Style x:Key="gropdox" TargetType="GroupBox">
             <Setter Property="Width" Value="300"/>
@@ -40,22 +32,6 @@
         </Style>
 
        
-
-        <LinearGradientBrush x:Key="Gradient" >
-            <GradientStop Color="#d9c4fd" Offset="0" />
-            <GradientStop Color="#a778f7" Offset="0.5" />
-            <GradientStop Color="#d9c4fd" Offset="1" />
-        </LinearGradientBrush>
-
-
-
-        <Style TargetType="Button" x:Key="RoundButton">
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5" />
-                </Style>
-            </Style.Resources>
-        </Style>
 
         <Style x:Key="btn" TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
@@ -84,7 +60,7 @@
 
 
        
-        <ControlTemplate TargetType="Button" x:Key="btnPink">
+        <ControlTemplate TargetType="Button" x:Key="btnAutorizat">
             <Border Width="160" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
@@ -102,7 +78,7 @@
             </Border>
         </ControlTemplate>
 
-        <ControlTemplate TargetType="Button" x:Key="btnRegistr">
+        <ControlTemplate TargetType="Button" x:Key="btnPink">
             <Border Width="160" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
@@ -120,8 +96,44 @@
             </Border>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="btnSort">
+            <Border Width="70" Height="25" 
+                    Background="#FFBF0F74"                   
+                    BorderThickness="1"
+                    CornerRadius="15"
+                    Margin="5,3,0,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="12"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
         <ControlTemplate TargetType="Button" x:Key="btnResourse">
             <Border Width="60" Height="50" 
+                    Background="#FFBF0F74"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="150,0,10,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="btnResourseBack">
+            <Border Width="40" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"

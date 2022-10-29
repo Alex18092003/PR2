@@ -198,14 +198,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\pngwing.com.png" />
     <Resource Include="Resourse\free-icon-font-lock-3917591.png" />
     <Resource Include="Resourse\free-icon-font-user-3917688.png" />
     <Resource Include="Resourse\—Pngtree—beauty logo_683.png" />
-    <Resource Include="Resourse\—Pngtree—beauty logo_6839741.png" />
     <Resource Include="Resourse\home_heart_building_icon_207747.png" />
-    <Resource Include="Resourse\fdsfs.png" />
-    <Resource Include="Resourse\pngwing.com.png" />
-    <Resource Include="Resourse\draw_svg20210701-9240-1tuytxz.svg.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
