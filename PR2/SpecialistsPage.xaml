@@ -1,15 +1,14 @@
-﻿<Page x:Class="PR2.Specialists"
+﻿<Page x:Class="PR2.SpecialistsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
       d:DesignHeight="375" d:DesignWidth="800"
-      Title="Specialists">
+      Title="SpecialistsPage">
 
-    <Grid>
+    <Grid Background="#3FBF0F74">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
@@ -35,18 +34,17 @@
         
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <DataGrid Name="GridSpecialists">
+            <DataGrid Name="GridSpecialists" FontSize="18" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Имя"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Фамилия"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Отчество"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Логин"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Пол"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Должность"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Логин" Binding="{Binding Login}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding Date_of_birth, StringFormat= dd.MM.yyyy}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Пол" Binding="{Binding Genders.Gender}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Должность" Binding="{Binding Dolgnosti.Dolgnost}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-
-
     </Grid>
 </Page>

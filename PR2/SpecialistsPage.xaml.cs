@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PR2
 {
     /// <summary>
-    /// Логика взаимодействия для Specialists.xaml
+    /// Логика взаимодействия для SpecialistsPage.xaml
     /// </summary>
-    public partial class Specialists : Page
+    public partial class SpecialistsPage : Page
     {
-        public Specialists()
+        public SpecialistsPage()
         {
             InitializeComponent();
             GridSpecialists.ItemsSource = BaseClass.tBE.Specialists.ToList();
