@@ -56,7 +56,7 @@ namespace PR2
             Regex r1 = new Regex("(?=.*[A-Z])");
             Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
             Regex r3 = new Regex("\\d.*\\d");
-            Regex r4 = new Regex("[!@#$%^&*()_+=]");
+            Regex r4 = new Regex("[!@#№?$%^&*()_+=]");
 
             if (tbName.Text != "" && cbDolgn.SelectedItem != null && tbFamil.Text != "" && tbPatr.Text != "" && (rbGen.IsChecked != false || rbMyg.IsChecked != false) && tbLogin.Text != "" && tbPassword.Password != "" && dpBirthday.SelectedDate != null)
             {
