@@ -35,5 +35,10 @@ namespace PR2
         {
             Framec.MainFrame.Navigate(new SpecialistsPage());
         }
+
+        private void btnEntry_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new EntryPage1());
+        }
     }
 }

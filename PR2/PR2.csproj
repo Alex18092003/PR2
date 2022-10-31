@@ -64,7 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Authorizat.xaml.cs">
+    <Compile Include="Pages\Authorizat.xaml.cs">
       <DependentUpon>Authorizat.xaml</DependentUpon>
     </Compile>
     <Compile Include="BaseClass.cs" />
@@ -80,14 +80,17 @@
     <Compile Include="Entry.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EntryPage1.xaml.cs">
+      <DependentUpon>EntryPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frame.cs" />
     <Compile Include="Genders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Menu_admin.xaml.cs">
+    <Compile Include="Pages\Menu_admin.xaml.cs">
       <DependentUpon>Menu_admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Menu_polzovatel.xaml.cs">
+    <Compile Include="Pages\Menu_polzovatel.xaml.cs">
       <DependentUpon>Menu_polzovatel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs">
@@ -95,7 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Registration.xaml.cs">
+    <Compile Include="Pages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services.cs">
@@ -107,10 +110,14 @@
     <Compile Include="Specialists.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SpecialistsPage.xaml.cs">
+    <Compile Include="Pages\SpecialistsPage.xaml.cs">
       <DependentUpon>SpecialistsPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Authorizat.xaml">
+    <Page Include="Pages\Authorizat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EntryPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,19 +133,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Menu_admin.xaml">
+    <Page Include="Pages\Menu_admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Menu_polzovatel.xaml">
+    <Page Include="Pages\Menu_polzovatel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Registration.xaml">
+    <Page Include="Pages\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SpecialistsPage.xaml">
+    <Page Include="Pages\SpecialistsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
