@@ -23,11 +23,26 @@ namespace PR2
         public EntryPage1()
         {
             InitializeComponent();
+            listEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Menu_admin());
+        }
+
+        private void tbServices_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Connect> ES = BaseClass.tBE.Connect.Where(x => x.Kod_entry == index).ToList();
+            string str = "";
+            foreach(Connect es in ES)
+            {
+                str += es.Services.Service + ", ";
+            }
+            tb.Text = str.Substring(0, str.Length - 2);
+
         }
     }
 }

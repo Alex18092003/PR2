@@ -28,8 +28,35 @@
             <TextBlock Style="{StaticResource block}">Записи </TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="1">
+     
+            <ListView Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                    <Border Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                            <Grid Name="gridEntry">
+                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Style="{StaticResource tbList}" Text="Данные о клиенте"/>
+                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Surname, StringFormat=Фамилия: {0} }"/>
+                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Name, StringFormat=Имя: {0}}"/>
+                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Patronymic, StringFormat=Фамилия: {0}}"/>
+                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Telephone, StringFormat=Телефон: {0}}"/>
+                            </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                                    <TextBlock Style="{StaticResource tbList}" Text="Оказываемые услуги"/>
+                                    <TextBlock  Style="{StaticResource tbList}" TextWrapping="Wrap" Name="tbServices" Uid="{Binding Kod_entry}" Loaded="tbServices_Loaded"/>
+                                </StackPanel>
+                            </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        </StackPanel>
     </Grid>
 </Page>
