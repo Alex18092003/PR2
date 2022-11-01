@@ -39,7 +39,7 @@ namespace PR2
             string str = "";
             foreach(Connect es in ES)
             {
-                str += es.Services.Service + ", ";
+                str += es.Services.Service + "\n";
             }
             tb.Text = str.Substring(0, str.Length - 2);
 
