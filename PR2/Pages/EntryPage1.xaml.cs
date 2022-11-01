@@ -44,5 +44,18 @@ namespace PR2
             tb.Text = str.Substring(0, str.Length - 2);
 
         }
+
+        private void tbPrice_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Connect> ES = BaseClass.tBE.Connect.Where(x => x.Kod_entry == index).ToList();
+            int sum = 0;
+            foreach (Connect es in ES)
+            {
+                sum += es.Services.Price;
+            }
+            tb.Text = sum.ToString();
+        }
     }
 }
