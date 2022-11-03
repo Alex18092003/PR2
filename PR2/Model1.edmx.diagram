@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a59ae12259414e7aa429e5aeab1dc320" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="Model.Clients" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="Model.Connect" Width="1.5" PointX="5.25" PointY="1.875" />
-        <EntityTypeShape EntityType="Model.Dolgnosti" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.Entry" Width="1.5" PointX="3" PointY="7.75" />
-        <EntityTypeShape EntityType="Model.Genders" Width="1.5" PointX="3" PointY="10.875" />
-        <EntityTypeShape EntityType="Model.Services" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Model.Clients" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="Model.Connect" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="Model.Dolgnosti" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Model.Entry" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="Model.Genders" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="Model.Services" Width="1.5" PointX="3" PointY="4.5" />
         <EntityTypeShape EntityType="Model.Services_dolgnosti" Width="1.5" PointX="0.75" PointY="3.375" />
-        <EntityTypeShape EntityType="Model.Specialists" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="Model.Specialists" Width="1.5" PointX="5.25" PointY="1.125" />
         <AssociationConnector Association="Model.FK_Entry_Clients" />
         <AssociationConnector Association="Model.FK_Connect_Entry" />
         <AssociationConnector Association="Model.FK_Connect_Services" />
