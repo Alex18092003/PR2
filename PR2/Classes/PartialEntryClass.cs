@@ -13,11 +13,19 @@ namespace PR2
     public partial class Entry
     {
         DateTime d = DateTime.Now;
-        public string Birthday
+        public string Birthday // отображение даты
         {
             get
             {
                 return Date.ToString("dd MMMM yyyy года");
+            }
+        }
+
+        public string Surn
+        {
+            get
+            {
+                return "Фамилия: " + Clients.Surname;
             }
         }
 
@@ -28,7 +36,7 @@ namespace PR2
             {
                 if (Date < d)
                 {
-                    return Brushes.Red;
+                    return Brushes.Gray;
                 }
                 else
                 {
