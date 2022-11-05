@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
+
+
 namespace PR2
 {
-    DateTime d = DateTime.Now;
+    
     public partial class Entry
     {
-
+        DateTime d = DateTime.Now;
         public string Birthday
         {
             get
@@ -19,11 +21,19 @@ namespace PR2
             }
         }
 
-        public SolidColorBrush DateColor
+
+        public SolidColorBrush DateColor // если дата записи уже прошла красим
         {
             get
             {
-
+                if (Date < d)
+                {
+                    return Brushes.Red;
+                }
+                else
+                {
+                    return Brushes.LightPink;
+                }
 
             }
         }

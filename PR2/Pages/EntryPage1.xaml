@@ -25,33 +25,33 @@
                     <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
                 </Button.OpacityMask>
             </Button>
-            <TextBlock Style="{StaticResource block}">Записи </TextBlock>
+            <TextBlock Style="{StaticResource block}">Записи</TextBlock>
         </StackPanel>
 
-     
-            <ListView Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"></StackPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                    <Border Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+
+        <ListView Background="#3FBF0F74" Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel HorizontalAlignment="Center"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <Border Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74" Background="{x:Null}">
                         <Grid Name="gridEntry" Background="{Binding DateColor}">
-                            <StackPanel Orientation="Vertical" Background="#3FBF0F74" Width="500">
+                            <StackPanel Orientation="Vertical" Width="500">
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <TextBlock Style="{StaticResource tbListHeader}" Text="Данные о клиенте"/>
-                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Surname, StringFormat=Фамилия: {0} }"/>
-                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Name, StringFormat=Имя: {0}}"/>
-                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Patronymic, StringFormat=Отчество: {0}}"/>
-                                    <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Telephone, StringFormat=Телефон: {0}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="20,0,10,0">
-                                    <TextBlock Style="{StaticResource tbListHeader}" Text="Оказываемые услуги"/>
-                                    <TextBlock  Style="{StaticResource tbList}" TextWrapping="Wrap" Name="tbServices" Uid="{Binding Kod_entry}" Loaded="tbServices_Loaded"/>
-                                </StackPanel>
+                                        <TextBlock Style="{StaticResource tbListHeader}" Text="Данные о клиенте"/>
+                                        <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Surname, StringFormat=Фамилия: {0} }"/>
+                                        <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Name, StringFormat=Имя: {0}}"/>
+                                        <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Patronymic, StringFormat=Отчество: {0}}"/>
+                                        <TextBlock  Style="{StaticResource tbList}" Text="{Binding Clients.Telephone, StringFormat=Телефон: {0}}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="20,0,10,0">
+                                        <TextBlock Style="{StaticResource tbListHeader}" Text="Оказываемые услуги"/>
+                                        <TextBlock  Style="{StaticResource tbList}" TextWrapping="Wrap" Name="tbServices" Uid="{Binding Kod_entry}" Loaded="tbServices_Loaded"/>
+                                    </StackPanel>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
@@ -62,20 +62,20 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="50,0,0,0">
-                                        <TextBlock Style="{StaticResource tbListHeader}" Text="Стоимость:"/>
-                                        <TextBlock  Style="{StaticResource tbList}" TextWrapping="Wrap" Name="tbPrice" Uid="{Binding Kod_entry}" Loaded="tbPrice_Loaded"/>
+                                            <TextBlock Style="{StaticResource tbListHeader}" Text="Стоимость:"/>
+                                            <TextBlock  Style="{StaticResource tbList}" TextWrapping="Wrap" Name="tbPrice" Uid="{Binding Kod_entry}" Loaded="tbPrice_Loaded"/>
+                                        </StackPanel>
+
                                     </StackPanel>
-                                        
-                                </StackPanel>
                                 </StackPanel>
 
                             </StackPanel>
-                          
+
                         </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>
