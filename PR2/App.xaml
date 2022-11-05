@@ -129,7 +129,7 @@
         </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="btnResourse">
-            <Border Width="60" Height="50" 
+            <Border Width="55" Height="50" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"

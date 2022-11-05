@@ -21,7 +21,7 @@ namespace PR2
             }
         }
 
-        public string Surn
+        public string Surn//фамилия
         {
             get
             {
@@ -30,17 +30,18 @@ namespace PR2
         }
 
 
-        public SolidColorBrush DateColor // если дата записи уже прошла красим
+        public SolidColorBrush DateColor // если дата записи уже прошла то красим в прозрачный + небольшой цвет из StackPanel, иначе красим так же в серый - значит дата записи актуальна и ещё не прошла
         {
             get
             {
                 if (Date < d)
                 {
-                    return Brushes.Gray;
+                    return Brushes.Transparent;
                 }
                 else
                 {
-                    return Brushes.LightPink;
+                    
+                    return Brushes.Gray;
                 }
 
             }
