@@ -27,15 +27,33 @@
             </Button>
             <TextBlock Style="{StaticResource block}">Добавление записи</TextBlock>
         </StackPanel>
-
-        <StackPanel  Grid.Row="1" Orientation="Vertical">
-            <Border  Margin="10,10,10,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{StaticResource tbList}">Добавление записи</TextBlock>
-                <TextBox Name="tbName"></TextBox>
+        <ScrollViewer Grid.Row="1">
+        <StackPanel   Orientation="Vertical">
+            <Border  Margin="50,10,50,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                <StackPanel Orientation="Vertical" Margin="10,0,10,10">
+                    <TextBlock Style="{StaticResource tbList}" HorizontalAlignment ="Center">Данные о клиенте:</TextBlock>
+                    <TextBlock Style="{StaticResource tbAdd}">Фамилия</TextBlock>
+                    <TextBox  Style="{StaticResource tbBox}" TextChanged ="tbSurname_TextChanged"  PreviewTextInput ="tbSurname_PreviewTextInput"  Name="tbSurname" Margin="0,0,0,7"></TextBox>
+                    <TextBlock Style="{StaticResource tbAdd}">Имя</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}" TextChanged="tbName_TextChanged"  PreviewTextInput="tbName_PreviewTextInput"  Name="tbName" Margin="0,0,0,7"></TextBox>
+                    <TextBlock Style="{StaticResource tbAdd}">Отчество</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}" TextChanged="tbPatr_TextChanged"  PreviewTextInput="tbPatr_PreviewTextInput"  Name="tbPatr" Margin="0,0,0,7"></TextBox>
+                    <TextBlock Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}"  Name="tbPhone" Margin="0,0,0,7"></TextBox>
+                    <TextBlock Style="{StaticResource tbAdd}">Дата записи</TextBlock>
+                        <DatePicker Name="dbEntry" FontSize ="16"></DatePicker>
                 </StackPanel>
             </Border>
-        </StackPanel>
+
+                <Border  Margin="50,10,50,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                    <StackPanel Orientation="Vertical" Margin="10,0,10,10">
+                        <TextBlock Style="{StaticResource tbList}" HorizontalAlignment ="Center">Оказываемые услуги:</TextBlock>
+                        <ListBox Name="listServ">
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
 
 
     </Grid>

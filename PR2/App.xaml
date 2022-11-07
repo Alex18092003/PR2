@@ -15,11 +15,23 @@
 
         <Style x:Key="tbList" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Foreground" Value="Black"/>
-
             <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
         </Style>
+
+        <Style x:Key="tbBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+        </Style>
+
+        <Style x:Key="tbAdd" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+        </Style>
+
+
         <Style x:Key="tbListHeader" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="0,0,0,5"/>

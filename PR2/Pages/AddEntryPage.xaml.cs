@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,54 @@ namespace PR2
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new EntryPage1());
+        }
+
+        private void tbSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbPatr_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex r1 = new Regex("^[0-9]+");
+            e.Handled = r1.IsMatch(e.Text);
+        }
+
+        private void tbSurname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbSurname.Text.Length == 1)
+            {
+                tbSurname.Text = tbSurname.Text.ToUpper();
+                tbSurname.Select(tbSurname.Text.Length, 0);
+
+            }
+        }
+
+        private void tbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbName.Text.Length == 1)
+            {
+                tbName.Text = tbName.Text.ToUpper();
+                tbName.Select(tbName.Text.Length, 0);
+
+            }
+        }
+
+        private void tbPatr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbPatr.Text.Length == 1)
+            {
+                tbPatr.Text = tbPatr.Text.ToUpper();
+                tbPatr.Select(tbPatr.Text.Length, 0);
+
+            }
         }
     }
 }
