@@ -48,10 +48,26 @@
                 <Border  Margin="50,10,50,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
                     <StackPanel Orientation="Vertical" Margin="10,0,10,10">
                         <TextBlock Style="{StaticResource tbList}" HorizontalAlignment ="Center">Оказываемые услуги:</TextBlock>
-                        <ListBox Name="listServ">
+                        <ListBox Name="listServ" Style="{StaticResource lbAdd}" SelectionMode="Multiple">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Service}" Margin="10,5,0,5"></TextBlock>
+                                        <TextBlock  Margin="60,5,0,5" Text="{Binding Price, StringFormat=Стоимость: {0}р}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
                 </Border>
+                <Button Template ="{StaticResource btnPink}" Margin="0,0,0,50" Name="btnAdd" Click="btnAdd_Click" >
+                    Добавить запись
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Нажмите для добавления новой записи
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
             </StackPanel>
         </ScrollViewer>
 

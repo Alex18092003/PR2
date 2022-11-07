@@ -24,6 +24,9 @@ namespace PR2
         public AddEntryPage()
         {
             InitializeComponent();
+
+            listServ.ItemsSource = BaseClass.tBE.Services.ToList();
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -76,6 +79,14 @@ namespace PR2
                 tbPatr.Text = tbPatr.Text.ToUpper();
                 tbPatr.Select(tbPatr.Text.Length, 0);
 
+            }
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Entry newE = new Entry()
+            {
+                Date = Convert.ToDateTime(dbEntry.SelectedDate);
             }
         }
     }
