@@ -10,7 +10,7 @@
       d:DesignHeight="375" d:DesignWidth="800"
       Title="Авторизация">
 
-    <Grid  Background="#3FBF0F74">
+    <Grid  Background="#19BF0F74">
         
         <Grid.RowDefinitions>
             <RowDefinition>

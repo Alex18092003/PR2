@@ -57,5 +57,10 @@ namespace PR2
             }
             tb.Text = sum.ToString();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new AddEntryPage());
+        }
     }
 }

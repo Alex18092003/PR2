@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PR2"
         mc:Ignorable="d"
         Title="Салон красоты" Height="500" Width="800">
-    <Grid Background="#3FBF0F74">
+    <Grid Background="#33BF0F74">
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>

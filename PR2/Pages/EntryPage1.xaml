@@ -12,11 +12,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
-            <RowDefinition  Height="5*">
+            <RowDefinition  Height="4*">
+            </RowDefinition>
+            <RowDefinition Height="1*">
             </RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Background="#3FBF0F74" Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Background="#19BF0F74" Grid.Row="0" Orientation="Horizontal">
             <Button Name="btnBack" Template="{StaticResource btnResourseBack}" Click="btnBack_Click">
                 <Button.ToolTip>
                     <ToolTip>Выход в меню</ToolTip>
@@ -29,7 +31,7 @@
         </StackPanel>
 
 
-        <ListView  BorderThickness="0" Background="#3FBF0F74" Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView  BorderThickness="0" Background="#19BF0F74" Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel HorizontalAlignment="Center"></StackPanel>
@@ -76,6 +78,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel  Grid.Row="2" Orientation="Horizontal">
+            <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="320,0,0,0">Добавить
+                <Button.ToolTip>
+                    <ToolTip>Добавить запись</ToolTip>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
 
     </Grid>
 </Page>

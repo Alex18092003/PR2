@@ -8,7 +8,7 @@
       d:DesignHeight="375" d:DesignWidth="800"
       Title="Регистрация" FontSize="10">
 
-    <Grid Background="#3FBF0F74">
+    <Grid Background="#19BF0F74">
         
         <Grid.RowDefinitions>
             <RowDefinition>
@@ -16,19 +16,17 @@
             <RowDefinition Height="5*">
             </RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+        <StackPanel  Grid.Row="0" Orientation="Horizontal">
             <Button Name="btnBack" Template="{StaticResource btnResourseBack}" Click="btnBack_Click">
                 <Button.ToolTip>
-                    <ToolTip>
-                        Выход в меню авторизации
-                    </ToolTip>
+                    <ToolTip>Выход в меню авторизации</ToolTip>
                 </Button.ToolTip>
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
                 </Button.OpacityMask>
             </Button>
-            
-            <TextBlock  Style="{StaticResource block}">Регистрация</TextBlock>
+            <TextBlock Style="{StaticResource block}">Регистрация</TextBlock>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1">
