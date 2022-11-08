@@ -27,6 +27,12 @@ namespace PR2
 
             listServ.ItemsSource = BaseClass.tBE.Services.ToList();
 
+            cbClient.ItemsSource = BaseClass.tBE.Clients.ToList();
+            cbClient.SelectedValuePath = "Kod_client";
+            cbClient.DisplayMemberPath = "FIO";
+
+            cbClient.SelectionChanged += cbClient_SelectedIndexChanged;
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -84,10 +90,29 @@ namespace PR2
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Entry newE = new Entry()
-            {
-                Date = Convert.ToDateTime(dbEntry.SelectedDate);
-            }
+
+        }
+
+        private void Yes_Checked(object sender, RoutedEventArgs e)
+        {
+            stYes.Visibility = Visibility.Collapsed;
+            stNo.Visibility = Visibility.Visible;
+        }
+
+        private void No_Checked(object sender, RoutedEventArgs e)
+        {
+            stYes.Visibility = Visibility.Visible;
+            stNo.Visibility = Visibility.Collapsed;
+
+        }
+        private int liv_num;
+        private void cbClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var value = (sender as ComboBox);
+            liv_num = (int)value.SelectedItem;
+            tbPhon.Text = liv_num.ToString();
         }
     }
 }
+ 
+

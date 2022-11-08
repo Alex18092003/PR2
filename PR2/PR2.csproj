@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\PartialClassAdd.cs" />
     <Compile Include="Pages\AddEntryPage.xaml.cs">
       <DependentUpon>AddEntryPage.xaml</DependentUpon>
     </Compile>
