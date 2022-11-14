@@ -62,5 +62,16 @@ namespace PR2
         {
             Framec.MainFrame.Navigate(new AddEntryPage());
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Entry entry = BaseClass.tBE.Entry.FirstOrDefault(x => x.Kod_entry == index);
+            BaseClass.tBE.Entry.Remove(entry);
+            Framec.MainFrame.Navigate(new EntryPage1());
+            BaseClass.tBE.SaveChanges();
+
+        }
     }
 }

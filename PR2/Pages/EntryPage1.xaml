@@ -66,6 +66,7 @@
                                         <StackPanel Orientation="Vertical" Margin="50,0,0,0">
                                             <TextBlock Style="{StaticResource tbListHeader}" Text="Стоимость:"/>
                                             <TextBlock  Style="{StaticResource tbList}"  TextWrapping="Wrap" Name="tbPrice" Uid="{Binding Kod_entry}" Loaded="tbPrice_Loaded"/>
+                                            <Button Uid="{Binding Kod_entry}" Content="Удалить" Name="Delete" Click="Delete_Click"></Button>
                                         </StackPanel>
 
                                     </StackPanel>
