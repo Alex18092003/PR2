@@ -51,15 +51,15 @@
                         <StackPanel Name="stNo" Visibility="Collapsed">
                             <TextBlock  Style="{StaticResource tbAdd}">Клиент</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox  FontFamily ="Lucida Sans Unicode" FontSize ="16" Name="cbClient">
+                                <ComboBox FontFamily ="Lucida Sans Unicode" Width="300" FontSize ="16" Name="cbClient">
                                 <ComboBox.ToolTip>
                                     <ToolTip>
                                         Выберите клиента
                                     </ToolTip>
                                 </ComboBox.ToolTip>
                             </ComboBox>
-                                <TextBlock  Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
-                                <TextBox   Text="{Binding ElementName=cbClient,Path=SelectedItem.Value}" Style="{StaticResource tbBox}"  Name="tbPhon" Margin="0,0,0,7"></TextBox>
+                                <TextBlock Margin="10,0,0,0"  Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
+                                <TextBox IsReadOnly="True" Text="{Binding ElementName=cbClient,Path=SelectedItem.Value}" Style="{StaticResource tbBox}"  Name="tbPhon" Margin="10,0,0,7"></TextBox>
                             </StackPanel>
                         </StackPanel>
                             <TextBlock Style="{StaticResource tbAdd}">Дата записи</TextBlock>
