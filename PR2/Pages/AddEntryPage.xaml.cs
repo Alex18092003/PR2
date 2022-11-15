@@ -24,16 +24,26 @@ namespace PR2
     {
         Entry entry; // объект, в котором будет хранится данные о новом или отредактированном коте
         bool flagUpdate = false; // для определения, создаем мы новый объект или редактируем старый
-
+        bool YesNo = false; // для определения, на запись мы записываем нового клиента или уже записанного в базу
         public void uploadFields()  // метод для заполнения списков
         {
-            listServ.ItemsSource = BaseClass.tBE.Services.ToList();
+            try
+            {
+                listServ.ItemsSource = BaseClass.tBE.Services.ToList();
+                //listServ.SelectedValuePath = "Kod_service";
+                //listServ.DisplayMemberPath = "Service";
 
-            cbClient.ItemsSource = BaseClass.tBE.Clients.ToList();
+
+                cbClient.ItemsSource = BaseClass.tBE.Clients.ToList();
             cbClient.SelectedValuePath = "Kod_client";
             cbClient.DisplayMemberPath = "FIO";
 
             cbClient.SelectionChanged += cbClient_SelectedIndexChanged;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с заполнением полей");
+            }
         }
         // конструктор для создания нового кота (без аргументов)
         public AddEntryPage()
@@ -45,60 +55,109 @@ namespace PR2
         // назад
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Framec.MainFrame.Navigate(new EntryPage1());
+            try
+            {
+                Framec.MainFrame.Navigate(new EntryPage1());
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с навигацией");
+            }
         }
         // запрет ввода чисел 
         private void tbSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex r1 = new Regex("^[0-9]+");
-            e.Handled = r1.IsMatch(e.Text);
+            try
+            {
+                Regex r1 = new Regex("^[0-9]+");
+                e.Handled = r1.IsMatch(e.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с запретом ввода чисел");
+            }
         }
         // запрет ввода чисел 
         private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex r1 = new Regex("^[0-9]+");
+            try
+            {
+                Regex r1 = new Regex("^[0-9]+");
             e.Handled = r1.IsMatch(e.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с запретом ввода чисел");
+            }
         }
         // запрет ввода чисел 
         private void tbPatr_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex r1 = new Regex("^[0-9]+");
+            try
+            {
+                Regex r1 = new Regex("^[0-9]+");
             e.Handled = r1.IsMatch(e.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с запретом ввода чисел");
+            }
         }
         // ввод первой заглавной буквы
         private void tbSurname_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tbSurname.Text.Length == 1)
+            try
+            {
+                if (tbSurname.Text.Length == 1)
             {
                 tbSurname.Text = tbSurname.Text.ToUpper();
                 tbSurname.Select(tbSurname.Text.Length, 0);
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с авто заглавными буквами фамилии");
             }
         }
         // ввод первой заглавной буквы
         private void tbName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tbName.Text.Length == 1)
+            try
+            {
+                if (tbName.Text.Length == 1)
             {
                 tbName.Text = tbName.Text.ToUpper();
                 tbName.Select(tbName.Text.Length, 0);
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с авто заглавными буквами имени");
             }
         }
         // ввод первой заглавной буквы
         private void tbPatr_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tbPatr.Text.Length == 1)
+            try
             {
-                tbPatr.Text = tbPatr.Text.ToUpper();
-                tbPatr.Select(tbPatr.Text.Length, 0);
+                if (tbPatr.Text.Length == 1)
+                {
+                    tbPatr.Text = tbPatr.Text.ToUpper();
+                    tbPatr.Select(tbPatr.Text.Length, 0);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с авто заглавными буквами отчества");
             }
         }
-    
+
         // сохранение 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (stYes.Visibility == Visibility.Collapsed)
+                if (YesNo == false) // если клиент впервые в салоне 
                 {
                     // если флаг равен false, то создаем объект для добавления кота
                     if (flagUpdate == false)
@@ -113,16 +172,10 @@ namespace PR2
                     {
                         sum += es.Services.Price;
                     }
+                    // заполняем поля таблицы entry
+                    entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                    entry.Sum = sum;
 
-
-                    Entry newEntry = new Entry()
-                    {
-                        Date = Convert.ToDateTime(dbEntry.SelectedDate),
-                        Sum = sum
-
-                    };
-                    BaseClass.tBE.Entry.Add(newEntry);
-                    BaseClass.tBE.SaveChanges();
                     // если флаг равен false, то добавляем объект в базу
                     if (flagUpdate == false)
                     {
@@ -136,11 +189,62 @@ namespace PR2
                         Patronymic = tbPatr.Text,
                         Telephone = tbPhone.Text
                     };
-                    //BaseClass.tBE.Clients.Add(newClients);
-                    //BaseClass.tBE.SaveChanges();
+
                     if (flagUpdate == false)
                     {
                         BaseClass.tBE.Clients.Add(newClients);
+                    }
+                    // находим список услуг
+                    List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+
+                    // если список не пустой, удаляем из него все услуги
+                    if (connect.Count > 0)
+                    {
+                        foreach (Connect t in connect)
+                        {
+                            BaseClass.tBE.Connect.Remove(t);
+                        }
+                    }
+                    // перезаписываем услуги (или добавляем услуги)
+                    foreach (Services f in listServ.Items)
+                    {
+                        if (f.QV > 0)
+                        {
+                            Connect C = new Connect()  // объект для записи в таблицу 
+                            {
+                                Kod_entry = entry.Kod_entry,
+                                Kod_services = t.Kod_service
+                            };
+                            BaseClass.tBE.Connect.Add(C);
+                        }
+                    }
+                    BaseClass.tBE.SaveChanges();
+
+                    MessageBox.Show("Информация добавлена");
+                }
+                else // если клиент уже приходит повторно на запись
+                {
+                    // если флаг равен false, то создаем объект для добавления кота
+                    if (flagUpdate == false)
+                    {
+                        entry = new Entry();
+                    }
+
+
+                    List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                    int sum = 0;
+                    foreach (Connect es in ES)
+                    {
+                        sum += es.Services.Price;
+                    }
+                    // заполняем поля таблицы entry
+                    entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                    entry.Sum = sum;
+
+                    // если флаг равен false, то добавляем объект в базу
+                    if (flagUpdate == false)
+                    {
+                        BaseClass.tBE.Entry.Add(entry);
                     }
                     // находим список услуг
                     List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
@@ -163,8 +267,8 @@ namespace PR2
                         };
                         BaseClass.tBE.Connect.Add(C);
                     }
-                    BaseClass.tBE.SaveChanges();
 
+                    BaseClass.tBE.SaveChanges();
                     MessageBox.Show("Информация добавлена");
                 }
             }
@@ -177,27 +281,50 @@ namespace PR2
 
         private void Yes_Checked(object sender, RoutedEventArgs e)
         {
-            stYes.Visibility = Visibility.Collapsed;
-            stNo.Visibility = Visibility.Visible;
+            try
+            {
+                stYes.Visibility = Visibility.Visible;
+                stNo.Visibility = Visibility.Collapsed;
+                YesNo = false;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с отображением");
+            }
         }
         
         private void No_Checked(object sender, RoutedEventArgs e)
         {
-            stYes.Visibility = Visibility.Visible;
-            stNo.Visibility = Visibility.Collapsed;
+            try
+            {
+                YesNo = true;
+                stYes.Visibility = Visibility.Collapsed;
+                stNo.Visibility = Visibility.Visible;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с отображением");
+            }
         }
 
         //вывод телефона при выборе клиентки
         private void cbClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = cbClient.SelectedIndex +1;
-            List<Clients> ES = BaseClass.tBE.Clients.Where(x => x.Kod_client == index).ToList();
-            string str = "";
-            foreach (Clients es in ES)
+            try
             {
-                str += es.Telephone + "\n";
+                int index = cbClient.SelectedIndex + 1;
+                List<Clients> ES = BaseClass.tBE.Clients.Where(x => x.Kod_client == index).ToList();
+                string str = "";
+                foreach (Clients es in ES)
+                {
+                    str += es.Telephone + "\n";
+                }
+                tbPhon.Text = str.Substring(0, str.Length - 1);
             }
-            tbPhon.Text = str.Substring(0, str.Length - 1);
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с выводом телефона");
+            }
         }
     }
 }
