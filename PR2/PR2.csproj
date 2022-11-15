@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\PartialClassAdd.cs" />
+    <Compile Include="Classes\PartialEntry.cs" />
     <Compile Include="Pages\AddEntryPage.xaml.cs">
       <DependentUpon>AddEntryPage.xaml</DependentUpon>
     </Compile>

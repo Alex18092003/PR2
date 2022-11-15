@@ -157,58 +157,60 @@ namespace PR2
         {
             try
             {
+               
                 if (YesNo == false) // если клиент впервые в салоне 
                 {
-                    // если флаг равен false, то создаем объект для добавления кота
-                    if (flagUpdate == false)
+                    if (tbSurname.Text != "" && tbName.Text != "" && tbPatr.Text != "" && tbPhone.Text != "" && listServ.SelectedItem != null && dbEntry.SelectedDate != null)
                     {
-                        entry = new Entry();
-                    }
-
-
-                    List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
-                    int sum = 0;
-                    foreach (Connect es in ES)
-                    {
-                        sum += es.Services.Price;
-                    }
-                    // заполняем поля таблицы entry
-                    entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
-                    entry.Sum = sum;
-
-                    // если флаг равен false, то добавляем объект в базу
-                    if (flagUpdate == false)
-                    {
-                        BaseClass.tBE.Entry.Add(entry);
-                    }
-
-                    Clients newClients = new Clients()
-                    {
-                        Name = tbName.Text,
-                        Surname = tbSurname.Text,
-                        Patronymic = tbPatr.Text,
-                        Telephone = tbPhone.Text
-                    };
-
-                    if (flagUpdate == false)
-                    {
-                        BaseClass.tBE.Clients.Add(newClients);
-                    }
-                    // находим список услуг
-                    List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
-
-                    // если список не пустой, удаляем из него все услуги
-                    if (connect.Count > 0)
-                    {
-                        foreach (Connect t in connect)
+                        // если флаг равен false, то создаем объект для добавления кота
+                        if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Connect.Remove(t);
+                            entry = new Entry();
                         }
-                    }
-                    // перезаписываем услуги (или добавляем услуги)
-                    foreach (Services f in listServ.Items)
-                    {
-                        if (f.QV > 0)
+
+                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        int sum = 0;
+
+                        foreach (Services t in listServ.SelectedItems)
+                        {
+                            sum += t.Price;
+                        }
+
+                        // заполняем поля таблицы entry
+                        entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                        entry.Sum = sum;
+
+                        // если флаг равен false, то добавляем объект в базу
+                        if (flagUpdate == false)
+                        {
+                            BaseClass.tBE.Entry.Add(entry);
+                        }
+
+                        Clients newClients = new Clients()
+                        {
+                            Name = tbName.Text,
+                            Surname = tbSurname.Text,
+                            Patronymic = tbPatr.Text,
+                            Telephone = tbPhone.Text
+                        };
+
+                        if (flagUpdate == false)
+                        {
+                            BaseClass.tBE.Clients.Add(newClients);
+                        }
+                        // находим список услуг
+                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+
+                        // если список не пустой, удаляем из него все услуги
+                        if (connect.Count > 0)
+                        {
+                            foreach (Connect t in connect)
+                            {
+                                BaseClass.tBE.Connect.Remove(t);
+                            }
+                        }
+                        // перезаписываем услуги (или добавляем услуги)
+                        foreach (Services t in listServ.SelectedItems)
                         {
                             Connect C = new Connect()  // объект для записи в таблицу 
                             {
@@ -217,59 +219,71 @@ namespace PR2
                             };
                             BaseClass.tBE.Connect.Add(C);
                         }
+                        BaseClass.tBE.SaveChanges();
+                        MessageBox.Show("Информация добавлена");
                     }
-                    BaseClass.tBE.SaveChanges();
-
-                    MessageBox.Show("Информация добавлена");
+                    else
+                    {
+                        MessageBox.Show("Не все поля заполнены");
+                    }
                 }
                 else // если клиент уже приходит повторно на запись
                 {
-                    // если флаг равен false, то создаем объект для добавления кота
-                    if (flagUpdate == false)
+                    if (listServ.SelectedItem != null  && cbClient.SelectedItem != null && dbEntry.SelectedDate != null)
                     {
-                        entry = new Entry();
-                    }
-
-
-                    List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
-                    int sum = 0;
-                    foreach (Connect es in ES)
-                    {
-                        sum += es.Services.Price;
-                    }
-                    // заполняем поля таблицы entry
-                    entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
-                    entry.Sum = sum;
-
-                    // если флаг равен false, то добавляем объект в базу
-                    if (flagUpdate == false)
-                    {
-                        BaseClass.tBE.Entry.Add(entry);
-                    }
-                    // находим список услуг
-                    List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
-
-                    // если список не пустой, удаляем из него все услуги
-                    if (connect.Count > 0)
-                    {
-                        foreach (Connect t in connect)
+                        // если флаг равен false, то создаем объект для добавления кота
+                        if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Connect.Remove(t);
+                            entry = new Entry();
                         }
-                    }
-                    // перезаписываем услуги (или добавляем услуги)
-                    foreach (Services t in listServ.SelectedItems)
-                    {
-                        Connect C = new Connect()  // объект для записи в таблицу 
-                        {
-                            Kod_entry = entry.Kod_entry,
-                            Kod_services = t.Kod_service
-                        };
-                        BaseClass.tBE.Connect.Add(C);
-                    }
 
-                    BaseClass.tBE.SaveChanges();
-                    MessageBox.Show("Информация добавлена");
+                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        int sum = 0;
+
+                        foreach (Services t in listServ.SelectedItems)
+                        {
+                            sum += t.Price;
+                        }
+
+                        // заполняем поля таблицы entry
+                        entry.Kod_client = cbClient.SelectedIndex + 1;
+                        entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                        entry.Sum = sum;
+
+                        // если флаг равен false, то добавляем объект в базу
+                        if (flagUpdate == false)
+                        {
+                            BaseClass.tBE.Entry.Add(entry);
+                        }
+                        // находим список услуг
+                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+
+                        // если список не пустой, удаляем из него все услуги
+                        if (connect.Count > 0)
+                        {
+                            foreach (Connect t in connect)
+                            {
+                                BaseClass.tBE.Connect.Remove(t);
+                            }
+                        }
+                        // перезаписываем услуги (или добавляем услуги)
+                        foreach (Services t in listServ.SelectedItems)
+                        {
+                            Connect C = new Connect()  // объект для записи в таблицу 
+                            {
+                                Kod_entry = entry.Kod_entry,
+                                Kod_services = t.Kod_service
+                            };
+                            BaseClass.tBE.Connect.Add(C);
+                        }
+
+                        BaseClass.tBE.SaveChanges();
+                        MessageBox.Show("Информация добавлена");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не все поля заполнены");
+                    }
                 }
             }
             catch
@@ -325,6 +339,19 @@ namespace PR2
             {
                 MessageBox.Show("Что-то пошло не так с выводом телефона");
             }
+        }
+
+        private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с запретом ввода символов");
+            }
+
         }
     }
 }

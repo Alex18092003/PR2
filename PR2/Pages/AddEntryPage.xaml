@@ -45,8 +45,9 @@
                         <TextBox  Style="{StaticResource tbBox}" TextChanged="tbName_TextChanged"  PreviewTextInput="tbName_PreviewTextInput"  Name="tbName" Margin="0,0,0,7"></TextBox>
                         <TextBlock  Style="{StaticResource tbAdd}">Отчество</TextBlock>
                         <TextBox Style="{StaticResource tbBox}" TextChanged="tbPatr_TextChanged"  PreviewTextInput="tbPatr_PreviewTextInput"  Name="tbPatr" Margin="0,0,0,7"></TextBox>
-                        <TextBlock  Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
-                        <TextBox  Style="{StaticResource tbBox}"  Name="tbPhone" Margin="0,0,0,7"></TextBox>
+                            <TextBlock  Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
+                            <TextBox PreviewTextInput="tbPhone_PreviewTextInput"  Style="{StaticResource tbBox}"  Name="tbPhone" Margin="0,0,0,7"
+                                      ></TextBox>
                         </StackPanel>
                         <StackPanel Name="stNo" Visibility="Collapsed">
                             <TextBlock  Style="{StaticResource tbAdd}">Клиент</TextBlock>
