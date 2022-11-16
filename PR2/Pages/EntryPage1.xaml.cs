@@ -23,15 +23,15 @@ namespace PR2
         public EntryPage1()
         {
             InitializeComponent();
-            listEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
+            listEntry.ItemsSource = BaseClass.tBE.Entry.ToList(); 
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e) // метод для выхода в меню админа
         {
             Framec.MainFrame.Navigate(new Menu_admin());
         }
 
-        private void tbServices_Loaded(object sender, RoutedEventArgs e)
+        private void tbServices_Loaded(object sender, RoutedEventArgs e) // медол для вывода оказываемых услуг
         {
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
@@ -45,7 +45,7 @@ namespace PR2
 
         }
 
-        private void tbPrice_Loaded(object sender, RoutedEventArgs e)
+        private void tbPrice_Loaded(object sender, RoutedEventArgs e) // метод для подсчета суммы стоимости услуг
         {
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
@@ -58,23 +58,12 @@ namespace PR2
             tb.Text = sum.ToString();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e) // метод для перехода на страницу добавления записи
         {
             Framec.MainFrame.Navigate(new AddEntryPage());
         }
 
-        //private void Delete_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button btn = (Button)sender;
-        //    int index = Convert.ToInt32(btn.Uid);
-        //    Entry entry = BaseClass.tBE.Entry.FirstOrDefault(x => x.Kod_entry == index);
-        //    BaseClass.tBE.Entry.Remove(entry);
-        //    Framec.MainFrame.Navigate(new EntryPage1());
-        //    BaseClass.tBE.SaveChanges();
-
-        //}
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void buttonDelet_Click(object sender, RoutedEventArgs e) // метод для удаления записи
         {
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
@@ -82,6 +71,14 @@ namespace PR2
             BaseClass.tBE.Entry.Remove(entry);
             BaseClass.tBE.SaveChanges();
             Framec.MainFrame.Navigate(new EntryPage1());
+        }
+
+        private void buttonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Entry entry = BaseClass.tBE.Entry.FirstOrDefault(x => x.Kod_entry == index);
+            Framec.MainFrame.Navigate(new AddEntryPage(entry));
         }
     }
 }

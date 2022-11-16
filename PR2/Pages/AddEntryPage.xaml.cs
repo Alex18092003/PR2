@@ -35,22 +35,45 @@ namespace PR2
 
 
                 cbClient.ItemsSource = BaseClass.tBE.Clients.ToList();
-            cbClient.SelectedValuePath = "Kod_client";
-            cbClient.DisplayMemberPath = "FIO";
+                cbClient.SelectedValuePath = "Kod_client";
+                cbClient.DisplayMemberPath = "FIO";
 
-            cbClient.SelectionChanged += cbClient_SelectedIndexChanged;
+                cbClient.SelectionChanged += cbClient_SelectedIndexChanged;
             }
             catch
             {
                 MessageBox.Show("Что-то пошло не так с заполнением полей");
             }
         }
-        // конструктор для создания нового кота (без аргументов)
-        public AddEntryPage()
+        // конструктор с аргументом для редактирования записи
+        public AddEntryPage(Entry entry)
         {
             InitializeComponent();
             uploadFields();
+            radioButtonVisibility.Visibility = Visibility.Collapsed;
+            stYes.Visibility = Visibility.Visible;
+            dbEntry.SelectedDate = entry.Date;
+            tbName.Text = entry.Clients.Name;
+            tbPatr.Text = entry.Clients.Surname;
+            tbSurname.Text = entry.Clients.Patronymic;
+            tbPhone.Text = entry.Clients.Phone;
+            List<Connect> CS = BaseClass.tBE.Connect.Where(x => x.Kod_entry == entry.Kod_entry).ToList();
+            foreach (Services t in listServ.Items)
+            {
+                if(CS.FirstOrDefault(x=> x.Kod_services == t.Kod_service) != null)
+                {
+                    listServ.SelectedItems.Add(t);
+                }
+            }
 
+        }
+        // конструктор для создания новой записи (без аргументов)
+        public AddEntryPage()
+        {
+         
+            InitializeComponent();
+            radioButtonVisibility.Visibility = Visibility.Visible;
+            uploadFields();
         }
         // назад
         private void btnBack_Click(object sender, RoutedEventArgs e)
