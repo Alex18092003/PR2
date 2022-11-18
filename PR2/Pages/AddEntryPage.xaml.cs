@@ -22,9 +22,10 @@ namespace PR2
     /// </summary>
     public partial class AddEntryPage : Page
     {
-        Entry entry; // объект, в котором будет хранится данные о новом или отредактированном коте
+        Entry ENTRY; // объект, в котором будет хранится данные о новом или отредактированном коте
         bool flagUpdate = false; // для определения, создаем мы новый объект или редактируем старый
         bool YesNo = false; // для определения, на запись мы записываем нового клиента или уже записанного в базу
+        
         public void uploadFields()  // метод для заполнения списков
         {
             try
@@ -48,32 +49,49 @@ namespace PR2
         // конструктор с аргументом для редактирования записи
         public AddEntryPage(Entry entry)
         {
-            InitializeComponent();
-            uploadFields();
-            radioButtonVisibility.Visibility = Visibility.Collapsed;
-            stYes.Visibility = Visibility.Visible;
-            dbEntry.SelectedDate = entry.Date;
-            tbName.Text = entry.Clients.Name;
-            tbPatr.Text = entry.Clients.Surname;
-            tbSurname.Text = entry.Clients.Patronymic;
-            tbPhone.Text = entry.Clients.Phone;
-            List<Connect> CS = BaseClass.tBE.Connect.Where(x => x.Kod_entry == entry.Kod_entry).ToList();
-            foreach (Services t in listServ.Items)
+            try
             {
-                if(CS.FirstOrDefault(x=> x.Kod_services == t.Kod_service) != null)
+                InitializeComponent();
+                uploadFields();
+
+                flagUpdate = true;
+                ENTRY = entry;
+                radioButtonVisibility.Visibility = Visibility.Collapsed;
+                stYes.Visibility = Visibility.Visible;
+                dbEntry.SelectedDate = entry.Date;
+                tbName.Text = entry.Clients.Name;
+                tbPatr.Text = entry.Clients.Patronymic;
+                tbSurname.Text = entry.Clients.Surname;
+                tbPhone.Text = entry.Clients.Phone;
+                List<Connect> CS = BaseClass.tBE.Connect.Where(x => x.Kod_entry == entry.Kod_entry).ToList();
+                foreach (Services t in listServ.Items)
                 {
-                    listServ.SelectedItems.Add(t);
+                    if (CS.FirstOrDefault(x => x.Kod_services == t.Kod_service) != null)
+                    {
+                        listServ.SelectedItems.Add(t);
+                    }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с редактированием");
             }
 
         }
         // конструктор для создания новой записи (без аргументов)
         public AddEntryPage()
         {
-         
-            InitializeComponent();
-            radioButtonVisibility.Visibility = Visibility.Visible;
-            uploadFields();
+            try
+            {
+
+                InitializeComponent();
+                radioButtonVisibility.Visibility = Visibility.Visible;
+                uploadFields();
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с добавлением записи");
+            }
         }
         // назад
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -188,10 +206,10 @@ namespace PR2
                         // если флаг равен false, то создаем объект для добавления кота
                         if (flagUpdate == false)
                         {
-                            entry = new Entry();
+                            ENTRY = new Entry();
                         }
 
-                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
                         int sum = 0;
 
                         foreach (Services t in listServ.SelectedItems)
@@ -200,13 +218,13 @@ namespace PR2
                         }
 
                         // заполняем поля таблицы entry
-                        entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
-                        entry.Sum = sum;
+                        ENTRY.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                        ENTRY.Sum = sum;
 
                         // если флаг равен false, то добавляем объект в базу
                         if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Entry.Add(entry);
+                            BaseClass.tBE.Entry.Add(ENTRY);
                         }
 
                         Clients newClients = new Clients()
@@ -219,10 +237,10 @@ namespace PR2
 
                         if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Clients.Add(newClients);
+                            BaseClass.tBE.Clients.Remove(newClients);
                         }
                         // находим список услуг
-                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
 
                         // если список не пустой, удаляем из него все услуги
                         if (connect.Count > 0)
@@ -237,13 +255,14 @@ namespace PR2
                         {
                             Connect C = new Connect()  // объект для записи в таблицу 
                             {
-                                Kod_entry = entry.Kod_entry,
+                                Kod_entry = ENTRY.Kod_entry,
                                 Kod_services = t.Kod_service
                             };
                             BaseClass.tBE.Connect.Add(C);
                         }
                         BaseClass.tBE.SaveChanges();
                         MessageBox.Show("Информация добавлена");
+                        Framec.MainFrame.Navigate(new EntryPage1());
                     }
                     else
                     {
@@ -257,10 +276,10 @@ namespace PR2
                         // если флаг равен false, то создаем объект для добавления кота
                         if (flagUpdate == false)
                         {
-                            entry = new Entry();
+                            ENTRY = new Entry();
                         }
 
-                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        List<Connect> ES = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
                         int sum = 0;
 
                         foreach (Services t in listServ.SelectedItems)
@@ -269,17 +288,17 @@ namespace PR2
                         }
 
                         // заполняем поля таблицы entry
-                        entry.Kod_client = cbClient.SelectedIndex + 1;
-                        entry.Date = Convert.ToDateTime(dbEntry.SelectedDate);
-                        entry.Sum = sum;
+                        ENTRY.Kod_client = cbClient.SelectedIndex + 1;
+                        ENTRY.Date = Convert.ToDateTime(dbEntry.SelectedDate);
+                        ENTRY.Sum = sum;
 
                         // если флаг равен false, то добавляем объект в базу
                         if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Entry.Add(entry);
+                            BaseClass.tBE.Entry.Add(ENTRY);
                         }
                         // находим список услуг
-                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => entry.Kod_entry == x.Kod_entry).ToList();
+                        List<Connect> connect = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
 
                         // если список не пустой, удаляем из него все услуги
                         if (connect.Count > 0)
@@ -294,7 +313,7 @@ namespace PR2
                         {
                             Connect C = new Connect()  // объект для записи в таблицу 
                             {
-                                Kod_entry = entry.Kod_entry,
+                                Kod_entry = ENTRY.Kod_entry,
                                 Kod_services = t.Kod_service
                             };
                             BaseClass.tBE.Connect.Add(C);
@@ -302,6 +321,8 @@ namespace PR2
 
                         BaseClass.tBE.SaveChanges();
                         MessageBox.Show("Информация добавлена");
+                        Framec.MainFrame.Navigate(new EntryPage1());
+
                     }
                     else
                     {

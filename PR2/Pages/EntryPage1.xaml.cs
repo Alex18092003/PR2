@@ -70,6 +70,7 @@ namespace PR2
             Entry entry = BaseClass.tBE.Entry.FirstOrDefault(x => x.Kod_entry == index);
             BaseClass.tBE.Entry.Remove(entry);
             BaseClass.tBE.SaveChanges();
+            MessageBox.Show("Запись удалена");
             Framec.MainFrame.Navigate(new EntryPage1());
         }
 
