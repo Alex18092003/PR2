@@ -47,7 +47,7 @@
                         <TextBlock  Style="{StaticResource tbAdd}">Отчество</TextBlock>
                             <TextBox IsReadOnly="True" Style="{StaticResource tbBox}" TextChanged="tbPatr_TextChanged"  PreviewTextInput="tbPatr_PreviewTextInput"  Name="tbPatr" Margin="0,0,0,7"></TextBox>
                             <TextBlock  Style="{StaticResource tbAdd}">Номер телефона</TextBlock>
-                            <TextBox PreviewTextInput="tbPhone_PreviewTextInput"  Style="{StaticResource tbBox}"  Name="tbPhone" Margin="0,0,0,7"
+                            <TextBox IsReadOnly="True" PreviewTextInput="tbPhone_PreviewTextInput"  Style="{StaticResource tbBox}"  Name="tbPhone" Margin="0,0,0,7"
                                       ></TextBox>
                         </StackPanel>
                         <StackPanel Name="stNo" Visibility="Collapsed">
@@ -84,8 +84,8 @@
                         </ListBox>
                     </StackPanel>
                 </Border>
-                <Button Template ="{StaticResource btnPink}" Margin="0,0,0,50" Name="btnAdd" Click="btnAdd_Click">
-                    Добавить запись
+                <Button Template ="{StaticResource btnPink}" Content="Добавить запись" Margin="0,0,0,50" Name="btnAdd" Click="btnAdd_Click">
+                   
                     <Button.ToolTip>
                         <ToolTip>
                             Нажмите для добавления новой записи
