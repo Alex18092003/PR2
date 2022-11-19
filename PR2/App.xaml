@@ -135,6 +135,24 @@
             </Border>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="btnPinkUpdate">
+            <Border Width="140" Height="25" 
+                    Background="#FFBF0F74"                   
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Margin="0,0,0,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="14"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
         <ControlTemplate TargetType="Button" x:Key="btnSort">
             <Border Width="70" Height="25" 
                     Background="#FFBF0F74"                   

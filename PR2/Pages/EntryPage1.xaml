@@ -67,10 +67,22 @@
                                         <StackPanel Orientation="Vertical" Margin="50,0,0,0">
                                             <TextBlock Style="{StaticResource tbListHeader}" Text="Стоимость:"/>
                                             <TextBlock  Style="{StaticResource tbList}"  TextWrapping="Wrap" Name="tbPrice" Uid="{Binding Kod_entry}" Loaded="tbPrice_Loaded"/>
-                                            <Button Name="buttonDelet" Uid="{Binding Kod_entry}" Content="Удалить" Click="buttonDelet_Click"></Button>
-                                            <Button Name="buttonUpdate" Content="Редактировать" Uid="{Binding Kod_entry}" Click="buttonUpdate_Click"></Button>
-                                        </StackPanel>
 
+                                            
+                                        </StackPanel>
+                                        <StackPanel Margin="30,0,0,0">
+
+                                            <Button Margin="0,0,0,7"  Template="{StaticResource btnPinkUpdate}" Name="buttonUpdate" Content="Редактировать" Uid="{Binding Kod_entry}" Click="buttonUpdate_Click">
+                                                <Button.ToolTip>
+                                                    <ToolTip>Редактирование записи</ToolTip>
+                                                </Button.ToolTip>
+                                            </Button>
+                                            <Button Template="{StaticResource btnPinkUpdate}" Name="buttonDelet" Uid="{Binding Kod_entry}" Content="Удалить" Click="buttonDelet_Click">
+                                                <Button.ToolTip>
+                                                    <ToolTip>Удаление записи</ToolTip>
+                                                </Button.ToolTip>
+                                            </Button>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
 
@@ -83,7 +95,7 @@
         </ListView>
 
         <StackPanel  Grid.Row="2" Orientation="Horizontal">
-            <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="320,0,0,0">Добавить
+            <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="310,0,0,0">Добавить
                 <Button.ToolTip>
                     <ToolTip>Добавить запись</ToolTip>
                 </Button.ToolTip>
