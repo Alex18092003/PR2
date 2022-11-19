@@ -55,6 +55,7 @@ namespace PR2
                 uploadFields();
 
                 flagUpdate = true;
+
                 ENTRY = entry;
                 radioButtonVisibility.Visibility = Visibility.Collapsed;
                 stYes.Visibility = Visibility.Visible;
@@ -77,6 +78,7 @@ namespace PR2
                 MessageBox.Show("Что-то пошло не так с редактированием");
             }
 
+
         }
         // конструктор для создания новой записи (без аргументов)
         public AddEntryPage()
@@ -87,11 +89,21 @@ namespace PR2
                 InitializeComponent();
                 radioButtonVisibility.Visibility = Visibility.Visible;
                 uploadFields();
+                // блокировка полей для редактирования клиента
+                if (flagUpdate == false)
+                {
+
+                    tbSurname.IsReadOnly = false;
+                    tbName.IsReadOnly = false;
+                    tbPatr.IsReadOnly = false;
+                    tbPhone.IsReadOnly = false;
+                }
             }
             catch
             {
                 MessageBox.Show("Что-то пошло не так с добавлением записи");
             }
+
         }
         // назад
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -199,27 +211,28 @@ namespace PR2
             try
             {
                
-                if (YesNo == false) // если клиент впервые в салоне 
+                if (YesNo == false) // если клиент впервые в салоне + редактирование 
                 {
                     if (tbSurname.Text != "" && tbName.Text != "" && tbPatr.Text != "" && tbPhone.Text != "" && listServ.SelectedItem != null && dbEntry.SelectedDate != null)
                     {
-                        // если флаг равен false, то создаем объект для добавления кота
+                        // если флаг равен false, то создаем объект для добавления записи
                         if (flagUpdate == false)
                         {
                             ENTRY = new Entry();
                         }
+                        
 
                         List<Connect> ES = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
                         int sum = 0;
-
                         foreach (Services t in listServ.SelectedItems)
                         {
                             sum += t.Price;
                         }
-
-                        // заполняем поля таблицы entry
                         ENTRY.Date = Convert.ToDateTime(dbEntry.SelectedDate);
                         ENTRY.Sum = sum;
+       
+
+                      
 
                         // если флаг равен false, то добавляем объект в базу
                         if (flagUpdate == false)
@@ -227,6 +240,7 @@ namespace PR2
                             BaseClass.tBE.Entry.Add(ENTRY);
                         }
 
+                        
                         Clients newClients = new Clients()
                         {
                             Name = tbName.Text,
@@ -237,7 +251,7 @@ namespace PR2
 
                         if (flagUpdate == false)
                         {
-                            BaseClass.tBE.Clients.Remove(newClients);
+                            BaseClass.tBE.Clients.Add(newClients);
                         }
                         // находим список услуг
                         List<Connect> connect = BaseClass.tBE.Connect.Where(x => ENTRY.Kod_entry == x.Kod_entry).ToList();
@@ -385,6 +399,7 @@ namespace PR2
             }
         }
 
+        // запрет ввода символов
         private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             try
