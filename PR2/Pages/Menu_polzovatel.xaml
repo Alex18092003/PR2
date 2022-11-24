@@ -31,14 +31,11 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Button Template="{StaticResource btnResoursee}" Click="buttonCabinet_Click" Name="buttonCabinet">
-                <Button.ToolTip>
-                    <ToolTip>Переход в личный кабинет</ToolTip> 
-                </Button.ToolTip>
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Resourse/account_avatar_face_man_people_profile_user_icon_123197.png"></ImageBrush>
-                </Button.OpacityMask>
-            </Button>
+            <Image Height="200" Width="200"></Image>
+            <TextBox Name="textboxName"></TextBox>
+            <TextBox Name="textboxSurname"></TextBox>
+            <TextBox Name="textboxPatronymic"></TextBox>
+            <Button Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
         </StackPanel>
     </Grid>
 </Page>

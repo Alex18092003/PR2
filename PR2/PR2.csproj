@@ -85,9 +85,6 @@
     <Compile Include="Entry.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Cabinet.xaml.cs">
-      <DependentUpon>Cabinet.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\EntryPage1.xaml.cs">
       <DependentUpon>EntryPage1.xaml</DependentUpon>
     </Compile>
@@ -110,6 +107,9 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\PartialEntryClass.cs" />
+    <Compile Include="Pages\WindowPerson.xaml.cs">
+      <DependentUpon>WindowPerson.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Photo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -133,10 +133,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Authorizat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Cabinet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SpecialistsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindowPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

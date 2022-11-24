@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,38 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PR2
+namespace PR2.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Menu_polzovatel.xaml
+    /// Логика взаимодействия для WindowPerson.xaml
     /// </summary>
-    public partial class Menu_polzovatel : Page
+    public partial class WindowPerson : Window
     {
         Specialists specialists;
-        public Menu_polzovatel(Specialists specialists)
+        public WindowPerson(Specialists specialists)
         {
-            
             InitializeComponent();
             this.specialists = specialists;
             textboxName.Text = specialists.Name;
             textboxSurname.Text = specialists.Surname;
             textboxPatronymic.Text = specialists.Patronymic;
-
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            Framec.MainFrame.Navigate(new Authorizat());
-        }
-
-        private void buttonChange_Click(object sender, RoutedEventArgs e)
-        {
-            Pages.WindowPerson windowPerson = new Pages.WindowPerson(specialists);
-            windowPerson.ShowDialog();
-            Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
+            specialists.Name = textboxName.Text;
+            specialists.Surname = textboxSurname.Text;
+            specialists.Patronymic = textboxPatronymic.Text;
+            this.Close();// закрываем это окно
         }
     }
 }

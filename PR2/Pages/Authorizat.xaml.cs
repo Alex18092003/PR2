@@ -44,7 +44,7 @@ namespace PR2
                     }
                     else
                     {
-                        Framec.MainFrame.Navigate(new Menu_polzovatel());
+                        Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
                     }
 
                 }

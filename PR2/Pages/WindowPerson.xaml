@@ -1,0 +1,18 @@
+﻿<Window x:Class="PR2.Pages.WindowPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR2.Pages"
+        mc:Ignorable="d"
+        Title="WindowPerson" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock>Введите новые данные</TextBlock>
+            <TextBox Name="textboxName"></TextBox>
+            <TextBox Name="textboxSurname"></TextBox>
+            <TextBox Name="textboxPatronymic"></TextBox>
+            <Button Name="buttonSave" Click="buttonSave_Click">Изменить данные</Button>
+        </StackPanel>
+    </Grid>
+</Window>
