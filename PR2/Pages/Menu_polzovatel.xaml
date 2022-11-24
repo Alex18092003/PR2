@@ -30,8 +30,15 @@
             <TextBlock  Style="{StaticResource block}">Меню пользователя</TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Button Template="{StaticResource btnResoursee}" Click="buttonCabinet_Click" Name="buttonCabinet">
+                <Button.ToolTip>
+                    <ToolTip>Переход в личный кабинет</ToolTip> 
+                </Button.ToolTip>
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Resourse/account_avatar_face_man_people_profile_user_icon_123197.png"></ImageBrush>
+                </Button.OpacityMask>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

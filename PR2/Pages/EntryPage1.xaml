@@ -95,7 +95,7 @@
         </ListView>
 
         <StackPanel  Grid.Row="2" Orientation="Horizontal">
-            <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="310,0,0,0">Добавить
+            <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="300,0,0,0">Добавить
                 <Button.ToolTip>
                     <ToolTip>Добавить запись</ToolTip>
                 </Button.ToolTip>

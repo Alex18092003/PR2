@@ -20,7 +20,7 @@ namespace PR2
     /// </summary>
     public partial class Menu_polzovatel : Page
     {
-        public Menu_polzovatel()
+        public Menu_polzovatel(Specialists specialists)
         {
             InitializeComponent();
         }
@@ -28,6 +28,11 @@ namespace PR2
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Authorizat());
+        }
+
+        private void buttonCabinet_Click(object sender, RoutedEventArgs e)
+        {
+            //Framec.MainFrame.Navigate(new Cabinet());
         }
     }
 }

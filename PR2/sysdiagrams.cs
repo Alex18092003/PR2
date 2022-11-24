@@ -12,19 +12,12 @@ namespace PR2
     using System;
     using System.Collections.Generic;
     
-    public partial class Specialists
+    public partial class sysdiagrams
     {
-        public int Kod_specialist { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Patronymic { get; set; }
-        public int Kod_pola { get; set; }
-        public int Kod_dolgnosti { get; set; }
-        public string Login { get; set; }
-        public int Password { get; set; }
-        public System.DateTime Date_of_birth { get; set; }
-    
-        public virtual Dolgnosti Dolgnosti { get; set; }
-        public virtual Genders Genders { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

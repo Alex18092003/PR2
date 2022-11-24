@@ -118,7 +118,7 @@
         </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="btnPink">
-            <Border Width="200" Height="40" 
+            <Border Width="220" Height="40" 
                     Background="#FFBF0F74"                   
                     BorderThickness="1"
                     CornerRadius="20"
@@ -182,6 +182,21 @@
                      Content="{TemplateBinding Content}" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="btnResoursee">
+            <Border Width="50" Height="50" 
+                    Background="#FFBF0F74"                   
+                     Margin="0,10,680,0"
+                    CornerRadius="20"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
                     FontSize="18"
                     FontFamily="Lucida Sans Unicode"
                    Foreground="White"

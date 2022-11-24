@@ -55,6 +55,7 @@ namespace PR2
                 uploadFields();
 
                 flagUpdate = true;
+                btnAdd.Content = "Сохранить изменения";
 
                 ENTRY = entry;
                 radioButtonVisibility.Visibility = Visibility.Collapsed;
@@ -97,7 +98,7 @@ namespace PR2
                     tbName.IsReadOnly = false;
                     tbPatr.IsReadOnly = false;
                     tbPhone.IsReadOnly = false;
-                    //btnAdd.Content = "Сохранить изменения";
+                   
                 }
             }
             catch

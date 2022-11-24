@@ -27,25 +27,26 @@ namespace PR2
 
         
         //админ = логин - admin, пароль - admin
+        // пользователи = логин - ssss , пароль - Sasha_420
         private void btnAvtoriz_Click(object sender, RoutedEventArgs e)
         {
             if (tbLogin.Text != "" && tbPassword.Password != "")
             {
                 int p = tbPassword.Password.GetHashCode();
                 Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == tbLogin.Text && x.Password == p);
-                Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == "admin");
+                Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Kod_dolgnosti == 1);
 
                 if (specialists != null)
                 {
-
-                    if (adm == null)
-                    {
-                        Framec.MainFrame.Navigate(new Menu_polzovatel());
-                    }
-                    else
+                    if (specialists.Kod_dolgnosti == 1)
                     {
                         Framec.MainFrame.Navigate(new Menu_admin());
                     }
+                    else
+                    {
+                        Framec.MainFrame.Navigate(new Menu_polzovatel());
+                    }
+
                 }
                 else
                 {

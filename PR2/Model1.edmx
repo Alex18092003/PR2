@@ -48,6 +48,15 @@
           <Property Name="Kod_gendera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Gender" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Kod_photo" />
+          </Key>
+          <Property Name="Kod_photo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_clients" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+          <Property Name="PhotoBinary" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="Kod_service" />
@@ -74,10 +83,19 @@
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Kod_pola" Type="int" Nullable="false" />
           <Property Name="Kod_dolgnosti" Type="int" Nullable="false" />
-          <Property Name="Photo" Type="varchar" MaxLength="50" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="int" Nullable="false" />
           <Property Name="Date_of_birth" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Connect_Entry">
           <End Role="Entry" Type="Self.Entry" Multiplicity="1">
@@ -129,6 +147,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Photo_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Kod_client" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="Kod_clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Services_Services_dolgnosti">
           <End Role="Services_dolgnosti" Type="Self.Services_dolgnosti" Multiplicity="1" />
           <End Role="Services" Type="Self.Services" Multiplicity="*" />
@@ -171,9 +201,11 @@
           <EntitySet Name="Dolgnosti" EntityType="Self.Dolgnosti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entry" EntityType="Self.Entry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services_dolgnosti" EntityType="Self.Services_dolgnosti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specialists" EntityType="Self.Specialists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Connect_Entry" Association="Self.FK_Connect_Entry">
             <End Role="Entry" EntitySet="Entry" />
             <End Role="Connect" EntitySet="Connect" />
@@ -189,6 +221,10 @@
           <AssociationSet Name="FK_Entry_Clients" Association="Self.FK_Entry_Clients">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Entry" EntitySet="Entry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photo_Clients" Association="Self.FK_Photo_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Services_Services_dolgnosti" Association="Self.FK_Services_Services_dolgnosti">
             <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
@@ -213,12 +249,18 @@
           <EntitySet Name="Dolgnosti" EntityType="Model.Dolgnosti" />
           <EntitySet Name="Entry" EntityType="Model.Entry" />
           <EntitySet Name="Genders" EntityType="Model.Genders" />
+          <EntitySet Name="Photo" EntityType="Model.Photo" />
           <EntitySet Name="Services" EntityType="Model.Services" />
           <EntitySet Name="Services_dolgnosti" EntityType="Model.Services_dolgnosti" />
           <EntitySet Name="Specialists" EntityType="Model.Specialists" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
           <AssociationSet Name="FK_Entry_Clients" Association="Model.FK_Entry_Clients">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Entry" EntitySet="Entry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photo_Clients" Association="Model.FK_Photo_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Connect_Entry" Association="Model.FK_Connect_Entry">
             <End Role="Entry" EntitySet="Entry" />
@@ -255,6 +297,7 @@
           <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telephone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Entry" Relationship="Model.FK_Entry_Clients" FromRole="Clients" ToRole="Entry" />
+          <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Clients" FromRole="Clients" ToRole="Photo" />
         </EntityType>
         <EntityType Name="Connect">
           <Key>
@@ -296,6 +339,16 @@
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Specialists" Relationship="Model.FK_Specialists_Genders" FromRole="Genders" ToRole="Specialists" />
         </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Kod_photo" />
+          </Key>
+          <Property Name="Kod_photo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_clients" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Clients" Relationship="Model.FK_Photo_Clients" FromRole="Photo" ToRole="Clients" />
+        </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="Kod_service" />
@@ -326,12 +379,21 @@
           <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Kod_pola" Type="Int32" Nullable="false" />
           <Property Name="Kod_dolgnosti" Type="Int32" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="Int32" Nullable="false" />
           <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Dolgnosti" Relationship="Model.FK_Specialists_Dolgnosti" FromRole="Specialists" ToRole="Dolgnosti" />
           <NavigationProperty Name="Genders" Relationship="Model.FK_Specialists_Genders" FromRole="Specialists" ToRole="Genders" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Entry_Clients">
           <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
@@ -342,6 +404,18 @@
             </Principal>
             <Dependent Role="Entry">
               <PropertyRef Name="Kod_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photo_Clients">
+          <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Kod_client" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="Kod_clients" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -473,6 +547,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Photo">
+            <EntityTypeMapping TypeName="Model.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="PhotoBinary" ColumnName="PhotoBinary" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Kod_clients" ColumnName="Kod_clients" />
+                <ScalarProperty Name="Kod_photo" ColumnName="Kod_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="Model.Services">
               <MappingFragment StoreEntitySet="Services">
@@ -497,13 +581,23 @@
                 <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Kod_dolgnosti" ColumnName="Kod_dolgnosti" />
                 <ScalarProperty Name="Kod_pola" ColumnName="Kod_pola" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Kod_specialist" ColumnName="Kod_specialist" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

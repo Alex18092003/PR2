@@ -30,8 +30,10 @@ namespace PR2
         public virtual DbSet<Dolgnosti> Dolgnosti { get; set; }
         public virtual DbSet<Entry> Entry { get; set; }
         public virtual DbSet<Genders> Genders { get; set; }
+        public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<Services_dolgnosti> Services_dolgnosti { get; set; }
         public virtual DbSet<Specialists> Specialists { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

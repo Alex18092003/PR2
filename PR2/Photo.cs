@@ -12,19 +12,13 @@ namespace PR2
     using System;
     using System.Collections.Generic;
     
-    public partial class Specialists
+    public partial class Photo
     {
-        public int Kod_specialist { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Patronymic { get; set; }
-        public int Kod_pola { get; set; }
-        public int Kod_dolgnosti { get; set; }
-        public string Login { get; set; }
-        public int Password { get; set; }
-        public System.DateTime Date_of_birth { get; set; }
+        public int Kod_photo { get; set; }
+        public int Kod_clients { get; set; }
+        public string PhotoPath { get; set; }
+        public byte[] PhotoBinary { get; set; }
     
-        public virtual Dolgnosti Dolgnosti { get; set; }
-        public virtual Genders Genders { get; set; }
+        public virtual Clients Clients { get; set; }
     }
 }
