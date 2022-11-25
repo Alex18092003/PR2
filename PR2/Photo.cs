@@ -15,7 +15,7 @@ namespace PR2
     public partial class Photo
     {
         public int Kod_photo { get; set; }
-        public int Kod_clients { get; set; }
+        public int Kod_specialists { get; set; }
         public string PhotoPath { get; set; }
         public byte[] PhotoBinary { get; set; }
     

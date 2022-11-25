@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="Menu_polzovatel">
 
     <Grid Background="#19BF0F74">
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>
-            <RowDefinition Height="5*">
+            <RowDefinition Height="6*">
             </RowDefinition>
         </Grid.RowDefinitions>
 
@@ -27,15 +27,34 @@
                     <ImageBrush ImageSource="/Resourse/home_heart_building_icon_207747.png"/>
                 </Button.OpacityMask>
             </Button>
-            <TextBlock  Style="{StaticResource block}">Меню пользователя</TextBlock>
+            <TextBlock  Style="{StaticResource block}">Личный кабинет</TextBlock>
         </StackPanel>
-
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Image Height="200" Width="200"></Image>
+        
+        <ScrollViewer Grid.Row="1">
+            <Border  Margin="50,10,50,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                <StackPanel  Orientation="Vertical">
+                    <Image Height="170" Width="170" Name="imUser" Source="\Resourse\Без названия.jfif"></Image>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото</Button>
+                     <Button Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото</Button>
+                        <Button Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое</Button>
+                    </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button >Назад</Button>
+                        <Image Height="150" Width="150"></Image>
+                        <Button >Вперед</Button>
+                    </StackPanel>
+                    
+            <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
             <TextBox Name="textboxName"></TextBox>
+            <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
             <TextBox Name="textboxSurname"></TextBox>
+            <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
             <TextBox Name="textboxPatronymic"></TextBox>
-            <Button Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
-        </StackPanel>
+            <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
+              
+            </StackPanel>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </Page>

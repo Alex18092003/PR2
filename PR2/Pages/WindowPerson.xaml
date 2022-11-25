@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:PR2.Pages"
         mc:Ignorable="d"
         Title="WindowPerson" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#19BF0F74">
         <StackPanel>
-            <TextBlock>Введите новые данные</TextBlock>
+            <TextBlock Style="{StaticResource tbList}" HorizontalAlignment="Center">Введите новые данные</TextBlock>
+            <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
             <TextBox Name="textboxName"></TextBox>
+            <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
             <TextBox Name="textboxSurname"></TextBox>
+            <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
             <TextBox Name="textboxPatronymic"></TextBox>
-            <Button Name="buttonSave" Click="buttonSave_Click">Изменить данные</Button>
+            <Button Template="{StaticResource btnPink}" Margin="0,50,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
         </StackPanel>
     </Grid>
 </Window>

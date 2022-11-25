@@ -6,12 +6,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR2"
         mc:Ignorable="d"
-        Title="Салон красоты" Height="500" Width="800">
+        Title="Салон красоты" Height="600" Width="800">
     <Grid Background="#33BF0F74">
         <Grid.RowDefinitions>
             <RowDefinition>
             </RowDefinition>
-            <RowDefinition Height="3*">
+            <RowDefinition Height="4*">
             </RowDefinition>
         </Grid.RowDefinitions>
 

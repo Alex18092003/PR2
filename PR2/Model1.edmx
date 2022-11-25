@@ -53,7 +53,7 @@
             <PropertyRef Name="Kod_photo" />
           </Key>
           <Property Name="Kod_photo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Kod_clients" Type="int" Nullable="false" />
+          <Property Name="Kod_specialists" Type="int" Nullable="false" />
           <Property Name="PhotoPath" Type="nvarchar(max)" />
           <Property Name="PhotoBinary" Type="varbinary(max)" />
         </EntityType>
@@ -155,7 +155,7 @@
               <PropertyRef Name="Kod_client" />
             </Principal>
             <Dependent Role="Photo">
-              <PropertyRef Name="Kod_clients" />
+              <PropertyRef Name="Kod_specialists" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -344,7 +344,7 @@
             <PropertyRef Name="Kod_photo" />
           </Key>
           <Property Name="Kod_photo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Kod_clients" Type="Int32" Nullable="false" />
+          <Property Name="Kod_specialists" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Clients" Relationship="Model.FK_Photo_Clients" FromRole="Photo" ToRole="Clients" />
@@ -415,7 +415,7 @@
               <PropertyRef Name="Kod_client" />
             </Principal>
             <Dependent Role="Photo">
-              <PropertyRef Name="Kod_clients" />
+              <PropertyRef Name="Kod_specialists" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -552,7 +552,7 @@
               <MappingFragment StoreEntitySet="Photo">
                 <ScalarProperty Name="PhotoBinary" ColumnName="PhotoBinary" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-                <ScalarProperty Name="Kod_clients" ColumnName="Kod_clients" />
+                <ScalarProperty Name="Kod_specialists" ColumnName="Kod_specialists" />
                 <ScalarProperty Name="Kod_photo" ColumnName="Kod_photo" />
               </MappingFragment>
             </EntityTypeMapping>
