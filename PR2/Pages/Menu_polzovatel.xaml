@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="480" d:DesignWidth="800"
       Title="Menu_polzovatel">
 
     <Grid Background="#19BF0F74">
@@ -39,13 +39,16 @@
                      <Button Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото</Button>
                         <Button Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое</Button>
                     </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button >Назад</Button>
-                        <Image Height="150" Width="150"></Image>
-                        <Button >Вперед</Button>
+                        <StackPanel Name="Gallery" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
+                        <Image Height="150" Width="150" Name="imgUser"></Image>
+                        <Button Name="Next" Click="Next_Click">Вперед</Button>
                     </StackPanel>
-                    
-            <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
+                    <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>
+
+
+
+                    <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
             <TextBox Name="textboxName"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
             <TextBox Name="textboxSurname"></TextBox>

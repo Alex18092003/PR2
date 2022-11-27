@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -92,21 +93,108 @@ namespace PR2
                 p.PhotoBinary = Barray;// заполяем поле photoBinary полученным байтовым массивом
                 BaseClass.tBE.Photo.Add(p);// добавляем объект в таблицу БД
                 BaseClass.tBE.SaveChanges();  // созраняем изменения в БД
+                MessageBox.Show("Фото добавлено");
+                Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
             }
-            catch(Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Что-то пошло не так с добавлением нового фото");
             }
         }
 
         private void buttonFewPhotos_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
+                OFD.Multiselect = true;  // открытие диалогового окна с возможностью выбора нескольких элементов
+                if (OFD.ShowDialog() == true)  // пока диалоговое окно открыто, будет в цикле записывать каждое выбранное изображение в БД
+                {
+                    foreach (string file in OFD.FileNames)  // цикл организован по именам выбранных файлов
+                    {
+                        Photo p = new Photo();  // создание объекта для добавления записи в таблицу, где хранится фото
+                        p.Kod_specialists = specialists.Kod_specialist;  // присваиваем значение полю idUser (id авторизованного пользователя)
+                        string path = file;  // считываем путь выбранного изображения
+                        System.Drawing.Image SDI = System.Drawing.Image.FromFile(file);  // создаем объект для загрузки изображения в базу
+                        ImageConverter IC = new ImageConverter();  // создаем конвертер для перевода картинки в двоичный формат
+                        byte[] Barray = (byte[])IC.ConvertTo(SDI, typeof(byte[]));  // создаем байтовый массив для хранения картинки
+                        p.PhotoBinary = Barray;  // заполяем поле photoBinary полученным байтовым массивом
+                        BaseClass.tBE.Photo.Add(p);  // добавляем объект в таблицу БД
+                    }
+                }
+                BaseClass.tBE.SaveChanges();
+                MessageBox.Show("Фото добавлены");
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с добавлением нескольких фото");
+            }
         }
-
+        int n = 0;
         private void buttonOldPhoto_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Gallery.Visibility = Visibility.Visible;
+                List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+                if (p != null)
+                {
+                    byte[] Bar = p[p.Count - 1].PhotoBinary;
+                    showImage(Bar, imgUser);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с изменением фото на старое");
+            }
+        }
 
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            n++;
+            if (Back.IsEnabled == false)
+            {
+                Back.IsEnabled = true;
+            }
+            if (p != null)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            {
+
+                byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+                showImage(Bar, imgUser);
+            }
+            if (n == p.Count - 1)
+            {
+                Next.IsEnabled = false;
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            n--;
+            if (Next.IsEnabled == false)
+            {
+                Next.IsEnabled = true;
+            }
+            if (p != null)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            {
+
+                byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+                BitmapImage BI = new BitmapImage();  // создаем объект для загрузки изображения
+                showImage(Bar, imgUser);
+            }
+            if (n == 0)
+            {
+                Back.IsEnabled = false;
+            }
+        }
+
+        private void btnOld_Click(object sender, RoutedEventArgs e)
+        {
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+            showImage(Bar, imUser);  // отображаем картинку
         }
     }
 }

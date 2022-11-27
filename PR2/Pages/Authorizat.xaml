@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:PR2"
       mc:Ignorable="d" 
 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="480" d:DesignWidth="800"
       Title="Авторизация">
 
     <Grid  Background="#19BF0F74">
@@ -22,8 +22,8 @@
        
         
         <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="Resourse/free-icon-font-user-3917688.png" Width="20" Margin="240,0,10,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+               
                 <GroupBox  Style="{StaticResource gropdox}" Header="Введите логин">
                     <TextBox  x:Name="tbLogin">
                         <TextBox.ToolTip>
@@ -35,8 +35,8 @@
                 </GroupBox>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Image Source="Resourse/free-icon-font-lock-3917591.png" Width="20" Margin="240,0,10,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+               
                 <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
                 <PasswordBox x:Name="tbPassword">
                         <PasswordBox.ToolTip>
@@ -48,7 +48,7 @@
             </GroupBox>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
 
                 <Button  Template="{StaticResource btnAutorizat}" Click="btnAvtoriz_Click" x:Name="btnAvtoriz">Авторизация
                     <Button.ToolTip>
