@@ -26,23 +26,22 @@ namespace PR2
     {
         Specialists specialists;
 
-        void showImage(byte[] Barray, System.Windows.Controls.Image image)
+        void showImage(byte[] Barray, System.Windows.Controls.Image img)
         {
-            BitmapImage BI = new BitmapImage();
-          using (MemoryStream m = new MemoryStream(Barray))
+            BitmapImage BI = new BitmapImage();  // создаем объект для загрузки изображения
+            using (MemoryStream m = new MemoryStream(Barray))  // для считывания байтового потока
             {
-                BI.BeginInit();
-                BI.StreamSource = m;
-                BI.CacheOption = BitmapCacheOption.OnLoad;
-                BI.EndInit();
+                BI.BeginInit();  // начинаем считывание
+                BI.StreamSource = m;  // задаем источник потока
+                BI.CacheOption = BitmapCacheOption.OnLoad;  // переводим изображение
+                BI.EndInit();  // заканчиваем считывание
             }
-          image.Source = BI;
-          image.Stretch = Stretch.Uniform;
-
+            img.Source = BI;  // показываем картинку на экране (imUser – имя картиник в разметке)
+            img.Stretch = Stretch.Uniform;
         }
+
         public Menu_polzovatel(Specialists specialists)
         {
-            
             InitializeComponent();
             this.specialists = specialists;
             textboxName.Text = specialists.Name;
@@ -51,7 +50,7 @@ namespace PR2
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
             if (p != null)
             {
-                byte[] Bar = p[p.Count - 1].PhotoBinary;
+                byte[] Bar = p[p.Count-1].PhotoBinary;
                 showImage(Bar, imUser);
             }
 
@@ -139,7 +138,7 @@ namespace PR2
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
                 if (p != null)
                 {
-                    byte[] Bar = p[p.Count - 1].PhotoBinary;
+                    byte[] Bar = p[n].PhotoBinary;
                     showImage(Bar, imgUser);
                 }
             }

@@ -14,6 +14,12 @@ namespace PR2
     
     public partial class Specialists
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Specialists()
+        {
+            this.Photo = new HashSet<Photo>();
+        }
+    
         public int Kod_specialist { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -26,5 +32,7 @@ namespace PR2
     
         public virtual Dolgnosti Dolgnosti { get; set; }
         public virtual Genders Genders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Photo> Photo { get; set; }
     }
 }

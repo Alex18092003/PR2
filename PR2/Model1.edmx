@@ -147,12 +147,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Photo_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+        <Association Name="FK_Photo_Specialists">
+          <End Role="Specialists" Type="Self.Specialists" Multiplicity="1" />
           <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Kod_client" />
+            <Principal Role="Specialists">
+              <PropertyRef Name="Kod_specialist" />
             </Principal>
             <Dependent Role="Photo">
               <PropertyRef Name="Kod_specialists" />
@@ -222,8 +222,8 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Entry" EntitySet="Entry" />
           </AssociationSet>
-          <AssociationSet Name="FK_Photo_Clients" Association="Self.FK_Photo_Clients">
-            <End Role="Clients" EntitySet="Clients" />
+          <AssociationSet Name="FK_Photo_Specialists" Association="Self.FK_Photo_Specialists">
+            <End Role="Specialists" EntitySet="Specialists" />
             <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Services_Services_dolgnosti" Association="Self.FK_Services_Services_dolgnosti">
@@ -258,10 +258,6 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Entry" EntitySet="Entry" />
           </AssociationSet>
-          <AssociationSet Name="FK_Photo_Clients" Association="Model.FK_Photo_Clients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Photo" EntitySet="Photo" />
-          </AssociationSet>
           <AssociationSet Name="FK_Connect_Entry" Association="Model.FK_Connect_Entry">
             <End Role="Entry" EntitySet="Entry" />
             <End Role="Connect" EntitySet="Connect" />
@@ -282,6 +278,10 @@
             <End Role="Genders" EntitySet="Genders" />
             <End Role="Specialists" EntitySet="Specialists" />
           </AssociationSet>
+          <AssociationSet Name="FK_Photo_Specialists" Association="Model.FK_Photo_Specialists">
+            <End Role="Specialists" EntitySet="Specialists" />
+            <End Role="Photo" EntitySet="Photo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Services_Services_dolgnosti" Association="Model.FK_Services_Services_dolgnosti">
             <End Role="Services_dolgnosti" EntitySet="Services_dolgnosti" />
             <End Role="Services" EntitySet="Services" />
@@ -297,7 +297,6 @@
           <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telephone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Entry" Relationship="Model.FK_Entry_Clients" FromRole="Clients" ToRole="Entry" />
-          <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Clients" FromRole="Clients" ToRole="Photo" />
         </EntityType>
         <EntityType Name="Connect">
           <Key>
@@ -347,7 +346,7 @@
           <Property Name="Kod_specialists" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Clients" Relationship="Model.FK_Photo_Clients" FromRole="Photo" ToRole="Clients" />
+          <NavigationProperty Name="Specialists" Relationship="Model.FK_Photo_Specialists" FromRole="Photo" ToRole="Specialists" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -384,6 +383,7 @@
           <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Dolgnosti" Relationship="Model.FK_Specialists_Dolgnosti" FromRole="Specialists" ToRole="Dolgnosti" />
           <NavigationProperty Name="Genders" Relationship="Model.FK_Specialists_Genders" FromRole="Specialists" ToRole="Genders" />
+          <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Specialists" FromRole="Specialists" ToRole="Photo" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -404,18 +404,6 @@
             </Principal>
             <Dependent Role="Entry">
               <PropertyRef Name="Kod_client" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Photo_Clients">
-          <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
-          <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Kod_client" />
-            </Principal>
-            <Dependent Role="Photo">
-              <PropertyRef Name="Kod_specialists" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -478,6 +466,18 @@
             </Principal>
             <Dependent Role="Specialists">
               <PropertyRef Name="Kod_pola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photo_Specialists">
+          <End Type="Model.Specialists" Role="Specialists" Multiplicity="1" />
+          <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialists">
+              <PropertyRef Name="Kod_specialist" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="Kod_specialists" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

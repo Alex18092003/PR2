@@ -84,7 +84,7 @@
                         </ListBox>
                     </StackPanel>
                 </Border>
-                <Button Template ="{StaticResource btnPink}" Content="Добавить запись" Margin="0,0,0,50" Name="btnAdd" Click="btnAdd_Click">
+                <Button Template ="{StaticResource btnPink}" Content="Добавить запись" Margin="0,0,0,0" Name="btnAdd" Click="btnAdd_Click">
                    
                     <Button.ToolTip>
                         <ToolTip>

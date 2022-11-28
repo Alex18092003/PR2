@@ -20,6 +20,7 @@ namespace PR2
     /// </summary>
     public partial class EntryPage1 : Page
     {
+        Specialists sp;
         public EntryPage1()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace PR2
 
         private void btnBack_Click(object sender, RoutedEventArgs e) // метод для выхода в меню админа
         {
-            Framec.MainFrame.Navigate(new Menu_admin());
+            Framec.MainFrame.Navigate(new Menu_admin(sp));
         }
 
         private void tbServices_Loaded(object sender, RoutedEventArgs e) // медол для вывода оказываемых услуг

@@ -20,10 +20,13 @@ namespace PR2
     /// </summary>
     public partial class Menu_admin : Page
     {
-        public Menu_admin()
+        Specialists specialists;
+
+        public Menu_admin(Specialists specialists)
         {
             InitializeComponent();
-            //lvEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
+            this.specialists = specialists;  //  заполняем выше созданный объект информацией об авторизованном пользователе
+            
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -39,6 +42,11 @@ namespace PR2
         private void btnEntry_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new EntryPage1());
+        }
+
+        private void buttonCabinet_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
         }
     }
 }

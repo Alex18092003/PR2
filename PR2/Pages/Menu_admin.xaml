@@ -31,7 +31,16 @@
             </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Button Template ="{StaticResource btnPink}"  Margin="0,80,0,0" Name="btnSpecialists" Click="btnSpecialists_Click" >
+            <Button Template ="{StaticResource btnPink}"  Margin="0,80,0,0" Name="buttonCabinet" Click="buttonCabinet_Click" >
+                Личный кабинет
+                <Button.ToolTip>
+                    <ToolTip>
+                        Переход в личный кабинет
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            
+            <Button Template ="{StaticResource btnPink}"  Margin="0,10,0,0" Name="btnSpecialists" Click="btnSpecialists_Click" >
                 Пользователи
                 <Button.ToolTip>
                     <ToolTip>

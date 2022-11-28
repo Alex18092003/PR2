@@ -20,6 +20,7 @@ namespace PR2
     /// </summary>
     public partial class SpecialistsPage : Page
     {
+        Specialists specialists;
         public SpecialistsPage()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace PR2
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Framec.MainFrame.Navigate(new Menu_admin());
+            Framec.MainFrame.Navigate(new Menu_admin(specialists));
         }
 
         private void btnYbv_Click(object sender, RoutedEventArgs e)

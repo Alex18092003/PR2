@@ -33,18 +33,18 @@ namespace PR2
             if (tbLogin.Text != "" && tbPassword.Password != "")
             {
                 int p = tbPassword.Password.GetHashCode();
-                Specialists specialists = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == tbLogin.Text && x.Password == p);
+                Specialists sp = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == tbLogin.Text && x.Password == p);
                 Specialists adm = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Kod_dolgnosti == 1);
 
-                if (specialists != null)
+                if (sp != null)
                 {
-                    if (specialists.Kod_dolgnosti == 1)
+                    if (sp.Kod_dolgnosti == 1)
                     {
-                        Framec.MainFrame.Navigate(new Menu_admin());
+                        Framec.MainFrame.Navigate(new Menu_admin(sp));
                     }
                     else
                     {
-                        Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
+                        Framec.MainFrame.Navigate(new Menu_polzovatel(sp));
                     }
 
                 }

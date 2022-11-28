@@ -19,6 +19,6 @@ namespace PR2
         public string PhotoPath { get; set; }
         public byte[] PhotoBinary { get; set; }
     
-        public virtual Clients Clients { get; set; }
+        public virtual Specialists Specialists { get; set; }
     }
 }

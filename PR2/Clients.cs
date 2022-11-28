@@ -18,7 +18,6 @@ namespace PR2
         public Clients()
         {
             this.Entry = new HashSet<Entry>();
-            this.Photo = new HashSet<Photo>();
         }
     
         public int Kod_client { get; set; }
@@ -29,7 +28,5 @@ namespace PR2
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entry> Entry { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Photo> Photo { get; set; }
     }
 }
