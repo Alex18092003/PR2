@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="WindowPerson" Height="300" Width="500">
     <Grid Background="#19BF0F74">
-        <StackPanel>
+        <StackPanel Margin="20,10,20,0">
             <TextBlock Style="{StaticResource tbList}" HorizontalAlignment="Center">Введите новые данные</TextBlock>
             <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
-            <TextBox PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
+            <TextBox  Style="{StaticResource tbBox}" PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
-            <TextBox PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
+            <TextBox  Style="{StaticResource tbBox}" PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
-            <TextBox TextChanged="textboxPatronymic_TextChanged" PreviewTextInput="textboxPatronymic_PreviewTextInput" Name="textboxPatronymic"></TextBox>
-            <Button Template="{StaticResource btnPink}" Margin="0,50,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
+            <TextBox  Style="{StaticResource tbBox}" TextChanged="textboxPatronymic_TextChanged" PreviewTextInput="textboxPatronymic_PreviewTextInput" Name="textboxPatronymic"></TextBox>
+            <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
         </StackPanel>
     </Grid>
 </Window>

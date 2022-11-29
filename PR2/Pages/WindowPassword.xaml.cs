@@ -30,7 +30,7 @@ namespace PR2.Pages
             //int p = tbPassword.Password.GetHashCode();
           
             int p = specialists.Password.GetHashCode();
-            textPassword.Text = p;
+            textPassword.Text = Convert.ToString(p);
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -42,6 +42,7 @@ namespace PR2.Pages
                 specialists.Password = textPassword.Text.GetHashCode();
                 BaseClass.tBE.SaveChanges();
                 this.Close();// закрываем это окно
+                MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
             }
             else
             {

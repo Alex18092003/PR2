@@ -38,6 +38,7 @@ namespace PR2.Pages
                 specialists.Surname = textboxSurname.Text;
                 specialists.Patronymic = textboxPatronymic.Text;
                 BaseClass.tBE.SaveChanges();
+                MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
                 this.Close();// закрываем это окно
             }
             else

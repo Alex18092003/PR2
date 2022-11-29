@@ -47,12 +47,13 @@ namespace PR2
             textboxName.Text = specialists.Name;
             textboxSurname.Text = specialists.Surname;
             textboxPatronymic.Text = specialists.Patronymic;
-            //List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-            //if (p != null)
-            //{
-            //    byte[] Bar = p[p.Count-1].PhotoBinary;
-            //    showImage(Bar, imUser);
-            //}
+
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            if (p.Count != 0)
+            {
+                byte[] Bar = p[p.Count - 1].PhotoBinary;
+                showImage(Bar, imUser);
+            }
 
         }
 
@@ -67,7 +68,6 @@ namespace PR2
             {
                 Pages.WindowPerson windowPerson = new Pages.WindowPerson(specialists); // создание объекта окна
                 windowPerson.ShowDialog();// октрытие созданного окна (дальнейший код не будет запущен, пока окно не будет закрыто)
-                MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
                 Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));// перезагрузка страницы
             }
             catch(Exception ex)
@@ -202,7 +202,7 @@ namespace PR2
             {
                 Pages.WindowPassword windowPassword = new Pages.WindowPassword(specialists); // создание объекта окна
                 windowPassword.ShowDialog();// октрытие созданного окна (дальнейший код не будет запущен, пока окно не будет закрыто)
-                MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
+              
                 Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));// перезагрузка страницы
             }
             catch (Exception ex)

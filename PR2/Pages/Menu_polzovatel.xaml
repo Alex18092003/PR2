@@ -31,29 +31,26 @@
         </StackPanel>
         
         <ScrollViewer Grid.Row="1">
-            <Border  Margin="50,10,50,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+            <Border  Margin="50,10,50,20" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
                 <StackPanel  Orientation="Vertical">
                     <Image Height="170" Width="170" Name="imUser" Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото</Button>
-                     <Button Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото</Button>
+                        <Button Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото</Button>
+                        <Button Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото</Button>
                         <Button Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое</Button>
                     </StackPanel>
-                        <StackPanel Name="Gallery" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
-                        <Image Height="150" Width="150" Name="imgUser"></Image>
-                        <Button Name="Next" Click="Next_Click">Вперед</Button>
-                    </StackPanel>
-                    <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>
-
-
-
                     <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxName"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxSurname"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxPatronymic"></TextBox>
+                    <StackPanel Name="Gallery"  Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
+                        <Image Height="150" Width="150" Name="imgUser"></Image>
+                        <Button Name="Next" Click="Next_Click">Вперед</Button>
+                    </StackPanel>
+                    <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>
                     <StackPanel Orientation="Horizontal">
                         <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
                         <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonPassword" Click="buttonPassword_Click">Изменить пароль</Button>
