@@ -33,23 +33,69 @@
         <ScrollViewer Grid.Row="1">
             <Border  Margin="50,10,50,20" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
                 <StackPanel  Orientation="Vertical">
-                    <Image Height="170" Width="170" Name="imUser" Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото</Button>
-                        <Button Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото</Button>
-                        <Button Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое</Button>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource tbList}" Margin="0,10,0,0" HorizontalAlignment="Center">Фото:</TextBlock>
+                            <Image Height="170" Width="170" Name="imUser" Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <Button Margin="0,10,0,0" Width="150" Template="{StaticResource btnPhoto}" Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            Нажмите для добаления нового фото
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}" Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            Нажмите для добаления нескльких фото
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}"  Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            Нажмите для изменения фото на старое
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel  Name="Gallery"  Orientation="Vertical" >
+                            <TextBlock Style="{StaticResource tbList}" Margin="0,10,0,0" HorizontalAlignment="Center">Галерея:</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="Back" Click="Back_Click" IsEnabled="False">
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            Нажмите для пролистывания назад
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                    <Button.OpacityMask>
+                                        <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
+                                    </Button.OpacityMask>
+                                </Button>
+                                <Image Height="150" Width="150" Name="imgUser"></Image>
+                                <Button Name="Next" Click="Next_Click">
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            Нажмите для пролистывания вперед
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                    <Button.OpacityMask>
+                                        <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
+                                    </Button.OpacityMask>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                    <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Имя:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxName"></TextBox>
-            <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Фамилия:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxSurname"></TextBox>
-            <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Отчество:</TextBlock>
                     <TextBox IsReadOnly="True" Name="textboxPatronymic"></TextBox>
-                    <StackPanel Name="Gallery"  Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
-                        <Image Height="150" Width="150" Name="imgUser"></Image>
-                        <Button Name="Next" Click="Next_Click">Вперед</Button>
-                    </StackPanel>
+                    
+                    
                     <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>
                     <StackPanel Orientation="Horizontal">
                         <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
