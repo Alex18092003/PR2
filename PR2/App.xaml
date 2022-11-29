@@ -240,5 +240,22 @@
             </Border>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="btnResourseB">
+            <Border Width="40" Height="40" 
+                    Background="#FFBF0F74"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Lucida Sans Unicode"
+                   Foreground="White"
+                    />
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>

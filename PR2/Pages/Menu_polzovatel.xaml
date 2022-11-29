@@ -52,19 +52,13 @@
                                         </ToolTip>
                                     </Button.ToolTip>
                                 </Button>
-                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}"  Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое
-                                    <Button.ToolTip>
-                                        <ToolTip>
-                                            Нажмите для изменения фото на старое
-                                        </ToolTip>
-                                    </Button.ToolTip>
-                                </Button>
+                                
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel  Name="Gallery"  Orientation="Vertical" >
+                        <StackPanel Name="Gallery"  Orientation="Vertical">
                             <TextBlock Style="{StaticResource tbList}" Margin="0,10,0,0" HorizontalAlignment="Center">Галерея:</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <Button Name="Back" Click="Back_Click" IsEnabled="False">
+                                <Button Name="Back" Click="Back_Click" IsEnabled="False" Template="{StaticResource btnResourseB}">
                                     <Button.ToolTip>
                                         <ToolTip>
                                             Нажмите для пролистывания назад
@@ -74,26 +68,33 @@
                                         <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
                                     </Button.OpacityMask>
                                 </Button>
-                                <Image Height="150" Width="150" Name="imgUser"></Image>
-                                <Button Name="Next" Click="Next_Click">
+                                <Image Height="170" Width="170" Name="imgUser"  Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
+                                <Button IsEnabled="False" Name="Next" Click="Next_Click"  Template="{StaticResource btnResourseB}">
                                     <Button.ToolTip>
                                         <ToolTip>
                                             Нажмите для пролистывания вперед
                                         </ToolTip>
                                     </Button.ToolTip>
                                     <Button.OpacityMask>
-                                        <ImageBrush ImageSource="/Resourse/pngwing.com.png"/>
+                                        <ImageBrush ImageSource="/Resourse/pngwing.png"/>
                                     </Button.OpacityMask>
                                 </Button>
                             </StackPanel>
+                            <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}"  Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Нажмите для изменения фото на старое
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Имя:</TextBlock>
-                    <TextBox IsReadOnly="True" Name="textboxName"></TextBox>
-                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Фамилия:</TextBlock>
-                    <TextBox IsReadOnly="True" Name="textboxSurname"></TextBox>
-                    <TextBlock Style="{StaticResource tbList}" Margin="10,10,0,0">Отчество:</TextBlock>
-                    <TextBox IsReadOnly="True" Name="textboxPatronymic"></TextBox>
+                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Имя:</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxName"></TextBox>
+                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Фамилия:</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxSurname"></TextBox>
+                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Отчество:</TextBlock>
+                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxPatronymic"></TextBox>
                     
                     
                     <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>

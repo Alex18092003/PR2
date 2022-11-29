@@ -25,6 +25,7 @@ namespace PR2
     public partial class Menu_polzovatel : Page
     {
         Specialists specialists;
+        int n = 0;
 
         void showImage(byte[] Barray, System.Windows.Controls.Image img)
         {
@@ -53,7 +54,13 @@ namespace PR2
             {
                 byte[] Bar = p[p.Count - 1].PhotoBinary;
                 showImage(Bar, imUser);
+                showImage(Bar, imgUser);
             }
+            //if (p.Count != 0)
+            //{
+            //    byte[] Bar = p[n].PhotoBinary;
+            //    showImage(Bar, imgUser);
+            //}
 
         }
 
@@ -129,14 +136,14 @@ namespace PR2
                 MessageBox.Show("Что-то пошло не так с добавлением нескольких фото");
             }
         }
-        int n = 0;
+
+    
         private void buttonOldPhoto_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Gallery.Visibility = Visibility.Visible;
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-                if (p != null)
+                if (p.Count != 0)
                 {
                     byte[] Bar = p[n].PhotoBinary;
                     showImage(Bar, imgUser);
@@ -156,7 +163,7 @@ namespace PR2
             {
                 Back.IsEnabled = true;
             }
-            if (p != null)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
             {
 
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
@@ -166,6 +173,10 @@ namespace PR2
             {
                 Next.IsEnabled = false;
             }
+            //if (Next.IsEnabled == false)
+            //{
+            //    Next.IsEnabled = true;
+            //}
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -176,7 +187,7 @@ namespace PR2
             {
                 Next.IsEnabled = true;
             }
-            if (p != null)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
             {
 
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
