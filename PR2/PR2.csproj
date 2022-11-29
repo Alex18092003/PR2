@@ -236,6 +236,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\eye_slash_visible_hide_hidden_show_icon_145987.png" />
+    <Resource Include="Resourse\eye_visible_hide_hidden_show_icon_145988.png" />
     <Resource Include="Resourse\pngwing.png" />
     <Resource Include="Resourse\b128868d950f8815390959a28ae6da61.jpg" />
     <Resource Include="Resourse\account_avatar_face_man_people_profile_user_icon_123197.png" />

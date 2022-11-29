@@ -54,13 +54,8 @@ namespace PR2
             {
                 byte[] Bar = p[p.Count - 1].PhotoBinary;
                 showImage(Bar, imUser);
-                showImage(Bar, imgUser);
+                
             }
-            //if (p.Count != 0)
-            //{
-            //    byte[] Bar = p[n].PhotoBinary;
-            //    showImage(Bar, imgUser);
-            //}
 
         }
 
@@ -142,6 +137,7 @@ namespace PR2
         {
             try
             {
+                Gallery.Visibility = Visibility.Visible;
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
                 if (p.Count != 0)
                 {
@@ -173,10 +169,6 @@ namespace PR2
             {
                 Next.IsEnabled = false;
             }
-            //if (Next.IsEnabled == false)
-            //{
-            //    Next.IsEnabled = true;
-            //}
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
