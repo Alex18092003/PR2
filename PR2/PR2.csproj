@@ -108,6 +108,9 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\PartialEntryClass.cs" />
+    <Compile Include="Pages\WindowPassword.xaml.cs">
+      <DependentUpon>WindowPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\WindowPerson.xaml.cs">
       <DependentUpon>WindowPerson.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SpecialistsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindowPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

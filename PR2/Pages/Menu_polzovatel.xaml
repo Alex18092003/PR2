@@ -49,14 +49,18 @@
 
 
                     <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
-            <TextBox Name="textboxName"></TextBox>
+                    <TextBox IsReadOnly="True" Name="textboxName"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Фамилия:</TextBlock>
-            <TextBox Name="textboxSurname"></TextBox>
+                    <TextBox IsReadOnly="True" Name="textboxSurname"></TextBox>
             <TextBlock Style="{StaticResource tbList}">Отчество:</TextBlock>
-            <TextBox Name="textboxPatronymic"></TextBox>
-            <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
-              
-            </StackPanel>
+                    <TextBox IsReadOnly="True" Name="textboxPatronymic"></TextBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
+                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonPassword" Click="buttonPassword_Click">Изменить пароль</Button>
+                    </StackPanel>
+           
+
+                </StackPanel>
             </Border>
         </ScrollViewer>
     </Grid>
