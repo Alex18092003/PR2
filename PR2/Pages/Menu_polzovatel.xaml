@@ -36,7 +36,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Style="{StaticResource tbList}" Margin="0,10,0,0" HorizontalAlignment="Center">Фото:</TextBlock>
-                            <Image Height="170" Width="170" Name="imUser" Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
+                            <Image Height="170" Width="170" Name="imUser" Source="/Resourse/no_photo.jpg"></Image>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                                 <Button Margin="0,10,0,0" Width="150" Template="{StaticResource btnPhoto}" Name="buttonNewPhoto" Click="buttonNewPhoto_Click">Новое фото
                                     <Button.ToolTip>
@@ -45,14 +45,8 @@
                                         </ToolTip>
                                     </Button.ToolTip>
                                 </Button>
-                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}" Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото
-                                    <Button.ToolTip>
-                                        <ToolTip>
-                                            Нажмите для добаления нескльких фото
-                                        </ToolTip>
-                                    </Button.ToolTip>
-                                </Button>
-                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}"  Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Изменить фото на старое
+                                
+                                <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}"  Name="buttonOldPhoto" Click="buttonOldPhoto_Click">Открыть галерею
                                     <Button.ToolTip>
                                         <ToolTip>
                                             Нажмите для изменения фото на старое
@@ -61,42 +55,99 @@
                                 </Button>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Name="Gallery" Visibility="Collapsed" Orientation="Vertical">
+                        <StackPanel HorizontalAlignment="Center" Margin="50,0,0,0" Name="Gallery" Visibility="Collapsed" Orientation="Vertical">
                             <TextBlock Style="{StaticResource tbList}" Margin="0,10,0,0" HorizontalAlignment="Center">Галерея:</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Name="Back" Click="Back_Click" IsEnabled="False">
-                                    fgf<Button.ToolTip>
-                                        <ToolTip>
-                                            Нажмите для пролистывания назад
-                                        </ToolTip>
-                                    </Button.ToolTip>
-                  
-                                </Button>
-                                <Image Height="170" Width="170" Name="imgUser"  Source="/Resourse/b128868d950f8815390959a28ae6da61.jpg"></Image>
-                                <Button  Name="Next" Click="Next_Click"  >
-                                    dgth<Button.ToolTip>
-                                        <ToolTip>
-                                            Нажмите для пролистывания вперед
-                                        </ToolTip>
-                                    </Button.ToolTip>
-                                  
-                                </Button>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                                <StackPanel Height="60" Width="60" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Template="{StaticResource btnResoursee}" Name="Back" Click="Back_Click" IsEnabled="False">
+                                        <Button.OpacityMask>
+                                            <ImageBrush  ImageSource="/Resourse/pngwing.com.png"/>
+                                        </Button.OpacityMask>
+                                        <Button.ToolTip>
+                                            <ToolTip>
+                                                Нажмите для пролистывания назад
+                                            </ToolTip>
+                                        </Button.ToolTip>
+
+                                    </Button>
+                                </StackPanel>
+                                <Image HorizontalAlignment="Center" IsEnabled="False" Height="170" Width="170" Name="imgUser"  Source="/Resourse/no_photo.jpg"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="60" Width="60">
+                                    <Button Template="{StaticResource btnResoursee}"  Name="Next" Click="Next_Click"  >
+                                        <Button.OpacityMask>
+                                            <ImageBrush ImageSource="/Resourse/pngwing.png"/>
+                                        </Button.OpacityMask>
+                                        <Button.ToolTip>
+                                            <ToolTip>
+                                                Нажмите для пролистывания вперед
+                                            </ToolTip>
+                                        </Button.ToolTip>
+                                    </Button>
+                                </StackPanel>
+                                
+                         
                             </StackPanel>
-                            
+                            <Button Click="buttonSelected_Click" Width="290" Template="{StaticResource btnPhoto}" Margin="0,10,0,0" Name="buttonSelected">Изменить фото на выбранное
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Нажмите для изменения на выбранное фото
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
+                            <Button Margin="0,10,0,0" Width="270" Template="{StaticResource btnPhoto}" Name="buttonFewPhotos" Click="buttonFewPhotos_Click">Добавить несколько фото
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Нажмите для добаления нескольких фото
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
+                            <Button Click="buttonDelet_Click" Width="270" Template="{StaticResource btnPhoto}" Margin="0,10,0,0" Name="buttonDelet">Удалить фото из галереи
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Нажмите для удаления выбранного фото
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Имя:</TextBlock>
-                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxName"></TextBox>
-                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Фамилия:</TextBlock>
-                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxSurname"></TextBox>
-                    <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Отчество:</TextBlock>
-                    <TextBox Style="{StaticResource tbBox}" Margin="30,0,30,0" IsReadOnly="True" Name="textboxPatronymic"></TextBox>
-                    
-                    
-                    <Button Name="btnOld" Click="btnOld_Click">Изменить фото на выбранное</Button>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
-                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,0" Name="buttonPassword" Click="buttonPassword_Click">Изменить пароль</Button>
+                    <Border  Margin="10,10,10,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                               <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Имя:</TextBlock>
+                            <TextBlock Style="{StaticResource tbList}"  Margin="30,0,30,10"  Name="textboxName"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource tbList}" Margin="60,10,0,0">Фамилия:</TextBlock>
+                        <TextBlock Style="{StaticResource tbList}" Margin="60,0,30,10"  Name="textboxSurname"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource tbList}" Margin="60,10,0,0">Отчество:</TextBlock>
+                        <TextBlock Style="{StaticResource tbList}" Margin="60,0,30,10" Name="textboxPatronymic"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    </Border>
+                    <Border  Margin="10,10,10,10" Padding="5" CornerRadius="5" BorderThickness="1"  BorderBrush="#FFBF0F74">
+                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource tbList}" Margin="30,10,0,0">Пол:</TextBlock>
+                            <TextBlock Style="{StaticResource tbList}" Margin="30,0,30,10" Name="textboxPol"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource tbList}" Margin="70,10,0,0">Должность:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="70,0,30,10" Name="textboxDolgnost"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource tbList}" Margin="120,10,0,0">Дата рождения:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="120,0,30,10" Name="textboxData"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    </Border>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,10" Name="buttonChange" Click="buttonChange_Click">Изменить данные</Button>
+                        <Button Template="{StaticResource btnPink}" Margin="0,20,0,10" Name="buttonPassword" Click="buttonPassword_Click">Изменить пароль</Button>
                     </StackPanel>
            
 

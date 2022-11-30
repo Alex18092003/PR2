@@ -28,6 +28,7 @@ namespace PR2.Pages
             textboxName.Text = specialists.Name;
             textboxSurname.Text = specialists.Surname;
             textboxPatronymic.Text = specialists.Patronymic;
+
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -132,6 +133,16 @@ namespace PR2.Pages
             {
                 MessageBox.Show("Что-то пошло не так с запретом ввода чисел");
             }
+        }
+
+        private void textboxPol_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
+
+        private void textboxPol_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

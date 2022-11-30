@@ -216,9 +216,9 @@
         </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="btnResoursee">
-            <Border Width="50" Height="50" 
+            <Border Width="40" Height="40" 
                     Background="#FFBF0F74"                   
-                     Margin="0,10,680,0"
+                     Margin="10"
                     CornerRadius="20"
                     >
                 <ContentControl 

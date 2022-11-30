@@ -48,6 +48,9 @@ namespace PR2
             textboxName.Text = specialists.Name;
             textboxSurname.Text = specialists.Surname;
             textboxPatronymic.Text = specialists.Patronymic;
+            textboxData.Text = specialists.Date_of_birth.ToString("dd MMMM yyyy");
+            textboxDolgnost.Text = specialists.Dolgnosti.Dolgnost;
+            textboxPol.Text = specialists.Genders.Gender;
 
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
             if (p.Count != 0)
@@ -82,6 +85,7 @@ namespace PR2
         {
             try
             {
+                Gallery.Visibility = Visibility.Collapsed;
                 Photo p = new Photo(); // создание объекта для добавления записи в таблицу, где хранится фото
                 p.Kod_specialists = specialists.Kod_specialist;  // присваиваем значение полю Kod_specialist (id авторизованного пользователя)
 
@@ -107,6 +111,7 @@ namespace PR2
         {
             try
             {
+                
                 OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
                 OFD.Multiselect = true;  // открытие диалогового окна с возможностью выбора нескольких элементов
                 if (OFD.ShowDialog() == true)  // пока диалоговое окно открыто, будет в цикле записывать каждое выбранное изображение в БД
@@ -121,10 +126,14 @@ namespace PR2
                         byte[] Barray = (byte[])IC.ConvertTo(SDI, typeof(byte[]));  // создаем байтовый массив для хранения картинки
                         p.PhotoBinary = Barray;  // заполяем поле photoBinary полученным байтовым массивом
                         BaseClass.tBE.Photo.Add(p);  // добавляем объект в таблицу БД
+                       
                     }
+                    BaseClass.tBE.SaveChanges();
+                    MessageBox.Show("Фото добавлены");
+                    Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
+                  
                 }
-                BaseClass.tBE.SaveChanges();
-                MessageBox.Show("Фото добавлены");
+               
             }
             catch
             {
@@ -137,13 +146,25 @@ namespace PR2
         {
             try
             {
-                Gallery.Visibility = Visibility.Visible;
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
                 if (p.Count != 0)
                 {
+                    Gallery.Visibility = Visibility.Visible;
                     byte[] Bar = p[n].PhotoBinary;
                     showImage(Bar, imgUser);
                 }
+                else
+                {
+                    MessageBox.Show("В галереи нет фото!\nДобавьте фото");
+                }
+                if (p.Count == 1)
+                {
+                    Next.IsEnabled = false;
+                   
+                    Next.Visibility = Visibility.Collapsed;
+
+                }
+                Back.Visibility = Visibility.Collapsed;
             }
             catch
             {
@@ -158,6 +179,7 @@ namespace PR2
             if (Back.IsEnabled == false)
             {
                 Back.IsEnabled = true;
+                Back.Visibility = Visibility.Visible;
             }
             if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
             {
@@ -165,9 +187,15 @@ namespace PR2
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
                 showImage(Bar, imgUser);
             }
+            if(n == p.Count)
+            {
+                Next.IsEnabled = true;
+                Next.Visibility = Visibility.Visible;
+            }
             if (n == p.Count - 1)
             {
                 Next.IsEnabled = false;
+                Next.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -178,6 +206,7 @@ namespace PR2
             if (Next.IsEnabled == false)
             {
                 Next.IsEnabled = true;
+                Next.Visibility = Visibility.Visible;
             }
             if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
             {
@@ -189,15 +218,11 @@ namespace PR2
             if (n == 0)
             {
                 Back.IsEnabled = false;
+                Back.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void btnOld_Click(object sender, RoutedEventArgs e)
-        {
-            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-            byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
-            showImage(Bar, imUser);  // отображаем картинку
-        }
+
 
         private void buttonPassword_Click(object sender, RoutedEventArgs e)
         {
@@ -212,6 +237,26 @@ namespace PR2
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void buttonSelected_Click(object sender, RoutedEventArgs e)
+        {
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+            showImage(Bar, imUser);
+            Gallery.Visibility = Visibility.Collapsed;
+            MessageBox.Show("Фото изменено");// отображаем картинку
+        }
+
+        private void buttonDelet_Click(object sender, RoutedEventArgs e)
+        {
+            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+            BaseClass.tBE.Photo.Remove(p[n]);
+            BaseClass.tBE.SaveChanges();
+            Gallery.Visibility = Visibility.Collapsed;
+            //buttonOldPhoto_Click(sender, e);
+            Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
+            MessageBox.Show("Фото удалено");
         }
     }
 }

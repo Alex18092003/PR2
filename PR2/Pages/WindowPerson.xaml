@@ -7,15 +7,53 @@
         mc:Ignorable="d"
         Title="WindowPerson" Height="310" Width="500">
     <Grid Background="#19BF0F74">
-        <StackPanel Margin="20,10,20,0">
-            <TextBlock  Style="{StaticResource tbList}" HorizontalAlignment="Center">Введите новые данные</TextBlock>
-            <TextBlock Margin="0,0,0,0" Style="{StaticResource tbList}">Фамилия:</TextBlock>
-            <TextBox Margin="0,5,0,0"  Style="{StaticResource tbBox}" PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
-            <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
-            <TextBox Margin="0,5,0,0"  Style="{StaticResource tbBox}" PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
-            <TextBlock Margin="0,5,0,0" Style="{StaticResource tbList}">Отчество:</TextBlock>
+        <StackPanel>
+        <TextBlock  Style="{StaticResource tbList}" HorizontalAlignment="Center">Введите новые данные</TextBlock>
+        <StackPanel Margin="20,0,20,0" Orientation="Horizontal">
+            <StackPanel Margin="10,0,10,10">
+                <TextBlock  Style="{StaticResource tbList}">Фамилия:</TextBlock>
+                <TextBox   Style="{StaticResource tbBox}" PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="10,0,10,10">
+                <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
+                <TextBox  Style="{StaticResource tbBox}" PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="10,0,10,10">
+
+                <TextBlock  Style="{StaticResource tbList}">Отчество:</TextBlock>
             <TextBox  Style="{StaticResource tbBox}" TextChanged="textboxPatronymic_TextChanged" PreviewTextInput="textboxPatronymic_PreviewTextInput" Name="textboxPatronymic"></TextBox>
-            <Button Template="{StaticResource btnPink}" Margin="0,10,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
+        </StackPanel>
+                <StackPanel Margin="10,0,10,10">
+
+                    <TextBlock  Style="{StaticResource tbList}">Пол:</TextBlock>
+                    <RadioButton Name="rbGen" Content ="Женский"></RadioButton>
+                    <RadioButton Name="rbMyg" Content ="Мужской"></RadioButton>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="20,0,20,0">
+            <StackPanel Margin="10,0,10,10">
+                    <TextBlock  Style="{StaticResource tbList}">Дата рождения:</TextBlock>
+                    <DatePicker Name="dpBirthday">
+                    <DatePicker.ToolTip>
+                        <ToolTip>
+                            Выберите дату своего рождения
+                        </ToolTip>
+                    </DatePicker.ToolTip>
+                </DatePicker>
+            </StackPanel>
+                <StackPanel Margin="10,0,10,10">
+                    <TextBlock  Style="{StaticResource tbList}">Должность:</TextBlock>
+                    <ComboBox  Name="cbDolgn">
+                    <ComboBox.ToolTip>
+                        <ToolTip>
+                            Выберите свою специализацию
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                    </ComboBox>
+                </StackPanel>
+                </StackPanel>
+        <Button Template="{StaticResource btnPink}" Margin="0,10,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
         </StackPanel>
     </Grid>
 </Window>
