@@ -134,12 +134,12 @@
                             <TextBlock Style="{StaticResource tbList}" Margin="30,0,30,10" Name="textboxPol"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource tbList}" Margin="70,10,0,0">Должность:</TextBlock>
-                    <TextBlock Style="{StaticResource tbList}" Margin="70,0,30,10" Name="textboxDolgnost"></TextBlock>
+                        <TextBlock Style="{StaticResource tbList}" Margin="60,10,0,0">Должность:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="60,0,30,10" Name="textboxDolgnost"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Style="{StaticResource tbList}" Margin="120,10,0,0">Дата рождения:</TextBlock>
-                    <TextBlock Style="{StaticResource tbList}" Margin="120,0,30,10" Name="textboxData"></TextBlock>
+                            <TextBlock Style="{StaticResource tbList}" Margin="60,10,0,0">Дата рождения:</TextBlock>
+                    <TextBlock Style="{StaticResource tbList}" Margin="60,0,30,10" Name="textboxData"></TextBlock>
                         </StackPanel>
                     </StackPanel>
                     </Border>

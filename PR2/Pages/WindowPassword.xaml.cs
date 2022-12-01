@@ -32,7 +32,7 @@ namespace PR2.Pages
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            if (textLogin.Text != "")
+            if (textLogin.Text != "" && textPassword.Password != "" && textPasswordNew.Password != "" && textPasswordNew2.Password != "")
             {
                 int p = textPassword.Password.GetHashCode();
                 Specialists sp = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == specialists.Login && x.Password == p);
@@ -81,11 +81,15 @@ namespace PR2.Pages
                     BaseClass.tBE.SaveChanges();
                     this.Close();
                     MessageBox.Show("Данные изменены");
-                } 
+                }
+                else
+                {
+                    MessageBox.Show($"Старый пароль введен не верно");
+                }
             }
             else
             {
-                MessageBox.Show($"Не все поля заполнены");
+                MessageBox.Show($"Должны быть заполнены все поля");
             }
         }
 

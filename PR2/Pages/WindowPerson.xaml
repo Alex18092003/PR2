@@ -5,36 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR2.Pages"
         mc:Ignorable="d"
-        Title="WindowPerson" Height="310" Width="500">
+        Title="WindowPerson" Height="250" Width="520">
     <Grid Background="#19BF0F74">
         <StackPanel>
         <TextBlock  Style="{StaticResource tbList}" HorizontalAlignment="Center">Введите новые данные</TextBlock>
-        <StackPanel Margin="20,0,20,0" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0" Orientation="Horizontal">
             <StackPanel Margin="10,0,10,10">
                 <TextBlock  Style="{StaticResource tbList}">Фамилия:</TextBlock>
-                <TextBox   Style="{StaticResource tbBox}" PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
+                <TextBox Width="140"  Style="{StaticResource tbBox}" PreviewTextInput="textboxSurname_PreviewTextInput"  TextChanged="textboxSurname_TextChanged" Name="textboxSurname"></TextBox>
             </StackPanel>
             <StackPanel Margin="10,0,10,10">
                 <TextBlock Style="{StaticResource tbList}">Имя:</TextBlock>
-                <TextBox  Style="{StaticResource tbBox}" PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
+                    <TextBox  Width="140" Style="{StaticResource tbBox}" PreviewTextInput="textboxName_PreviewTextInput"  TextChanged="textboxName_TextChanged" Name="textboxName"></TextBox>
             </StackPanel>
             <StackPanel Margin="10,0,10,10">
 
                 <TextBlock  Style="{StaticResource tbList}">Отчество:</TextBlock>
-            <TextBox  Style="{StaticResource tbBox}" TextChanged="textboxPatronymic_TextChanged" PreviewTextInput="textboxPatronymic_PreviewTextInput" Name="textboxPatronymic"></TextBox>
+                    <TextBox Width="140" Style="{StaticResource tbBox}" TextChanged="textboxPatronymic_TextChanged" PreviewTextInput="textboxPatronymic_PreviewTextInput" Name="textboxPatronymic"></TextBox>
         </StackPanel>
-                <StackPanel Margin="10,0,10,10">
-
-                    <TextBlock  Style="{StaticResource tbList}">Пол:</TextBlock>
-                    <RadioButton Name="rbGen" Content ="Женский"></RadioButton>
-                    <RadioButton Name="rbMyg" Content ="Мужской"></RadioButton>
-                </StackPanel>
+                
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="20,0,20,0">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,0">
             <StackPanel Margin="10,0,10,10">
                     <TextBlock  Style="{StaticResource tbList}">Дата рождения:</TextBlock>
-                    <DatePicker Name="dpBirthday">
+                    <DatePicker FontFamily="Lucida Sans Unicode"  FontSize ="16"  Name="dpBirthday">
                     <DatePicker.ToolTip>
                         <ToolTip>
                             Выберите дату своего рождения
@@ -44,7 +39,7 @@
             </StackPanel>
                 <StackPanel Margin="10,0,10,10">
                     <TextBlock  Style="{StaticResource tbList}">Должность:</TextBlock>
-                    <ComboBox  Name="cbDolgn">
+                    <ComboBox  FontFamily="Lucida Sans Unicode" FontSize ="16"  Name="cbDolgn">
                     <ComboBox.ToolTip>
                         <ToolTip>
                             Выберите свою специализацию
@@ -52,8 +47,19 @@
                     </ComboBox.ToolTip>
                     </ComboBox>
                 </StackPanel>
+                <StackPanel Margin="10,0,10,10">
+
+                    <TextBlock  Style="{StaticResource tbList}">Пол:</TextBlock>
+                    <ComboBox FontFamily="Lucida Sans Unicode" FontSize ="16"  Name="cbPol">
+                        <ComboBox.ToolTip>
+                            <ToolTip>
+                                Выберите свой пол
+                            </ToolTip>
+                        </ComboBox.ToolTip>
+                    </ComboBox>
                 </StackPanel>
-        <Button Template="{StaticResource btnPink}" Margin="0,10,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
+                </StackPanel>
+        <Button Template="{StaticResource btnPink}" Margin="0,0,0,0" Name="buttonSave" Click="buttonSave_Click">Сохранить изменения</Button>
         </StackPanel>
     </Grid>
 </Window>

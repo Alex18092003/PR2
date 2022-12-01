@@ -174,6 +174,8 @@ namespace PR2
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
+
+
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
             n++;
             if (Back.IsEnabled == false)
@@ -187,7 +189,7 @@ namespace PR2
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
                 showImage(Bar, imgUser);
             }
-            if(n == p.Count)
+            if (n == p.Count)
             {
                 Next.IsEnabled = true;
                 Next.Visibility = Visibility.Visible;
