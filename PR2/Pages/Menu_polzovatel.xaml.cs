@@ -25,7 +25,7 @@ namespace PR2
     public partial class Menu_polzovatel : Page
     {
         Specialists specialists;
-        int n = 0;
+        public object OpenFileDialoge { get; private set; }
 
         void showImage(byte[] Barray, System.Windows.Controls.Image img)
         {
@@ -147,7 +147,7 @@ namespace PR2
             try
             {
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-                if (p.Count != 0)
+                if (p.Count>1)
                 {
                     Gallery.Visibility = Visibility.Visible;
                     byte[] Bar = p[n].PhotoBinary;
@@ -157,14 +157,14 @@ namespace PR2
                 {
                     MessageBox.Show("В галереи нет фото!\nДобавьте фото");
                 }
-                if (p.Count == 1)
-                {
-                    Next.IsEnabled = false;
+                //if (p.Count == 1)
+                //{
+                //    Next.IsEnabled = false;
                    
-                    Next.Visibility = Visibility.Collapsed;
+                //    Next.Visibility = Visibility.Collapsed;
 
-                }
-                Back.Visibility = Visibility.Collapsed;
+                //}
+                //Back.Visibility = Visibility.Collapsed;
             }
             catch
             {
@@ -172,56 +172,46 @@ namespace PR2
             }
         }
 
+        int n = 0;
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-
-
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
             n++;
-            if (Back.IsEnabled == false)
-            {
-                Back.IsEnabled = true;
-                Back.Visibility = Visibility.Visible;
-            }
-            if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            if (p != null)
             {
 
-                byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
-                showImage(Bar, imgUser);
-            }
-            if (n == p.Count)
-            {
-                Next.IsEnabled = true;
-                Next.Visibility = Visibility.Visible;
+                byte[] Bar = p[n].PhotoBinary; // считываем изображение из базы (считываем байтовый массив двоичных данных)
+                
+                showImage(Bar, imgUser);                                 //    showImage(Bar, imgUser);
             }
             if (n == p.Count - 1)
             {
-                Next.IsEnabled = false;
-                Next.Visibility = Visibility.Collapsed;
+                n--;
             }
+
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-            n--;
-            if (Next.IsEnabled == false)
+            if(p != null)
             {
-                Next.IsEnabled = true;
-                Next.Visibility = Visibility.Visible;
-            }
-            if (p.Count != 0)  // если объект не пустой, начинает переводить байтовый массив в изображение
-            {
-
+                if(n == 0)
+                {
+                    n = p.Count;
+                }
+                if(n == -1)
+                {
+                    n = p.Count - 1;
+                }
+                n--;
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
-                BitmapImage BI = new BitmapImage();  // создаем объект для загрузки изображения
-                showImage(Bar, imgUser);
+                BitmapImage BI = new BitmapImage();                                  //    BitmapImage BI = new BitmapImage();  // создаем объект для загрузки изображения
+                showImage(Bar, imgUser);                                                                //    showImage(Bar, imgUser);
+
             }
-            if (n == 0)
-            {
-                Back.IsEnabled = false;
-                Back.Visibility = Visibility.Collapsed;
-            }
+           
         }
 
 
@@ -243,22 +233,38 @@ namespace PR2
 
         private void buttonSelected_Click(object sender, RoutedEventArgs e)
         {
-            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-            byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
-            showImage(Bar, imUser);
-            Gallery.Visibility = Visibility.Collapsed;
-            MessageBox.Show("Фото изменено");// отображаем картинку
+            try
+            {
+                List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+                byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+                showImage(Bar, imUser);
+                Gallery.Visibility = Visibility.Collapsed;
+                MessageBox.Show("Фото изменено");// отображаем картинку
+            }
+            catch
+            {
+                MessageBox.Show("Данное фото уже стоит");
+            }
+
         }
 
         private void buttonDelet_Click(object sender, RoutedEventArgs e)
         {
-            List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-            BaseClass.tBE.Photo.Remove(p[n]);
-            BaseClass.tBE.SaveChanges();
-            Gallery.Visibility = Visibility.Collapsed;
-            //buttonOldPhoto_Click(sender, e);
-            Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
-            MessageBox.Show("Фото удалено");
+            try
+            {
+
+                List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
+                BaseClass.tBE.Photo.Remove(p[n]);
+                BaseClass.tBE.SaveChanges();
+                Gallery.Visibility = Visibility.Collapsed;
+                //buttonOldPhoto_Click(sender, e);
+                Framec.MainFrame.Navigate(new Menu_polzovatel(specialists));
+                MessageBox.Show("Фото удалено");
+            }
+            catch
+            {
+                MessageBox.Show("Нельзя удалить данное фото");
+            }
         }
     }
 }

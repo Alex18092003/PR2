@@ -12,6 +12,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
+            <RowDefinition Height="2*">
+            </RowDefinition>
             <RowDefinition  Height="6*">
             </RowDefinition>
             <RowDefinition Height="1*">
@@ -30,8 +32,66 @@
             <TextBlock Style="{StaticResource block}">Записи</TextBlock>
         </StackPanel>
 
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock  FontSize="16" Margin="5,0,0,0">Фильтры:</TextBlock>
+                <TextBlock VerticalAlignment="Center" FontSize="12" Margin="5,0,0,0">Клиент</TextBlock>
+                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbFiltr">
+                    <ComboBox.ToolTip>
+                        <ToolTip>
+                            Выберите для фильтрации
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                </ComboBox>
+                <StackPanel>
+                    <TextBlock Margin="5,0,0,0" FontSize="12" >Выберите критерии поиска</TextBlock>
+                    <RadioButton Margin="5,0,0,0" Name="Surname" Content="По фамилии"  />
+                    <RadioButton Margin="5,0,0,0"  Name="Name" Content="По имени" />
+                    <RadioButton Margin="5,0,0,0"  Name="No" Content="Ничего"  IsChecked="True"/>
+                </StackPanel>
+                <TextBlock Margin="10,0,0,5" FontSize="12">Имя</TextBlock>
+                <TextBox Name="tbName" Margin="10,0,0,0" Width="130"></TextBox>
+                <StackPanel>
+                    
+                    <Button  Name="btnSearch" Template ="{StaticResource btnSort}">Поиск
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Нажмите для поиска
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Template ="{StaticResource btnSort}">Сброс
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Нажмите для сброса всего
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
 
-        <ListView  BorderThickness="0" Background="#19BF0F74" Grid.Row="1" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock  FontSize="16" Margin="5,0,0,0">Сортировка:</TextBlock>
+                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbSort">
+                    <ComboBox.ToolTip>
+                        <ToolTip>
+                            Выберите сортировку
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                </ComboBox>
+                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbSort2">
+                    <ComboBox.ToolTip>
+                        <ToolTip>
+                            Выберите сортировку
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                </ComboBox>
+                
+            </StackPanel>
+            
+        </StackPanel>
+        
+        <ListView  BorderThickness="0" Background="#19BF0F74" Grid.Row="2" Name="listEntry" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel HorizontalAlignment="Center"></StackPanel>
@@ -94,7 +154,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel  Grid.Row="2" Orientation="Horizontal">
+        <StackPanel  Grid.Row="3" Orientation="Horizontal">
             <Button Name="btnAdd" Template="{StaticResource btnPink}" Click="btnAdd_Click" Margin="300,0,0,0">Добавить
                 <Button.ToolTip>
                     <ToolTip>Добавить запись</ToolTip>
