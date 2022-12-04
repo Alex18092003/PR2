@@ -47,6 +47,7 @@ namespace PR2
         public Menu_polzovatel(Specialists specialists)
         {
             InitializeComponent();
+
             this.specialists = specialists;
             textboxName.Text = specialists.Name;
             textboxSurname.Text = specialists.Surname;

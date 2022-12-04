@@ -32,34 +32,32 @@
             <TextBlock Style="{StaticResource block}">Записи</TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock  FontSize="16" Margin="5,0,0,0">Фильтры:</TextBlock>
-                <TextBlock VerticalAlignment="Center" FontSize="12" Margin="5,0,0,0">Клиент</TextBlock>
-                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbFiltr">
-                    <ComboBox.ToolTip>
-                        <ToolTip>
-                            Выберите для фильтрации
-                        </ToolTip>
-                    </ComboBox.ToolTip>
-                </ComboBox>
-                <StackPanel>
-                    <TextBlock Margin="5,0,0,0" FontSize="12" >Выберите критерии поиска</TextBlock>
-                    <RadioButton Margin="5,0,0,0" Name="Surname" Content="По фамилии"  />
-                    <RadioButton Margin="5,0,0,0"  Name="Name" Content="По имени" />
-                    <RadioButton Margin="5,0,0,0"  Name="No" Content="Ничего"  IsChecked="True"/>
-                </StackPanel>
-                <TextBlock Margin="10,0,0,5" FontSize="12">Имя</TextBlock>
-                <TextBox Name="tbName" Margin="10,0,0,0" Width="130"></TextBox>
-                <StackPanel>
-                    
-                    <Button  Name="btnSearch" Template ="{StaticResource btnSort}">Поиск
-                        <Button.ToolTip>
+        <StackPanel Background="#19BF0F74"  Grid.Row="1">
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel VerticalAlignment="Center">
+                   
+                    <ComboBox Margin="20,0,0,0" FontFamily="Lucida Sans Unicode" Width="140" Height="25" FontSize ="12" Name="cbFiltr" SelectionChanged="cbFiltr_SelectionChanged">
+                        <ComboBox.ToolTip>
                             <ToolTip>
-                                Нажмите для поиска
+                                Выберите для фильтрации
                             </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
+                        </ComboBox.ToolTip>
+                    </ComboBox>
+                </StackPanel>
+                
+
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Unchecked="checkboxData_Checked" Checked="checkboxData_Checked"  Name="checkboxData">
+                        Предстоящие записи
+                    </CheckBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Margin="10,0,0,0" FontSize="12">Введите фамилию для поиска</TextBlock>
+                    <TextBox TextChanged="tbFam_TextChanged" Name="tbFam" Margin="5,0,0,0" Width="150"></TextBox>
+                </StackPanel>
+
+                <StackPanel>
+                   
                     <Button Template ="{StaticResource btnSort}">Сброс
                         <Button.ToolTip>
                             <ToolTip>
@@ -71,22 +69,21 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock  FontSize="16" Margin="5,0,0,0">Сортировка:</TextBlock>
-                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbSort">
+                <TextBlock Margin="20,10,20,3" Name="textCount" VerticalAlignment="Center" FontSize="12" ></TextBlock>
+                <ComboBox SelectionChanged="cbFiltr_SelectionChanged" FontFamily="Lucida Sans Unicode" Width="200" Height="25" FontSize ="12" Name="cbSort">
                     <ComboBox.ToolTip>
                         <ToolTip>
                             Выберите сортировку
                         </ToolTip>
                     </ComboBox.ToolTip>
+                    <ComboBoxItem>Без сотрировки</ComboBoxItem>
+                    <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
+                    <ComboBoxItem>По убыванию стоимости</ComboBoxItem>
+                    <ComboBoxItem>По имени от А до Я</ComboBoxItem>
+                    <ComboBoxItem>По имени от Я до А</ComboBoxItem>
+                    <ComboBoxItem>По фамилии от А до Я</ComboBoxItem>
+                    <ComboBoxItem>По фамилии от Я до А</ComboBoxItem>
                 </ComboBox>
-                <ComboBox FontFamily="Lucida Sans Unicode" Width="130" Height="20" FontSize ="12" Name="cbSort2">
-                    <ComboBox.ToolTip>
-                        <ToolTip>
-                            Выберите сортировку
-                        </ToolTip>
-                    </ComboBox.ToolTip>
-                </ComboBox>
-                
             </StackPanel>
             
         </StackPanel>
