@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace PR2.Pages
 {
-    
+
     /// <summary>
     /// Логика взаимодействия для WindowPassword.xaml
     /// </summary>
@@ -36,7 +36,7 @@ namespace PR2.Pages
             {
                 int p = textPassword.Password.GetHashCode();
                 Specialists sp = BaseClass.tBE.Specialists.FirstOrDefault(x => x.Login == specialists.Login && x.Password == p);
-                if(sp != null)
+                if (sp != null)
                 {
                     if (textPasswordNew.Password.ToString() != "")
                     {
@@ -44,39 +44,53 @@ namespace PR2.Pages
                         Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
                         Regex r3 = new Regex("\\d.*\\d");
                         Regex r4 = new Regex("[!@#№?$%^&*()_+=]");
-                        Regex r5 = new Regex(".{8,}");
-                        if (r1.IsMatch(textPasswordNew.Password.ToString()) == false)
+
+                        if (r1.IsMatch(textPasswordNew.Password) == true)
                         {
-                            MessageBox.Show("Новый пароль должен содержать не менее 1 заглавного латинского символа");
-                            return;
+                            if (r2.IsMatch(textPasswordNew.Password) == true)
+                            {
+                                if (r3.IsMatch(textPasswordNew.Password) == true)
+                                {
+                                    if (r4.IsMatch(textPasswordNew.Password) == true)
+                                    {
+                                        if (textPasswordNew.Password.Length >= 8)
+                                        {
+                                            if (textPasswordNew.Password.ToString() == textPasswordNew2.Password.ToString())
+                                            {
+                                                specialists.Password = textPasswordNew.Password.GetHashCode();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Новый пароль не совпадает");
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            MessageBox.Show($"Пароль должен быть не менее 8 символов");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Пароль должен содержать не менее 1 специального символа");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Пароль должен содержать не менее 2 цифры");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Пароль должен содержать не менее 3 строчных латинских символов");
+                            }
                         }
-                        if (r2.IsMatch(textPasswordNew.Password.ToString()) == false)
+                        else
                         {
-                            MessageBox.Show("Новый пароль должен содержать не менее 3 строчных латинских символов");
-                            return;
+                            MessageBox.Show($"Пароль должен содержать не менее 1 заглавного латинского символа");
                         }
-                        if (r3.IsMatch(textPasswordNew.Password.ToString()) == false)
-                        {
-                            MessageBox.Show("Новый пароль должен содержать не менее 2 цифр");
-                            return;
-                        }
-                        if (r4.IsMatch(textPasswordNew.Password.ToString()) == false)
-                        {
-                            MessageBox.Show("Новый пароль должен содержать не менее 1 спец. символа");
-                            return;
-                        }
-                        if (r5.IsMatch(textPasswordNew.Password.ToString()) == false)
-                        {
-                            MessageBox.Show("Общая длина нового пароля должна быть не менее 8 символов");
-                            return;
-                        }
-                        if (textPasswordNew.Password.ToString() != textPasswordNew2.Password.ToString())
-                        {
-                            MessageBox.Show("Новый пароль не совпадает");
-                            return;
-                        }
-                        specialists.Password = textPasswordNew.Password.GetHashCode();
                     }
+
                     specialists.Login = textLogin.Text;
                     BaseClass.tBE.SaveChanges();
                     this.Close();
@@ -95,3 +109,4 @@ namespace PR2.Pages
 
     }
 }
+

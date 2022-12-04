@@ -36,33 +36,20 @@ namespace PR2.Pages
             cbPol.DisplayMemberPath = "Gender";
             cbPol.SelectedValue = specialists.Kod_pola;
 
-            //dolgnosti();
-            cbDolgn.ItemsSource = DL;
-            cbDolgn.SelectedValuePath = "Kod_dolgnosti";
-            cbDolgn.DisplayMemberPath = "Dolgnost";
-            cbDolgn.SelectedValue = specialists.Kod_dolgnosti;
-            
+           
 
         }
-        private void dolgnosti()
-        {
-            string dol;
-            for (int i = 1; i < DL.Count; i++)
-            {
-                dol = DL[i].Dolgnost;
-                cbDolgn.Items.Add(dol);
-            }
-        }
+       
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            if (textboxName.Text != "" && textboxSurname.Text != "" && textboxPatronymic.Text != "" && cbDolgn.SelectedItem != null && cbPol.SelectedItem != null && dpBirthday.SelectedDate != null)
+            if (textboxName.Text != "" && textboxSurname.Text != "" && textboxPatronymic.Text != ""  && cbPol.SelectedItem != null && dpBirthday.SelectedDate != null)
             {
                 specialists.Name = textboxName.Text;
                 specialists.Surname = textboxSurname.Text;
                 specialists.Patronymic = textboxPatronymic.Text;
                 specialists.Date_of_birth = Convert.ToDateTime(dpBirthday.SelectedDate);
                 specialists.Kod_pola = (int)cbPol.SelectedValue;
-                specialists.Kod_dolgnosti = (int)cbDolgn.SelectedValue;
+                specialists.Kod_dolgnosti = specialists.Kod_dolgnosti;
 
                 BaseClass.tBE.SaveChanges();
                 MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных

@@ -24,6 +24,9 @@ namespace PR2
     /// </summary>
     public partial class Menu_polzovatel : Page
     {
+
+
+        int n = 0;
         Specialists specialists;
         public object OpenFileDialoge { get; private set; }
 
@@ -57,7 +60,6 @@ namespace PR2
             {
                 byte[] Bar = p[p.Count - 1].PhotoBinary;
                 showImage(Bar, imUser);
-                
             }
 
         }
@@ -140,15 +142,16 @@ namespace PR2
                 MessageBox.Show("Что-то пошло не так с добавлением нескольких фото");
             }
         }
+   
 
-    
         private void buttonOldPhoto_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
-                if (p.Count>1)
+                if (p.Count>0)
                 {
+
                     Gallery.Visibility = Visibility.Visible;
                     byte[] Bar = p[n].PhotoBinary;
                     showImage(Bar, imgUser);
@@ -172,24 +175,28 @@ namespace PR2
             }
         }
 
-        int n = 0;
+      
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             List<Photo> p = BaseClass.tBE.Photo.Where(x => x.Kod_specialists == specialists.Kod_specialist).ToList();
             n++;
             if (p != null)
             {
+                if(p.Count == 1)
+                {
+                    n = p.Count;
+                }
+                else
+                {
+                    byte[] Bar = p[n].PhotoBinary;
+                    showImage(Bar, imgUser);
+                }
 
-                byte[] Bar = p[n].PhotoBinary; // считываем изображение из базы (считываем байтовый массив двоичных данных)
-                
-                showImage(Bar, imgUser);                                 //    showImage(Bar, imgUser);
             }
             if (n == p.Count - 1)
             {
-                n--;
+                n = -1;
             }
-
-
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -209,7 +216,6 @@ namespace PR2
                 byte[] Bar = p[n].PhotoBinary;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
                 BitmapImage BI = new BitmapImage();                                  //    BitmapImage BI = new BitmapImage();  // создаем объект для загрузки изображения
                 showImage(Bar, imgUser);                                                                //    showImage(Bar, imgUser);
-
             }
            
         }
