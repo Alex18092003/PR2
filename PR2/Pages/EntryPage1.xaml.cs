@@ -307,5 +307,17 @@ namespace PR2
             }
 
         }
+
+        private void txtNext_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            pc.CurrentPage = 1;
+            listEntry.ItemsSource = listFilter.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+        }
+
+        private void txtNextt2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            pc.CurrentPage = pc.CountPages;
+            listEntry.ItemsSource = listFilter.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+        }
     }
 }

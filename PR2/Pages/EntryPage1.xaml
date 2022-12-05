@@ -36,7 +36,7 @@
             <StackPanel Orientation="Horizontal" >
                 <StackPanel VerticalAlignment="Center">
                    
-                    <ComboBox Margin="20,0,0,0" FontFamily="Lucida Sans Unicode" Width="140" Height="25" FontSize ="12" Name="cbFiltr" SelectionChanged="cbFiltr_SelectionChanged">
+                    <ComboBox Margin="10,0,0,0" FontFamily="Lucida Sans Unicode" Width="140" Height="25" FontSize ="12" Name="cbFiltr" SelectionChanged="cbFiltr_SelectionChanged">
                         <ComboBox.ToolTip>
                             <ToolTip>
                                 Выберите для фильтрации
@@ -53,13 +53,15 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock FontFamily="Lucida Sans Unicode" Margin="10,0,0,0" FontSize="12">Введите фамилию для поиска</TextBlock>
-                    <TextBox TextChanged="tbFam_TextChanged" Name="tbFam" Margin="5,0,0,0" Width="150"></TextBox>
+                    <TextBox TextChanged="tbFam_TextChanged" Name="tbFam" Margin="5,0,0,0" Width="120" Height="20"></TextBox>
+                    <TextBlock Margin="10,10,20,3" Name="textCount" VerticalAlignment="Center" FontSize="12" ></TextBlock>
                 </StackPanel>
+                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="10,10,20,3" Name="textCount" VerticalAlignment="Center" FontSize="12" ></TextBlock>
-                <ComboBox SelectionChanged="cbFiltr_SelectionChanged" FontFamily="Lucida Sans Unicode" Width="180" Height="25" FontSize ="12" Name="cbSort">
+               
+                <ComboBox Margin="10,0,0,0" SelectionChanged="cbFiltr_SelectionChanged" FontFamily="Lucida Sans Unicode" Width="180" Height="25" FontSize ="12" Name="cbSort">
                     <ComboBox.ToolTip>
                         <ToolTip>
                             Выберите сортировку
@@ -76,6 +78,7 @@
                 <TextBlock VerticalAlignment="Center" Margin="5,0,0,0" FontFamily="Lucida Sans Unicode"  FontSize="12">Введите количество записей на одной стр</TextBlock>
                 <TextBox PreviewTextInput="textCountt_PreviewTextInput"  Margin="5,0,0,0" Width="60" Height="20" Name="textCountt" TextChanged="textCount_TextChanged">
                 </TextBox>
+                <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txtNextt" Visibility="{Binding VisibleButton[0]}" Uid="next" Text=" в начало " MouseDown="txtNext_MouseDown"/>
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txtPrev" Uid="prev" Text=" &lt; " MouseDown="GoPage_MouseDown"/>
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txt1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}" MouseDown="GoPage_MouseDown"/>
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txt2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}" MouseDown="GoPage_MouseDown"/>
@@ -83,6 +86,7 @@
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txt4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}" MouseDown="GoPage_MouseDown"/>
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txt5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}" MouseDown="GoPage_MouseDown"/>
                 <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txtNext" Uid="next" Text=" &gt;" MouseDown="GoPage_MouseDown"/>
+                <TextBlock FontSize ="12" FontFamily="Lucida Sans Unicode"  VerticalAlignment="Center" Name="txtNextt2" Visibility="{Binding VisibleButton[1]}" Uid="next" Text=" в конец " MouseDown="txtNextt2_MouseDown"/>
             </StackPanel>
             
         </StackPanel>

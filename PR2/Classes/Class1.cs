@@ -11,9 +11,11 @@ namespace PR2.Pages
     {
         public event PropertyChangedEventHandler PropertyChanged;  //событие, для изменения значения одного из массивов свойств, описанных ниже
         static int countitems = 5; //количество объектов для отображения (1 2 3 4 5)
+        static int countbutton = 2; // количество кнопок вначало в конец
         public int[] NPage { get; set; } = new int[countitems];// массив с номерами отображаемых страниц    
         public string[] Visible { get; set; } = new string[countitems];//массив свойст, отвечающий за видимость номера страницы, Visible - видимый, Hidden - скрытый
         public string[] Bold { get; set; } = new string[countitems];//массив свойств, отвечающий за выделение номера текущей страницы
+        public string[] Button { get; set; } = new string[countitems];
         int countpages;  // переменная, в которой буде храниться количество страниц
         public int CountPages//свойство в котором хранится общее кол-во страц, при изменении данного свойства будет определяться, скрыт будет номер той или итой страницы или нет (в зависимости об общего кол-ва записей в списке) 
         {
@@ -98,10 +100,36 @@ namespace PR2.Pages
                     if (NPage[i] == currentpage) Bold[i] = "ExtraBold";
                     else Bold[i] = "Regular";
                 }
+               if(countpages >5)
+                {
+                    if (NPage[0] != 1)
+                    {
+                        Button[0] = "Visible";
+                    }
+                    else
+                    {
+                        Button[0] = "Hidden";
+                    }
+                    if(NPage[4] != countpages)
+                    {
+                        Button[1] = "Visible";
+                    }
+                    else
+                    {
+                        Button[1] = "Hidden";
+                    }
+
+                }
+                else
+                {
+                    Button[0] = "Hidden";
+                    Button[1] = "Hidden";
+                }
                 //вызываем созбытие, связанное с изменением свойств, используемых в привязке на странице
                 PropertyChanged(this, new PropertyChangedEventArgs("NPage"));
                 PropertyChanged(this, new PropertyChangedEventArgs("Visible"));
                 PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Button"));
             }
 
         }
