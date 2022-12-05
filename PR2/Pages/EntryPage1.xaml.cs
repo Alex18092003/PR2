@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PR2.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,12 @@ namespace PR2
         Specialists sp;
         List<Entry> listFilter = new List<Entry>();
 
+        PageChange pc = new PageChange(); // создаем объект класса для отображения страниц
+
         public EntryPage1()
         {
             InitializeComponent();
+
             listEntry.ItemsSource = BaseClass.tBE.Entry.ToList();
 
             
@@ -42,6 +46,10 @@ namespace PR2
             cbSort.SelectedIndex = 0;  // выбранное по умолчанию значение в списке с видами сортировки ("Без сортировки")
 
             textCount.Text = "Общее число записей: " + BaseClass.tBE.Entry.ToList().Count;
+            
+            pc.CountPage = BaseClass.tBE.Entry.ToList().Count;
+            DataContext = pc;  // добавляем объект для отображения страниц в ресурсы страницы
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) // метод для выхода в меню админа
@@ -231,6 +239,74 @@ namespace PR2
         private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
+        }
+
+        private void textCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            try
+            {
+                pc.CountPage = Convert.ToInt32(textCountt.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            catch
+            {
+                pc.CountPage = listFilter.Count; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            pc.Countlist = listFilter.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            listEntry.ItemsSource = listFilter.Skip(0).Take(pc.CountPage).ToList();  // отображаем первые записи в том количестве, которое равно CountPage
+            pc.CurrentPage = 1; // текущая страница - это страница 1
+
+        }
+
+        private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)  // обработка нажатия на один из Textblock в меню с номерами страниц
+        {
+            TextBlock tb = (TextBlock)sender;
+
+            switch (tb.Uid)  // определяем, куда конкретно было сделано нажатие
+            {
+                case "prev":
+                    pc.CurrentPage--;
+                    break;
+                case "next":
+                    pc.CurrentPage++;
+                    break;
+                default:
+                    pc.CurrentPage = Convert.ToInt32(tb.Text);
+                    break;
+            }
+            listEntry.ItemsSource = listFilter.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
+            // Skip(pc.CurrentPage* pc.CountPage - pc.CountPage) - сколько пропускаем записей
+            // Take(pc.CountPage) - сколько записей отображаем на странице
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            pc.CurrentPage = 1;
+
+            try
+            {
+                pc.CountPage = Convert.ToInt32(textCountt.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            catch
+            {
+                pc.CountPage = listFilter.Count; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            pc.Countlist = listFilter.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            listEntry.ItemsSource = listFilter.Skip(0).Take(pc.CountPage).ToList();  // отображаем первые записи в том количестве, которое равно CountPage
+        }
+
+        // запрет ввода символов
+        private void textCountt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с запретом ввода символов");
+            }
+
         }
     }
 }
