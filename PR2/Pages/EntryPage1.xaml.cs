@@ -275,8 +275,7 @@ namespace PR2
                     break;
             }
             listEntry.ItemsSource = listFilter.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
-            // Skip(pc.CurrentPage* pc.CountPage - pc.CountPage) - сколько пропускаем записей
-            // Take(pc.CountPage) - сколько записей отображаем на странице
+           
         }
 
         private void btn_Click(object sender, RoutedEventArgs e)
