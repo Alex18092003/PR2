@@ -55,17 +55,6 @@
                     <TextBlock FontFamily="Lucida Sans Unicode" Margin="10,0,0,0" FontSize="12">Введите фамилию для поиска</TextBlock>
                     <TextBox TextChanged="tbFam_TextChanged" Name="tbFam" Margin="5,0,0,0" Width="150"></TextBox>
                 </StackPanel>
-
-                <StackPanel>
-                   
-                    <Button Template ="{StaticResource btnSort}">Сброс
-                        <Button.ToolTip>
-                            <ToolTip>
-                                Нажмите для сброса всего
-                            </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
-                </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
