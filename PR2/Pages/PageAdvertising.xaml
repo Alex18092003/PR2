@@ -29,11 +29,26 @@
         </StackPanel>
 
         <StackPanel  Grid.Row="1">
-            <TextBlock Name="stock" Margin="0,10,0,0" FontSize ="30" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center">АКЦИЯ</TextBlock>
-            <TextBlock Margin="0,10,0,0" FontSize ="10" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center">до конца декабря</TextBlock>
-            <Image Source="/Resourse/pngwing.com (7).png" Height="170" Width="170" Name="img"></Image>
-            <TextBlock Margin="0,10,0,0" FontSize ="10" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center">на все услуги</TextBlock>
-            <Button  Name="buttonZapis" Click="buttonZapis_Click">ЗАПИСАТЬСЯ</Button>
+           
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Margin="0,0,200,0" Source="/Resourse/snowflake-icon_22139.png" Height="50" Width="50" Name="sneg3"></Image>
+                <TextBlock Name="stock" Margin="0,5,0,0" FontSize ="30" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center">АКЦИЯ</TextBlock>
+                <Image Margin="200,0,0,0" Source="/Resourse/snowflake-icon_22139.png" Height="30" Width="30" Name="sneg4"></Image>
+            </StackPanel>
+            <TextBlock Margin="0,0,0,0" FontSize ="14" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center">до конца декабря</TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Margin="0,0,160,0" Source="/Resourse/snowflake-icon_22139.png" Height="50" Width="50" Name="sneg"></Image>
+                <Image Margin="0,0,60,0"  Source="/Resourse/pngwing.com (7).png" Height="170" Width="170" Name="img"></Image>
+                <Image Margin="100,0,0,0" Source="/Resourse/snowflake-icon_22139.png" Height="50" Width="50" Name="sneg2"></Image>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Margin="0,0,190,0" Source="/Resourse/snowflake-icon_22139.png" Height="30" Width="30" Name="sneg5"></Image>
+                
+                <Image Margin="190,0,0,0" Source="/Resourse/snowflake-icon_22139.png" Height="50" Width="50" Name="sneg6"></Image>
+            </StackPanel>
+           
+            <Button Width="150" Name="buttonZapis" Click="buttonZapis_Click">ЗАПИСАТЬСЯ</Button>
         </StackPanel>
 
     </Grid>

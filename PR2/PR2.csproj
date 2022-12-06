@@ -244,6 +244,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\snowflake-icon_22139.png" />
     <Resource Include="Resourse\pngwing.com %287%29.png" />
     <Resource Include="Resourse\pngwing.com %289%29.png" />
     <Resource Include="Resourse\no_photo.jpg" />
