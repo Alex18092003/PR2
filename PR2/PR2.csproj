@@ -105,6 +105,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAdvertising.xaml.cs">
+      <DependentUpon>PageAdvertising.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu_polzovatel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAdvertising.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +244,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\pngwing.com %287%29.png" />
+    <Resource Include="Resourse\pngwing.com %289%29.png" />
     <Resource Include="Resourse\no_photo.jpg" />
     <Resource Include="Resourse\eye_slash_visible_hide_hidden_show_icon_145987.png" />
     <Resource Include="Resourse\eye_visible_hide_hidden_show_icon_145988.png" />

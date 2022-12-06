@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PR2.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,11 @@ namespace PR2
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
             Framec.MainFrame.Navigate(new Registration());
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Framec.MainFrame.Navigate(new PageAdvertising());
         }
     }
 }
